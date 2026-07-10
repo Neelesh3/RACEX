@@ -3,56 +3,35 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import { driverStandings, constructorStandings } from "@/lib/standings";
-
+import { circuits, featuredCircuit } from "@/lib/circuits";
 
 import { Footer } from "@/components/sections/footer";
 
-import {StandingsHero }from "@/components/standings/StandingsHero";
-import { DriverStandingsTable } from "@/components/standings/DriverStandingsTable";
-import { ConstructorStandingsTable } from "@/components/standings/ConstructorStandingsTable";
-import { StandingsStats } from "@/components/standings/StandingsStats";
+import { CircuitHero } from "@/components/circuits/CircuitHero";
+import { FeaturedCircuit } from "@/components/circuits/FeaturedCircuit";
+import { CircuitGrid } from "@/components/circuits/CircuitGrid";
+import { CircuitStats } from "@/components/circuits/CircuitStats";
 
 import { Button } from "@/components/ui/button";
 
-export default function StandingsPage() {
+export default function CircuitsPage() {
   return (
     <>
-      
-
       <main className="min-h-screen bg-black text-white">
         <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          <StandingsHero />
+          <CircuitHero />
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-white">
-              Driver Standings
-            </h2>
-            <p className="mt-2 text-zinc-400">
-              Live championship standings for every Formula One driver.
-            </p>
-          </div>
-
-          <DriverStandingsTable drivers={driverStandings} />
+          <FeaturedCircuit circuit={featuredCircuit} />
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-white">
-              Constructor Standings
-            </h2>
-            <p className="mt-2 text-zinc-400">
-              Follow the battle for the Constructors&apos; Championship.
-            </p>
-          </div>
-
-        <ConstructorStandingsTable constructors={constructorStandings} />
+          <CircuitGrid circuits={circuits} />
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <StandingsStats />
+          <CircuitStats />
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -65,22 +44,24 @@ export default function StandingsPage() {
           >
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-black tracking-tight md:text-5xl">
-                Who Will Become World Champion?
+                Every Corner Tells a Story
               </h2>
 
               <p className="mt-6 text-lg leading-8 text-zinc-300">
-                Follow every point, every victory and every battle throughout
-                the Formula One season.
+               Discover the worlds greatest Formula One circuits... and the
+                legendary moments that shaped motorsport history.
               </p>
 
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link href="/drivers">
-                  <Button size="lg">Explore Drivers</Button>
+                <Link href="/races">
+                  <Button size="lg">
+                    View Races
+                  </Button>
                 </Link>
 
-                <Link href="/races">
+                <Link href="/teams">
                   <Button size="lg" variant="outline">
-                    View Races
+                    Explore Teams
                   </Button>
                 </Link>
               </div>
