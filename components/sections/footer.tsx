@@ -98,16 +98,16 @@ export function Footer() {
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
-<a
-  key={social.label}
-  href={social.href}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label={social.label}
-  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-all duration-200 hover:border-accent hover:bg-accent hover:text-white"
->
-  <Icon className="h-4 w-4" />
-</a>
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-all duration-200 hover:border-accent hover:bg-accent hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
                 );
               })}
             </div>
@@ -156,11 +156,11 @@ export function Footer() {
                   className="flex flex-col gap-3"
                   onSubmit={(e) => e.preventDefault()}
                 >
-<Input
-  type="email"
-  placeholder="Enter your email"
-  className="h-10 bg-background border-border text-white placeholder:text-muted-foreground"
-/>
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="h-10 bg-background border-border text-white placeholder:text-muted-foreground"
+                  />
                   <Button
                     type="submit"
                     className="
@@ -169,7 +169,7 @@ export function Footer() {
                       transition-all duration-200
                       hover:bg-primary/90
                       active:scale-[0.98]"
-                    
+
                   >
                     Subscribe
                     <ArrowRight className="h-4 w-4" />
