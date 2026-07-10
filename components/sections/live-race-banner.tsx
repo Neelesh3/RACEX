@@ -62,22 +62,24 @@ function useCountdown(targetDate: Date): CountdownValues {
     };
   }, [targetDate]);
 
-  const [countdown, setCountdown] = useState<CountdownValues>({
+  const [countdown, setCountdown] = useState<CountdownValues>(() => ({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
     isLive: false,
-  });
+  }));
 
   useEffect(() => {
-    setCountdown(calculate());
-
-    const interval = setInterval(() => {
+    const update = () => {
       setCountdown(calculate());
-    }, 1000);
+    };
 
-    return () => clearInterval(interval);
+    update();
+
+    const interval = window.setInterval(update, 1000);
+
+    return () => window.clearInterval(interval);
   }, [calculate]);
 
   return countdown;
