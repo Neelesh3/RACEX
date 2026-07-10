@@ -1,0 +1,259 @@
+export interface Team {
+  id: string;
+  slug: string;
+  name: string;
+  fullName: string;
+  country: string;
+  flag: string;
+  base: string;
+  teamPrincipal: string;
+  engine: string;
+  championships: number;
+  wins: number;
+  podiums: number;
+  races: number;
+  drivers: {
+    id: string;
+    name: string;
+    number: number;
+    flag: string;
+  }[];
+  description: string;
+  brandColor: string;
+  founded: number;
+}
+
+export const teams: Team[] = [
+  {
+    id: "ferrari",
+    slug: "ferrari",
+    name: "Ferrari",
+    fullName: "Scuderia Ferrari HP",
+    country: "Italy",
+    flag: "🇮🇹",
+    base: "Maranello, Italy",
+    teamPrincipal: "Frédéric Vasseur",
+    engine: "Ferrari",
+    championships: 16,
+    wins: 243,
+    podiums: 810,
+    races: 1089,
+    drivers: [
+      { id: "charles-leclerc", name: "Charles Leclerc", number: 16, flag: "🇲🇨" },
+      { id: "lewis-hamilton", name: "Lewis Hamilton", number: 44, flag: "🇬🇧" },
+    ],
+    description:
+      "The most iconic and successful team in Formula 1 history. Founded by Enzo Ferrari in 1929, Scuderia Ferrari has competed in every F1 season since 1950.",
+    brandColor: "#DC0000",
+    founded: 1929,
+  },
+  {
+    id: "mercedes",
+    slug: "mercedes",
+    name: "Mercedes",
+    fullName: "Mercedes-AMG PETRONAS F1 Team",
+    country: "Germany",
+    flag: "🇩🇪",
+    base: "Brackley, United Kingdom",
+    teamPrincipal: "Toto Wolff",
+    engine: "Mercedes",
+    championships: 8,
+    wins: 125,
+    podiums: 294,
+    races: 299,
+    drivers: [
+      { id: "george-russell", name: "George Russell", number: 63, flag: "🇬🇧" },
+      { id: "kimi-antonelli", name: "Kimi Antonelli", number: 12, flag: "🇮🇹" },
+    ],
+    description:
+      "The dominant force of the turbo-hybrid era. Mercedes has won eight consecutive Constructors Championships from 2014 to 2021.",
+    brandColor: "#00D2BE",
+    founded: 1954,
+  },
+  {
+    id: "red-bull",
+    slug: "red-bull-racing",
+    name: "Red Bull Racing",
+    fullName: "Oracle Red Bull Racing",
+    country: "Austria",
+    flag: "🇦🇹",
+    base: "Milton Keynes, United Kingdom",
+    teamPrincipal: "Christian Horner",
+    engine: "Honda RBPT",
+    championships: 6,
+    wins: 122,
+    podiums: 271,
+    races: 387,
+    drivers: [
+      { id: "max-verstappen", name: "Max Verstappen", number: 1, flag: "🇳🇱" },
+      { id: "liam-lawson", name: "Liam Lawson", number: 30, flag: "🇳🇿" },
+    ],
+    description:
+      "The current benchmark in Formula 1. Red Bull Racing has dominated the ground effect era with Max Verstappen leading the charge.",
+    brandColor: "#1E41FF",
+    founded: 2005,
+  },
+  {
+    id: "mclaren",
+    slug: "mclaren",
+    name: "McLaren",
+    fullName: "McLaren Formula 1 Team",
+    country: "United Kingdom",
+    flag: "🇬🇧",
+    base: "Woking, United Kingdom",
+    teamPrincipal: "Andrea Stella",
+    engine: "Mercedes",
+    championships: 8,
+    wins: 184,
+    podiums: 514,
+    races: 954,
+    drivers: [
+      { id: "lando-norris", name: "Lando Norris", number: 4, flag: "🇬🇧" },
+      { id: "oscar-piastri", name: "Oscar Piastri", number: 81, flag: "🇦🇺" },
+    ],
+    description:
+      "One of the most storied teams in F1 history. McLaren has produced legendary drivers and continues to fight at the front with a young, dynamic lineup.",
+    brandColor: "#FF8000",
+    founded: 1966,
+  },
+  {
+    id: "aston-martin",
+    slug: "aston-martin",
+    name: "Aston Martin",
+    fullName: "Aston Martin Aramco F1 Team",
+    country: "United Kingdom",
+    flag: "🇬🇧",
+    base: "Silverstone, United Kingdom",
+    teamPrincipal: "Andy Cowell",
+    engine: "Mercedes",
+    championships: 0,
+    wins: 0,
+    podiums: 9,
+    races: 76,
+    drivers: [
+      { id: "fernando-alonso", name: "Fernando Alonso", number: 14, flag: "🇪🇸" },
+      { id: "lance-stroll", name: "Lance Stroll", number: 18, flag: "🇨🇦" },
+    ],
+    description:
+      "Aston Martin returned to F1 in 2021 and has rapidly climbed the grid with significant investment and the experience of Fernando Alonso.",
+    brandColor: "#006F62",
+    founded: 2021,
+  },
+  {
+    id: "alpine",
+    slug: "alpine",
+    name: "Alpine",
+    fullName: "BWT Alpine F1 Team",
+    country: "France",
+    flag: "🇫🇷",
+    base: "Enstone, United Kingdom",
+    teamPrincipal: "Oliver Oakes",
+    engine: "Renault",
+    championships: 2,
+    wins: 21,
+    podiums: 59,
+    races: 458,
+    drivers: [
+      { id: "pierre-gasly", name: "Pierre Gasly", number: 10, flag: "🇫🇷" },
+      { id: "jack-doohan", name: "Jack Doohan", number: 7, flag: "🇦🇺" },
+    ],
+    description:
+      "The Renault-backed team rebranded as Alpine in 2021. With two championships as Renault F1, they continue to develop young talent.",
+    brandColor: "#0090FF",
+    founded: 1986,
+  },
+  {
+    id: "williams",
+    slug: "williams",
+    name: "Williams",
+    fullName: "Atlassian Williams Racing",
+    country: "United Kingdom",
+    flag: "🇬🇧",
+    base: "Grove, United Kingdom",
+    teamPrincipal: "James Vowles",
+    engine: "Mercedes",
+    championships: 9,
+    wins: 114,
+    podiums: 313,
+    races: 828,
+    drivers: [
+      { id: "alexander-albon", name: "Alexander Albon", number: 23, flag: "🇹🇭" },
+      { id: "carlos-sainz", name: "Carlos Sainz", number: 55, flag: "🇪🇸" },
+    ],
+    description:
+      "One of the most successful teams in F1 history with 9 Constructors Championships. Williams is rebuilding under new leadership and investment.",
+    brandColor: "#005AFF",
+    founded: 1977,
+  },
+  {
+    id: "haas",
+    slug: "haas",
+    name: "Haas",
+    fullName: "MoneyGram Haas F1 Team",
+    country: "United States",
+    flag: "🇺🇸",
+    base: "Kannapolis, United States",
+    teamPrincipal: "Ayao Komatsu",
+    engine: "Ferrari",
+    championships: 0,
+    wins: 0,
+    podiums: 0,
+    races: 185,
+    drivers: [
+      { id: "esteban-ocon", name: "Esteban Ocon", number: 31, flag: "🇫🇷" },
+      { id: "oliver-bearman", name: "Oliver Bearman", number: 87, flag: "🇬🇧" },
+    ],
+    description:
+      "The only American-owned team on the grid. Haas has established itself as a competitive midfield team with a lean, efficient operation.",
+    brandColor: "#B6BABD",
+    founded: 2014,
+  },
+  {
+    id: "kick-sauber",
+    slug: "kick-sauber",
+    name: "Kick Sauber",
+    fullName: "Stake F1 Team Kick Sauber",
+    country: "Switzerland",
+    flag: "🇨🇭",
+    base: "Hinwil, Switzerland",
+    teamPrincipal: "Jonathan Wheatley",
+    engine: "Ferrari",
+    championships: 0,
+    wins: 1,
+    podiums: 27,
+    races: 394,
+    drivers: [
+      { id: "nico-hulkenberg", name: "Nico Hülkenberg", number: 27, flag: "🇩🇪" },
+      { id: "gabriel-bortoleto", name: "Gabriel Bortoleto", number: 5, flag: "🇧🇷" },
+    ],
+    description:
+      "The team that launched the careers of champions like Kimi Räikkönen and Sebastian Vettel. Preparing for Audi entry in 2026.",
+    brandColor: "#52E252",
+    founded: 1993,
+  },
+  {
+    id: "racing-bulls",
+    slug: "racing-bulls",
+    name: "Racing Bulls",
+    fullName: "Visa Cash App Racing Bulls F1 Team",
+    country: "Italy",
+    flag: "🇮🇹",
+    base: "Faenza, Italy",
+    teamPrincipal: "Laurent Mekies",
+    engine: "Honda RBPT",
+    championships: 0,
+    wins: 0,
+    podiums: 2,
+    races: 86,
+    drivers: [
+      { id: "yuki-tsunoda", name: "Yuki Tsunoda", number: 22, flag: "🇯🇵" },
+      { id: "isaac-hadjar", name: "Isaac Hadjar", number: 6, flag: "🇫🇷" },
+    ],
+    description:
+      "The sister team to Red Bull Racing. Racing Bulls serves as a proving ground for young talent on the path to the senior team.",
+    brandColor: "#2B4562",
+    founded: 2006,
+  },
+];
+
+export const featuredTeam = teams[0];
