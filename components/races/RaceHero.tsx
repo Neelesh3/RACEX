@@ -3,7 +3,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CalendarDays, ArrowRight } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
