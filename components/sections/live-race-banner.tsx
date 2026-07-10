@@ -62,9 +62,17 @@ function useCountdown(targetDate: Date): CountdownValues {
     };
   }, [targetDate]);
 
-  const [countdown, setCountdown] = useState<CountdownValues>(calculate);
+  const [countdown, setCountdown] = useState<CountdownValues>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isLive: false,
+  });
 
   useEffect(() => {
+    setCountdown(calculate());
+
     const interval = setInterval(() => {
       setCountdown(calculate());
     }, 1000);
@@ -261,6 +269,7 @@ export default function LiveRaceBanner() {
                             </motion.div>
                         ) : (
                             <div
+                             suppressHydrationWarning
                                 className="flex items-center gap-1 sm:gap-2"
                                 role="timer"
                                 aria-label={`Time until race: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`}
