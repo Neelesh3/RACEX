@@ -5,6 +5,7 @@ import { ArrowRight, Factory, Trophy, Users, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Team } from "@/types/team";
 import type { TeamDetails } from "@/types/team-details";
+import Image from "next/image";
 
 interface TeamHeroProps {
   team?: Team;
@@ -165,11 +166,16 @@ export function TeamHero({
             transition={{ duration: 0.3 }}
             className="overflow-hidden rounded-3xl border border-[#242424] bg-[#111111]"
           >
-            <img
-              src={team.carImage}
-              alt={team.name}
-              className="aspect-[4/3] w-full object-cover"
-            />
+            <div className="relative aspect-[4/3] w-full">
+              <Image
+                src={team.carImage}
+                alt={team.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>
