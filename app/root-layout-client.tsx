@@ -2,6 +2,8 @@
 
 import { ReactNode } from "react";
 import { Navbar } from "@/components/navigation";
+import { SearchProvider } from "@/components/search/SearchContext";
+import { GlobalSearch } from "@/components/search/GlobalSearch";
 
 interface RootLayoutClientProps {
   children: ReactNode;
@@ -14,9 +16,10 @@ interface RootLayoutClientProps {
  */
 export function RootLayoutClient({ children }: RootLayoutClientProps) {
   return (
-    <>
+    <SearchProvider>
       <Navbar />
       <main className="flex-1">{children}</main>
-    </>
+      <GlobalSearch />
+    </SearchProvider>
   );
 }

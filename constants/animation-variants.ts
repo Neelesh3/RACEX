@@ -142,3 +142,145 @@ export const GRADIENT_LINE_ENTRANCE = {
 export const ACTIVE_INDICATOR_TRANSITION = {
   transition: { duration: TRANSITIONS.fast / 1000 },
 } as const;
+
+/**
+ * ============================================================================
+ * Centralized Premium Motion System Transitions & Variants
+ * ============================================================================
+ */
+
+/**
+ * Standard transition curves
+ */
+export const DEFAULT_TRANSITION = {
+  duration: TRANSITIONS.normal / 1000,
+  ease: [0.22, 1, 0.36, 1],
+} as const;
+
+export const SPRING_TRANSITION = {
+  type: "spring" as const,
+  stiffness: 300,
+  damping: 25,
+} as const;
+
+export const SLOW_TRANSITION = {
+  duration: TRANSITIONS.slow / 1000,
+  ease: [0.22, 1, 0.36, 1],
+} as const;
+
+/**
+ * Centralized Fade & Directional entry variants
+ */
+export const FADE_IN_VARIANTS = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+export const FADE_UP_VARIANTS = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+export const FADE_DOWN_VARIANTS = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+export const FADE_LEFT_VARIANTS = {
+  hidden: { opacity: 0, x: 20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+export const FADE_RIGHT_VARIANTS = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+/**
+ * Centralized Scale & Zoom entry variants
+ */
+export const SCALE_IN_VARIANTS = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+export const ZOOM_IN_VARIANTS = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+/**
+ * Unified Layout & Page Transitions
+ */
+export const PAGE_TRANSITION_VARIANTS = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: DEFAULT_TRANSITION,
+  },
+  exit: {
+    opacity: 0,
+    y: -15,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+
+export const SECTION_TRANSITION_VARIANTS = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: SLOW_TRANSITION,
+  },
+} as const;
+
+/**
+ * Text progressive segment animation variants
+ */
+export const TEXT_CONTAINER_VARIANTS = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.03,
+    },
+  },
+} as const;
+
+export const TEXT_CHILD_VARIANTS = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: DEFAULT_TRANSITION,
+  },
+} as const;
+

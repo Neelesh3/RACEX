@@ -1,19 +1,16 @@
 "use client";
 
-import { memo, useCallback } from "react";
+import { memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Search, Bell } from "lucide-react";
+import { Bell } from "lucide-react";
 import {
   ACTIONS_CONTAINER_VARIANTS,
   ACTION_ITEM_VARIANT,
   BADGE_POP,
 } from "@/constants/animation-variants";
 import { ProfileMenu } from "./profile-menu";
-
-interface NavbarActionsProps {
-  onSearchClick?: () => void;
-}
+import { SearchButton } from "@/components/search/SearchButton";
 
 /**
  * NavbarActions Component
@@ -28,14 +25,10 @@ interface NavbarActionsProps {
  *
  * Note: Theme toggle moved to global context (not navbar responsibility)
  */
-function NavbarActionsContent({ onSearchClick }: NavbarActionsProps) {
+function NavbarActionsContent() {
   // Notification state is hardcoded to true since it's UI-only
   // Connect to real notification system when backend API is ready
   const hasNotification = true;
-
-  const handleSearchClick = useCallback(() => {
-    onSearchClick?.();
-  }, [onSearchClick]);
 
   return (
     <motion.div
@@ -48,15 +41,7 @@ function NavbarActionsContent({ onSearchClick }: NavbarActionsProps) {
     >
       {/* Search Button */}
       <motion.div variants={ACTION_ITEM_VARIANT}>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleSearchClick}
-          aria-label="Open search"
-          className="hidden md:inline-flex"
-        >
-          <Search className="size-5" />
-        </Button>
+        <SearchButton />
       </motion.div>
 
       {/* Notifications */}
