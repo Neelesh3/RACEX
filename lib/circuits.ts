@@ -432,6 +432,24 @@ export const circuits: Circuit[] = [
     description:
       "A balanced circuit combining long corners, technical sections, and a main straight that has long been used for Formula One testing."
   },
+  {
+    id: "hockenheim",
+    slug: "german-grand-prix",
+    name: "Hockenheimring",
+    country: "Germany",
+    flag: "🇩🇪",
+    location: "Hockenheim",
+    length: "4.574 km",
+    laps: 67,
+    raceDistance: "306.458 km",
+    firstGrandPrix: 1970,
+    lapRecord: "1:13.780",
+    corners: 17,
+    drsZones: 2,
+    image: "/images/circuits/hockenheim.jpg",
+    description:
+      "A fast track through the Baden-Württemberg forests, combining high-speed straights with a tight, amphitheater-like stadium section."
+  }
 ];
 
 export const featuredCircuit: Circuit = circuits.find(
