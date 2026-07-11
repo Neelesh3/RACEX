@@ -1,16 +1,23 @@
-import type { Driver } from "@/types/driver";
+// types/driver-details.ts
 
-export interface DriverSocialLinks {
-  website?: string;
-  instagram?: string;
-  x?: string;
-  facebook?: string;
+export interface DriverSocial {
+  platform: string;
+  handle: string;
+  url: string;
 }
 
-export interface DriverTimelineEvent {
+export interface DriverTimelineItem {
+  year: number;
+  achievement: string;
+  description?: string;
+}
+
+export interface DriverAchievement {
+  id: string;
   year: number;
   title: string;
   description: string;
+  type: string;
 }
 
 export interface DriverStatistics {
@@ -23,22 +30,23 @@ export interface DriverStatistics {
 }
 
 export interface DriverDetails {
-  driverId: Driver["id"];
-  bio: string;
+  driverId: string;
+  biography: string;
   careerSummary: string;
   birthDate: string;
   birthPlace: string;
   height: string;
   weight: string;
   debutSeason: number;
-  worldChampionships: number;
-  careerWins: number;
-  careerPodiums: number;
-  careerPoles: number;
+  championships: number;
+  wins: number;
+  podiums: number;
+  poles: number;
   fastestLaps: number;
   helmetImage: string;
   gallery: string[];
-  socialLinks: DriverSocialLinks;
-  careerTimeline: DriverTimelineEvent[];
+  socials: DriverSocial[];
+  timeline: DriverTimelineItem[];
+  achievements: DriverAchievement[];
   statistics: DriverStatistics;
 }

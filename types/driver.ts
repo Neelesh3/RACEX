@@ -1,3 +1,5 @@
+// types/driver.ts
+
 export interface Driver {
   id: string;
   slug: string;
