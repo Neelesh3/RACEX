@@ -16,7 +16,7 @@ export function CircuitLayout({ circuit, details }: CircuitLayoutProps) {
   const [imageError, setImageError] = useState(false);
   
   // Dynamic layout map path matching public assets naming pattern
-  const mapUrl = `/images/circuits/layouts/${circuit.id}.svg`;
+  const mapUrl = `/circuits/layouts/${circuit.id}.svg`;
 
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">

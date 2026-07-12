@@ -29,11 +29,11 @@ function NavbarLogoContent() {
           {...BUTTON_HOVER_TAP}
           aria-hidden="true"
         >
-          <div className="relative h-8 w-8">
+          <div className="relative h-[38px] w-[38px]">
             {/* Premium geometric logo design */}
-            <div className="absolute inset-0 rounded bg-gradient-to-br from-red-500 to-red-600" />
-            <div className="absolute inset-1 rounded bg-background" />
-            <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-red-500">
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#E10600] to-[#c4001e]" />
+            <div className="absolute inset-1 rounded-md bg-[#050505]" />
+            <div className="absolute inset-0 flex items-center justify-center text-[15px] font-bold text-[#E10600]">
               RX
             </div>
           </div>
@@ -44,10 +44,10 @@ function NavbarLogoContent() {
           className="hidden items-center gap-1 sm:flex"
           {...LOGO_TEXT_ENTRANCE}
         >
-          <span className="text-lg font-bold tracking-tight text-white">
+          <span className="text-xl font-black tracking-tight text-white">
             RACE
           </span>
-          <span className="text-lg font-bold tracking-tight text-red-500">
+          <span className="text-xl font-black tracking-tight text-[#E10600]">
             X
           </span>
         </motion.div>

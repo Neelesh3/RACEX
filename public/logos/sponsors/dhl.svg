@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Icon: dhl
+  Set: Simple Icons
+  Author: Simple Icons Collaborators (https://github.com/simple-icons/simple-icons)
+  License: CC0 1.0 (https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md)
+  Source: https://iconify.design
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 24 24"
+     width="24"
+     height="24">
+  <title>DHL Logo Icon Vector</title>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+             xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>DHL Logo Icon Vector</dc:title>
+        <dc:description>Black vector icon of the DHL logo, representing the global logistics and shipping company. Ideal for use in branding, marketing materials, or transportation-related designs.</dc:description>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Simple Icons Collaborators</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>https://github.com/simple-icons/simple-icons</dc:source>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Simple Icons Collaborators</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <cc:license rdf:resource="https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md"/>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>DHL</rdf:li>
+            <rdf:li>logistics</rdf:li>
+            <rdf:li>shipping</rdf:li>
+            <rdf:li>delivery</rdf:li>
+            <rdf:li>courier</rdf:li>
+            <rdf:li>transportation</rdf:li>
+            <rdf:li>global-shipping</rdf:li>
+            <rdf:li>express-delivery</rdf:li>
+            <rdf:li>freight</rdf:li>
+            <rdf:li>logistics-company</rdf:li>
+            <rdf:li>parcel-service</rdf:li>
+            <rdf:li>package-delivery</rdf:li>
+            <rdf:li>supply-chain</rdf:li>
+            <rdf:li>international-shipping</rdf:li>
+            <rdf:li>cargo</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md">
+        <dc:title>CC0 1.0 (CC0-1.0)</dc:title>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <path fill="currentColor" d="m4.22 10.303l-.767 1.043h4.18c.21 0 .208.078.105.218c-.105.142-.28.39-.386.534c-.054.073-.154.207.171.207h1.71l.505-.69c.314-.426.028-1.312-1.095-1.312zm7.204 0l-1.475 2.002h5.39l1.473-2.002H14.61l-.843 1.146h-.985l.846-1.146h-2.203zm6.105 0l-1.474 2.002h2.334l1.472-2.002H17.53zm-12.845 1.3l-1.54 2.094h3.754c1.24 0 1.932-.844 2.145-1.136h-2.56c-.326 0-.226-.133-.172-.207c.107-.143.283-.388.388-.53c.104-.14.107-.22-.105-.22h-1.91zM0 12.562v.242h3.398l.176-.242zm9.762 0l-.836 1.136h2.203l.836-1.136zm3.185 0l-.836 1.136h2.203l.836-1.136zm2.918 0s-.159.22-.238.326c-.276.374-.033.81.87.81h3.538l.834-1.136zm5.408 0l-.177.242H24v-.242zM0 13.01v.24h3.068l.178-.24zm20.943 0l-.175.24H24v-.24zM0 13.457v.24h2.74l.176-.24zm20.615 0l-.177.24H24v-.24z"/>
+</svg>

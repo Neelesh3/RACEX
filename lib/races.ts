@@ -17,7 +17,7 @@ export const races: Race[] = [
     pole: "Lando Norris",
     laps: 58,
     distance: "307.574 km",
-    heroImage: "/images/races/australia.webp",
+    heroImage: "/races/monza-banner.png",
     description: "The season opener at Albert Park Circuit in Melbourne, featuring high-speed sections and tight chicanes around the lake.",
     sessions: {
       fp1: "2026-03-13T10:30:00Z",
@@ -42,7 +42,7 @@ export const races: Race[] = [
     pole: "Oscar Piastri",
     laps: 56,
     distance: "305.066 km",
-    heroImage: "/races/china.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -67,7 +67,7 @@ export const races: Race[] = [
     pole: "Max Verstappen",
     laps: 53,
     distance: "307.471 km",
-    heroImage: "/races/japan.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -92,7 +92,7 @@ export const races: Race[] = [
     pole: "Charles Leclerc",
     laps: 57,
     distance: "308.238 km",
-    heroImage: "/races/bahrain.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -117,7 +117,7 @@ export const races: Race[] = [
     pole: "Lando Norris",
     laps: 50,
     distance: "308.450 km",
-    heroImage: "/races/saudi-arabia.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -142,7 +142,7 @@ export const races: Race[] = [
     pole: "Max Verstappen",
     laps: 57,
     distance: "308.326 km",
-    heroImage: "/races/miami.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -167,7 +167,7 @@ export const races: Race[] = [
     pole: "Charles Leclerc",
     laps: 63,
     distance: "309.049 km",
-    heroImage: "/races/imola.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -192,7 +192,7 @@ export const races: Race[] = [
     pole: "Charles Leclerc",
     laps: 78,
     distance: "260.286 km",
-    heroImage: "/races/monaco.jpg",
+    heroImage: "/races/monaco-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -217,7 +217,7 @@ export const races: Race[] = [
     pole: "Lando Norris",
     laps: 66,
     distance: "307.236 km",
-    heroImage: "/races/spain.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -242,7 +242,7 @@ export const races: Race[] = [
     pole: "Max Verstappen",
     laps: 71,
     distance: "306.452 km",
-    heroImage: "/races/austria.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -267,7 +267,7 @@ export const races: Race[] = [
     pole: "George Russell",
     laps: 52,
     distance: "306.198 km",
-    heroImage: "/races/britain.jpg",
+    heroImage: "/races/silverstone-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -292,7 +292,7 @@ export const races: Race[] = [
     pole: null,
     laps: 70,
     distance: "306.630 km",
-    heroImage: "/races/hungary.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -317,7 +317,7 @@ export const races: Race[] = [
     pole: null,
     laps: 44,
     distance: "308.052 km",
-    heroImage: "/races/belgium.jpg",
+    heroImage: "/races/spa-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -342,7 +342,7 @@ export const races: Race[] = [
     pole: null,
     laps: 72,
     distance: "306.648 km",
-    heroImage: "/races/netherlands.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -367,7 +367,7 @@ export const races: Race[] = [
     pole: null,
     laps: 53,
     distance: "306.720 km",
-    heroImage: "/races/italy.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -392,7 +392,7 @@ export const races: Race[] = [
     pole: null,
     laps: 51,
     distance: "306.049 km",
-    heroImage: "/races/azerbaijan.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -417,7 +417,7 @@ export const races: Race[] = [
     pole: null,
     laps: 62,
     distance: "308.706 km",
-    heroImage: "/races/singapore.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -442,7 +442,7 @@ export const races: Race[] = [
     pole: null,
     laps: 56,
     distance: "308.405 km",
-    heroImage: "/races/usa.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -467,7 +467,7 @@ export const races: Race[] = [
     pole: null,
     laps: 71,
     distance: "305.354 km",
-    heroImage: "/races/mexico.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -492,7 +492,7 @@ export const races: Race[] = [
     pole: null,
     laps: 71,
     distance: "305.909 km",
-    heroImage: "/races/brazil.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -517,7 +517,7 @@ export const races: Race[] = [
     pole: null,
     laps: 57,
     distance: "306.660 km",
-    heroImage: "/races/qatar.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -542,7 +542,7 @@ export const races: Race[] = [
     pole: null,
     laps: 58,
     distance: "306.183 km",
-    heroImage: "/races/abu-dhabi.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -567,7 +567,7 @@ export const races: Race[] = [
     pole: null,
     laps: 70,
     distance: "305.270 km",
-    heroImage: "/races/canada.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",
@@ -592,7 +592,7 @@ export const races: Race[] = [
     pole: null,
     laps: 67,
     distance: "306.458 km",
-    heroImage: "/races/germany.jpg",
+    heroImage: "/races/monza-banner.png",
      sessions: {
       fp1: "2026-03-13T10:30:00Z",
       fp2: "2026-03-13T14:00:00Z",

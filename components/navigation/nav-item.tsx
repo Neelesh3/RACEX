@@ -75,10 +75,10 @@ function NavItemContent({
       <Link
         href={href}
         className={cn(
-          "relative inline-flex items-center text-sm font-medium transition-colors duration-150",
-          "text-muted-foreground hover:text-foreground",
+          "relative inline-flex items-center text-[15px] font-semibold tracking-wide transition-colors duration-200",
+          "text-neutral-400 hover:text-white",
           isActive && "text-white",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:rounded px-2 py-1"
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E10600]/50 focus-visible:rounded px-2 py-1"
         )}
         aria-current={isActive ? "page" : undefined}
       >

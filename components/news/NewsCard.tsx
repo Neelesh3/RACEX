@@ -21,7 +21,7 @@ export function NewsCard({ news, index }: NewsCardProps) {
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group flex flex-col overflow-hidden rounded-[20px] border border-[#242424] bg-[#111111] transition-colors hover:border-[#E10600]/30"
+      className="group flex flex-col overflow-hidden rounded-[20px] border border-[#242424] bg-[#111111] transition-all duration-300 hover:border-neutral-700/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
     >
       <Link href={`/news/${news.slug}`} className="relative aspect-[16/10] overflow-hidden">
         <Image

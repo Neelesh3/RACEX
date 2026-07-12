@@ -26,11 +26,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/night-race-detail-1.jpg",
+        image: "/news/gallery/article-1-1.png",
         caption: "Brake discs glowing red hot during the final safety car restart.",
       },
       {
-        image: "/images/news/night-race-detail-2.jpg",
+        image: "/news/gallery/article-1-2.png",
         caption: "The top three drivers celebrating an epic night battle on the podium.",
       },
     ],
@@ -60,11 +60,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/championship-detail-1.jpg",
+        image: "/news/gallery/article-2-1.png",
         caption: "The championship leader spraying champagne from the top step.",
       },
       {
-        image: "/images/news/championship-detail-2.jpg",
+        image: "/news/gallery/article-2-2.png",
         caption: "A focused gaze in the garage before climbing into the cockpit.",
       },
     ],
@@ -94,11 +94,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/upgrade-detail-1.jpg",
+        image: "/news/gallery/article-3-1.png",
         caption: "Mechanics fitting the newly designed front wing elements in the garage.",
       },
       {
-        image: "/images/news/upgrade-detail-2.jpg",
+        image: "/news/gallery/article-3-2.png",
         caption: "Close-up of the complex flow-conditioning channels under the sidepods.",
       },
     ],
@@ -128,11 +128,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/rookie-detail-1.jpg",
+        image: "/news/gallery/article-4-1.png",
         caption: "The rookie driver briefing engineers after a stellar qualifying session.",
       },
       {
-        image: "/images/news/rookie-detail-2.jpg",
+        image: "/news/gallery/article-4-2.png",
         caption: "Navigating the challenging kerbs of the final sector in practice.",
       },
     ],
@@ -162,11 +162,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/historic-detail-1.jpg",
+        image: "/news/gallery/article-5-1.png",
         caption: "A sea of passionate fans filling the main grandstands under clear skies.",
       },
       {
-        image: "/images/news/historic-detail-2.jpg",
+        image: "/news/gallery/article-5-2.png",
         caption: "Cars racing wheel-to-wheel through the iconic high-speed sweeping curve.",
       },
     ],
@@ -196,11 +196,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/team-detail-1.jpg",
+        image: "/news/gallery/article-6-1.png",
         caption: "The race team celebrating a successful double-podium result.",
       },
       {
-        image: "/images/news/team-detail-2.jpg",
+        image: "/news/gallery/article-6-2.png",
         caption: "A rapid tyre swap during a crucial double-stack pit stop.",
       },
     ],
@@ -230,11 +230,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/directive-detail-1.jpg",
+        image: "/news/gallery/article-7-1.png",
         caption: "Technical delegates inspecting front wing structures on the paddock scales.",
       },
       {
-        image: "/images/news/directive-detail-2.jpg",
+        image: "/news/gallery/article-7-2.png",
         caption: "Close-up of the load sensors mounted on a car in the garage.",
       },
     ],
@@ -264,11 +264,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/market-detail-1.jpg",
+        image: "/news/gallery/article-8-1.png",
         caption: "A driver manager deep in conversation with a team principal in the hospitality suite.",
       },
       {
-        image: "/images/news/market-detail-2.jpg",
+        image: "/news/gallery/article-8-2.png",
         caption: "A driver signing autographs while navigating paddock media inquiries.",
       },
     ],
@@ -298,11 +298,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/pitstop-detail-1.jpg",
+        image: "/news/gallery/article-9-1.png",
         caption: "A wide angle of the twenty-man crew poised as the car enters the box.",
       },
       {
-        image: "/images/news/pitstop-detail-2.jpg",
+        image: "/news/gallery/article-9-2.png",
         caption: "Close-up of the wheel nut being tightened under high torque.",
       },
     ],
@@ -332,11 +332,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/street-detail-1.jpg",
+        image: "/news/gallery/article-10-1.png",
         caption: "A car navigating the tight barriers of the famous castle section.",
       },
       {
-        image: "/images/news/street-detail-2.jpg",
+        image: "/news/gallery/article-10-2.png",
         caption: "Spark patterns lighting up the chassis as it bottoms out on the street bumps.",
       },
     ],
@@ -366,11 +366,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/moments-detail-1.jpg",
+        image: "/news/gallery/article-11-1.png",
         caption: "Historic footage of a classic F1 car drifting through a wet bend.",
       },
       {
-        image: "/images/news/moments-detail-2.jpg",
+        image: "/news/gallery/article-11-2.png",
         caption: "An archive photo of two legendary rivals sharing a rare post-race handshake.",
       },
     ],
@@ -400,11 +400,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/windtunnel-detail-1.jpg",
+        image: "/news/gallery/article-12-1.png",
         caption: "A 60% scale model of a future aerodynamic chassis mounted inside the wind tunnel.",
       },
       {
-        image: "/images/news/windtunnel-detail-2.jpg",
+        image: "/news/gallery/article-12-2.png",
         caption: "Supercomputer clusters processing complex fluid dynamics simulation grids.",
       },
     ],
@@ -434,11 +434,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/battle-detail-1.jpg",
+        image: "/news/gallery/article-13-1.png",
         caption: "Constructor team principals tracking live telemetry screens on the pit wall.",
       },
       {
-        image: "/images/news/battle-detail-2.jpg",
+        image: "/news/gallery/article-13-2.png",
         caption: "Two cars battling side-by-side down the main straight under braking.",
       },
     ],
@@ -468,11 +468,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/milestone-detail-1.jpg",
+        image: "/news/gallery/article-14-1.png",
         caption: "The veteran driver holding a commemorative helmet presented by the team.",
       },
       {
-        image: "/images/news/milestone-detail-2.jpg",
+        image: "/news/gallery/article-14-2.png",
         caption: "A retrospective photo wall showcasing the driver's career evolution.",
       },
     ],
@@ -502,11 +502,11 @@ export const newsDetails: Record<string, NewsDetails> = {
     ],
     gallery: [
       {
-        image: "/images/news/stars-detail-1.jpg",
+        image: "/news/gallery/article-15-1.png",
         caption: "Three academy junior drivers discussing telemetry data at the team hub.",
       },
       {
-        image: "/images/news/stars-detail-2.jpg",
+        image: "/news/gallery/article-15-2.png",
         caption: "An emerging star entering the pits after topping the practice timesheets.",
       },
     ],

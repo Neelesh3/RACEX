@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Circuit } from "@/types/circuit";
 import { ArrowRight, MapPin, Timer, Calendar } from "lucide-react";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 interface FeaturedCircuitProps {
   circuit: Circuit;
@@ -33,7 +34,7 @@ export function FeaturedCircuit({ circuit }: FeaturedCircuitProps) {
         </div>
         <div className="flex flex-col justify-center p-8 lg:p-12">
           <div className="mb-3 flex items-center gap-2">
-            <span className="text-2xl">{circuit.flag}</span>
+            <CountryFlag country={circuit.country} fallback={circuit.flag} />
             <span className="text-sm font-medium text-[#E10600]">Featured Circuit</span>
           </div>
           <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">{circuit.name}</h2>

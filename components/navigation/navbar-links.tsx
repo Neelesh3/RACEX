@@ -21,7 +21,7 @@ function NavbarLinksContent() {
       variants={STAGGER_CONTAINER_VARIANTS}
       initial="hidden"
       animate="visible"
-      className="hidden items-center gap-1 lg:flex"
+      className="hidden items-center gap-8 lg:flex"
       role="navigation"
       aria-label="Main navigation"
     >

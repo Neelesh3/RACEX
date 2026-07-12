@@ -9,7 +9,7 @@ export const news: News[] = [
       "A late Safety Car restart created an unforgettable finish as the leading drivers fought wheel-to-wheel until the chequered flag.",
     content:
       "An intense strategic battle unfolded throughout the weekend before a late-race Safety Car transformed the final laps into a thrilling sprint. Teams gambled on tire strategy while drivers pushed to the limit, producing one of the closest finishes of the season. Engineers praised the balance between strategy and outright pace, while fans enjoyed constant overtaking and dramatic battles across the field.",
-    image: "/images/news/night-race.jpg",
+    image: "/news/article-1.png",
     category: "Race",
     author: "RACEX Editorial",
     publishedAt: "2025-07-14",
@@ -25,7 +25,7 @@ export const news: News[] = [
       "Another podium finish strengthens the title campaign after a perfectly executed race weekend.",
     content:
       "Strong qualifying pace combined with flawless race management allowed the championship leader to increase the gap at the top of the standings. Tire preservation, excellent pit-stop execution, and disciplined driving proved decisive throughout the event.",
-    image: "/images/news/championship-leader.jpg",
+    image: "/news/article-2.png",
     category: "Driver",
     author: "Emma Brooks",
     publishedAt: "2025-07-12",
@@ -41,7 +41,7 @@ export const news: News[] = [
       "A revised floor and front wing package delivers encouraging pace during the latest race weekend.",
     content:
       "Engineers introduced a significant aerodynamic package designed to improve cornering stability and aerodynamic efficiency. Initial feedback from both drivers has been positive, with improved balance through medium- and high-speed corners leading to stronger race pace.",
-    image: "/images/news/upgrade-package.jpg",
+    image: "/news/article-3.png",
     category: "Technical",
     author: "Daniel Foster",
     publishedAt: "2025-07-11",
@@ -57,7 +57,7 @@ export const news: News[] = [
       "Consistent performances are attracting attention throughout the Formula One paddock.",
     content:
       "The rookie has continued to outperform expectations by delivering mature racecraft, strong qualifying performances, and consistent points finishes. Team management praised the driver's calm decision-making under pressure and rapid adaptation to Formula One machinery.",
-    image: "/images/news/rookie.jpg",
+    image: "/news/article-4.png",
     category: "Driver",
     author: "Sophia Miller",
     publishedAt: "2025-07-10",
@@ -73,7 +73,7 @@ export const news: News[] = [
       "High-speed corners and unpredictable weather once again created an unforgettable Grand Prix weekend.",
     content:
       "The legendary circuit showcased everything fans expect from Formula One, including strategic variation, overtaking opportunities, and changing track conditions. Drivers once again described the venue as one of the highlights of the championship calendar.",
-    image: "/images/news/historic-circuit.jpg",
+    image: "/news/article-5.png",
     category: "History",
     author: "Michael Carter",
     publishedAt: "2025-07-08",
@@ -81,7 +81,7 @@ export const news: News[] = [
     featured: false,
     tags: ["History", "Circuit", "Formula One"],
   },
-    {
+  {
     id: "6",
     slug: "team-builds-momentum-mid-season",
     title: "Leading Constructor Builds Momentum with Consecutive Podium Finishes",
@@ -89,7 +89,7 @@ export const news: News[] = [
       "A series of consistent results has strengthened the team's championship ambitions.",
     content:
       "The team's latest development package has delivered measurable improvements in race pace and tire management. Combined with flawless pit-stop execution and reliable strategy calls, the team continues to close the gap to its closest rivals in both championships.",
-    image: "/images/news/team-podium.jpg",
+    image: "/news/article-6.png",
     category: "Team",
     author: "Olivia Bennett",
     publishedAt: "2025-07-07",
@@ -105,7 +105,7 @@ export const news: News[] = [
       "Teams continue evaluating setup changes following the latest technical clarification.",
     content:
       "Engineers spent the weekend adapting to revised technical guidance affecting aerodynamic flexibility and setup philosophy. While some teams experienced minimal changes, others focused heavily on optimizing their cars to recover lost performance.",
-    image: "/images/news/technical-directive.jpg",
+    image: "/news/article-7.png",
     category: "Technical",
     author: "Ryan Hughes",
     publishedAt: "2025-07-06",
@@ -121,7 +121,7 @@ export const news: News[] = [
       "Several teams are reportedly evaluating multiple options for their future driver lineups.",
     content:
       "With contract negotiations entering a critical stage, speculation continues regarding several high-profile seats. Experienced race winners and promising young talents are both attracting interest as teams prepare for the next chapter of competition.",
-    image: "/images/news/driver-market.jpg",
+    image: "/news/article-8.png",
     category: "Transfer",
     author: "Charlotte Green",
     publishedAt: "2025-07-05",
@@ -137,7 +137,7 @@ export const news: News[] = [
       "An exceptional pit stop played a crucial role in securing valuable championship points.",
     content:
       "Mechanics produced one of the fastest pit stops of the season, allowing their driver to emerge ahead of a direct rival. Precision preparation and consistent practice continue to make pit crews an essential competitive advantage in modern Formula One.",
-    image: "/images/news/pit-stop.jpg",
+    image: "/news/article-9.png",
     category: "Team",
     author: "James Wilson",
     publishedAt: "2025-07-04",
@@ -153,14 +153,15 @@ export const news: News[] = [
       "Low margins for error and close barriers promise another exciting race weekend.",
     content:
       "Drivers expect qualifying to play a decisive role as overtaking opportunities remain limited around the narrow street circuit. Engineers are balancing maximum downforce with straight-line speed to optimize overall race performance.",
-    image: "/images/news/street-circuit.jpg",
+    image: "/news/article-10.png",
     category: "Race",
     author: "Lucas Anderson",
     publishedAt: "2025-07-03",
     readTime: "4 min",
     featured: false,
     tags: ["Race Preview", "Street Circuit", "Weekend"],
-  },  {
+  },
+  {
     id: "11",
     slug: "legendary-grand-prix-moments",
     title: "Five Legendary Grand Prix Moments That Defined a Generation",
@@ -168,7 +169,7 @@ export const news: News[] = [
       "A look back at unforgettable races that shaped Formula One history.",
     content:
       "From dramatic title deciders to unforgettable wet-weather masterclasses, Formula One has produced countless iconic moments. These races remain benchmarks for excitement, strategy, and driver brilliance, inspiring new generations of fans and competitors alike.",
-    image: "/images/news/history-moments.jpg",
+    image: "/news/article-11.png",
     category: "History",
     author: "Oliver Harris",
     publishedAt: "2025-07-02",
@@ -184,7 +185,7 @@ export const news: News[] = [
       "Teams continue balancing current-season performance with future development priorities.",
     content:
       "Engineering departments are increasingly dividing resources between immediate upgrades and long-term aerodynamic concepts. Wind tunnel testing and CFD simulations remain central to maximizing future competitiveness while maintaining current performance gains.",
-    image: "/images/news/wind-tunnel.jpg",
+    image: "/news/article-12.png",
     category: "Technical",
     author: "Grace Mitchell",
     publishedAt: "2025-07-01",
@@ -200,7 +201,7 @@ export const news: News[] = [
       "A crucial weekend has significantly reduced the gap between the leading teams.",
     content:
       "Strong performances from both drivers delivered maximum points for the constructor, placing additional pressure on championship rivals. Team principals praised operational consistency and race execution throughout the weekend.",
-    image: "/images/news/constructors.jpg",
+    image: "/news/article-13.png",
     category: "Team",
     author: "Benjamin Scott",
     publishedAt: "2025-06-30",
@@ -216,7 +217,7 @@ export const news: News[] = [
       "A remarkable career achievement highlights years of consistency at the highest level.",
     content:
       "The experienced driver celebrated another significant milestone after adding yet another race start to an already impressive Formula One career. Fellow competitors and team members praised the driver's professionalism and longevity.",
-    image: "/images/news/milestone.jpg",
+    image: "/news/article-14.png",
     category: "Driver",
     author: "Nathan Cooper",
     publishedAt: "2025-06-29",
@@ -232,7 +233,7 @@ export const news: News[] = [
       "Young drivers are consistently challenging established stars throughout the season.",
     content:
       "Several emerging talents have demonstrated exceptional pace and composure under pressure. Teams believe the current generation of young drivers represents one of the strongest groups to enter Formula One in recent years.",
-    image: "/images/news/future-stars.jpg",
+    image: "/news/article-15.png",
     category: "Driver",
     author: "Isabella Turner",
     publishedAt: "2025-06-28",

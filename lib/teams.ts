@@ -1,27 +1,4 @@
-export interface Team {
-  id: string;
-  slug: string;
-  name: string;
-  fullName: string;
-  country: string;
-  flag: string;
-  base: string;
-  teamPrincipal: string;
-  engine: string;
-  championships: number;
-  wins: number;
-  podiums: number;
-  races: number;
-  drivers: {
-    id: string;
-    name: string;
-    number: number;
-    flag: string;
-  }[];
-  description: string;
-  brandColor: string;
-  founded: number;
-}
+import type { Team } from "@/types/team";
 
 export const teams: Team[] = [
   {
@@ -46,6 +23,8 @@ export const teams: Team[] = [
       "The most iconic and successful team in Formula 1 history. Founded by Enzo Ferrari in 1929, Scuderia Ferrari has competed in every F1 season since 1950.",
     brandColor: "#DC0000",
     founded: 1929,
+    logo: "/teams/logos/ferrari.svg",
+    carImage: "/teams/cars/ferrari.png",
   },
   {
     id: "mercedes",
@@ -69,9 +48,11 @@ export const teams: Team[] = [
       "The dominant force of the turbo-hybrid era. Mercedes has won eight consecutive Constructors Championships from 2014 to 2021.",
     brandColor: "#00D2BE",
     founded: 1954,
+    logo: "/teams/logos/mercedes.svg",
+    carImage: "/teams/cars/mercedes.png",
   },
   {
-    id: "red-bull",
+    id: "red-bull-racing",
     slug: "red-bull-racing",
     name: "Red Bull Racing",
     fullName: "Oracle Red Bull Racing",
@@ -92,6 +73,8 @@ export const teams: Team[] = [
       "The current benchmark in Formula 1. Red Bull Racing has dominated the ground effect era with Max Verstappen leading the charge.",
     brandColor: "#1E41FF",
     founded: 2005,
+    logo: "/teams/logos/red-bull.svg",
+    carImage: "/teams/cars/red-bull.png",
   },
   {
     id: "mclaren",
@@ -115,6 +98,8 @@ export const teams: Team[] = [
       "One of the most storied teams in F1 history. McLaren has produced legendary drivers and continues to fight at the front with a young, dynamic lineup.",
     brandColor: "#FF8000",
     founded: 1966,
+    logo: "/teams/logos/mclaren.svg",
+    carImage: "/teams/cars/mclaren.png",
   },
   {
     id: "aston-martin",
@@ -138,6 +123,8 @@ export const teams: Team[] = [
       "Aston Martin returned to F1 in 2021 and has rapidly climbed the grid with significant investment and the experience of Fernando Alonso.",
     brandColor: "#006F62",
     founded: 2021,
+    logo: "/teams/logos/aston-martin.svg",
+    carImage: "/teams/cars/aston-martin.png",
   },
   {
     id: "alpine",
@@ -161,6 +148,8 @@ export const teams: Team[] = [
       "The Renault-backed team rebranded as Alpine in 2021. With two championships as Renault F1, they continue to develop young talent.",
     brandColor: "#0090FF",
     founded: 1986,
+    logo: "/teams/logos/alpine.svg",
+    carImage: "/teams/cars/alpine.png",
   },
   {
     id: "williams",
@@ -184,6 +173,8 @@ export const teams: Team[] = [
       "One of the most successful teams in F1 history with 9 Constructors Championships. Williams is rebuilding under new leadership and investment.",
     brandColor: "#005AFF",
     founded: 1977,
+    logo: "/teams/logos/williams.svg",
+    carImage: "/teams/cars/williams.png",
   },
   {
     id: "haas",
@@ -207,6 +198,8 @@ export const teams: Team[] = [
       "The only American-owned team on the grid. Haas has established itself as a competitive midfield team with a lean, efficient operation.",
     brandColor: "#B6BABD",
     founded: 2014,
+    logo: "/teams/logos/haas.svg",
+    carImage: "/teams/cars/haas.png",
   },
   {
     id: "kick-sauber",
@@ -230,6 +223,8 @@ export const teams: Team[] = [
       "The team that launched the careers of champions like Kimi Räikkönen and Sebastian Vettel. Preparing for Audi entry in 2026.",
     brandColor: "#52E252",
     founded: 1993,
+    logo: "/teams/logos/kick-sauber.svg",
+    carImage: "/teams/cars/kick-sauber.png",
   },
   {
     id: "racing-bulls",
@@ -253,6 +248,8 @@ export const teams: Team[] = [
       "The sister team to Red Bull Racing. Racing Bulls serves as a proving ground for young talent on the path to the senior team.",
     brandColor: "#2B4562",
     founded: 2006,
+    logo: "/teams/logos/racing-bulls.svg",
+    carImage: "/teams/cars/racing-bulls.png",
   },
 ];
 

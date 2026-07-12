@@ -62,17 +62,15 @@ function ProfileMenuContent() {
         <DropdownMenuSeparator />
 
         {PROFILE_MENU_ITEMS.map((item) => (
-<DropdownMenuItem key={item.href}>
-<DropdownMenuItem key={item.href}>
-  <Link
-    href={item.href}
-    className="flex w-full items-center gap-2"
-  >
-    {iconMap[item.icon as keyof typeof iconMap]}
-    <span>{item.label}</span>
-  </Link>
-</DropdownMenuItem>
-</DropdownMenuItem>
+          <DropdownMenuItem key={item.href} className="p-0">
+            <Link
+              href={item.href}
+              className="flex w-full items-center gap-2 px-1.5 py-1 text-sm cursor-pointer"
+            >
+              {iconMap[item.icon as keyof typeof iconMap]}
+              <span>{item.label}</span>
+            </Link>
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

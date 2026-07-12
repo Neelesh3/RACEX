@@ -72,11 +72,11 @@ export default async function TeamPage({
   return (
     <>
       <main className="min-h-screen bg-background">
-        <TeamHero />
+        <TeamHero team={team} details={details} />
 
         <TeamOverview details={details} />
 
-        <TeamStats />
+        <TeamStats details={details} />
 
         <TeamAchievements details={details} />
 

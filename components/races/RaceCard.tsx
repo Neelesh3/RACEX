@@ -1,13 +1,13 @@
 import Link from "next/link";
 import {
   CalendarDays,
-  Flag,
   MapPin,
   Trophy,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Race } from "@/types/race";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 interface RaceCardProps {
   race: Race;
@@ -44,7 +44,7 @@ export function RaceCard({ race }: RaceCardProps) {
 
         <div className="space-y-3 text-sm">
           <InfoRow
-            icon={<Flag className="h-4 w-4" />}
+            icon={<CountryFlag country={race.country} fallback={race.flag} className="w-5 h-3.5" />}
             label="Country"
             value={race.country}
           />

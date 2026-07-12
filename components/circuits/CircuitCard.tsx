@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { Circuit } from "../../types/circuit"; // changeed now after you tell me 
 import { ArrowRight } from "lucide-react";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 interface CircuitCardProps {
   circuit: Circuit;
@@ -34,7 +35,7 @@ export function CircuitCard({ circuit, index }: CircuitCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 flex items-center gap-2">
-          <span className="text-lg">{circuit.flag}</span>
+          <CountryFlag country={circuit.country} fallback={circuit.flag} />
           <span className="text-sm font-medium text-white">{circuit.country}</span>
         </div>
       </div>

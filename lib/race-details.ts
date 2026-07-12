@@ -17,11 +17,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "McLaren",
       time: "1:20.123"
     },
-    gallery: [
-      "/images/races/gallery/aus-1.jpg",
-      "/images/races/gallery/aus-2.jpg",
-      "/images/races/gallery/aus-3.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Charles Leclerc", team: "Ferrari" },
       { year: 2024, driver: "Carlos Sainz", team: "Ferrari" },
@@ -50,10 +46,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "McLaren",
       time: "1:33.421"
     },
-    gallery: [
-      "/images/races/gallery/chn-1.jpg",
-      "/images/races/gallery/chn-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2024, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2019, driver: "Lewis Hamilton", team: "Mercedes" },
@@ -82,10 +75,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "Red Bull Racing",
       time: "1:31.542"
     },
-    gallery: [
-      "/images/races/gallery/jpn-1.jpg",
-      "/images/races/gallery/jpn-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "Max Verstappen", team: "Red Bull Racing" },
@@ -114,10 +104,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "McLaren",
       time: "1:32.415"
     },
-    gallery: [
-      "/images/races/gallery/bhr-1.jpg",
-      "/images/races/gallery/bhr-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "Max Verstappen", team: "Red Bull Racing" },
@@ -146,10 +133,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "Mercedes",
       time: "1:31.255"
     },
-    gallery: [
-      "/images/races/gallery/sau-1.jpg",
-      "/images/races/gallery/sau-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "Max Verstappen", team: "Red Bull Racing" },
@@ -178,10 +162,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "McLaren",
       time: "1:30.112"
     },
-    gallery: [
-      "/images/races/gallery/mia-1.jpg",
-      "/images/races/gallery/mia-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "Lando Norris", team: "McLaren" },
@@ -210,10 +191,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "Ferrari",
       time: "1:16.223"
     },
-    gallery: [
-      "/images/races/gallery/imo-1.jpg",
-      "/images/races/gallery/imo-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "Max Verstappen", team: "Red Bull Racing" },
@@ -242,10 +220,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "Ferrari",
       time: "1:13.411"
     },
-    gallery: [
-      "/images/races/gallery/mco-1.jpg",
-      "/images/races/gallery/mco-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Charles Leclerc", team: "Ferrari" },
       { year: 2024, driver: "Charles Leclerc", team: "Ferrari" },
@@ -274,10 +249,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "McLaren",
       time: "1:17.119"
     },
-    gallery: [
-      "/images/races/gallery/esp-1.jpg",
-      "/images/races/gallery/esp-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "Max Verstappen", team: "Red Bull Racing" },
@@ -306,10 +278,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "Red Bull Racing",
       time: "1:06.520"
     },
-    gallery: [
-      "/images/races/gallery/aut-1.jpg",
-      "/images/races/gallery/aut-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Max Verstappen", team: "Red Bull Racing" },
       { year: 2024, driver: "George Russell", team: "Mercedes" },
@@ -338,10 +307,7 @@ export const raceDetails: Record<string, RaceDetails> = {
       team: "Ferrari",
       time: "1:28.120"
     },
-    gallery: [
-      "/images/races/gallery/gbr-1.jpg",
-      "/images/races/gallery/gbr-2.jpg"
-    ],
+    gallery: [],
     winnerHistory: [
       { year: 2025, driver: "Lewis Hamilton", team: "Mercedes" },
       { year: 2024, driver: "Lewis Hamilton", team: "Mercedes" },

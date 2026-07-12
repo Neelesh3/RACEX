@@ -76,13 +76,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 118,
     poles: 43,
     fastestLaps: 34,
-    helmetImage: "/images/drivers/helmets/max-verstappen.png",
-    gallery: [
-      "/images/drivers/max-verstappen/1.jpg",
-      "/images/drivers/max-verstappen/2.jpg",
-      "/images/drivers/max-verstappen/3.jpg",
-      "/images/drivers/max-verstappen/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("maxverstappen1"),
     timeline: createTimeline(2015, [
       {
@@ -142,13 +137,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 35,
     poles: 10,
     fastestLaps: 13,
-    helmetImage: "/images/drivers/helmets/lando-norris.png",
-    gallery: [
-      "/images/drivers/lando-norris/1.jpg",
-      "/images/drivers/lando-norris/2.jpg",
-      "/images/drivers/lando-norris/3.jpg",
-      "/images/drivers/lando-norris/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("landonorris"),
     timeline: createTimeline(2019, [
       {
@@ -202,13 +192,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 43,
     poles: 26,
     fastestLaps: 11,
-    helmetImage: "/images/drivers/helmets/charles-leclerc.png",
-    gallery: [
-      "/images/drivers/charles-leclerc/1.jpg",
-      "/images/drivers/charles-leclerc/2.jpg",
-      "/images/drivers/charles-leclerc/3.jpg",
-      "/images/drivers/charles-leclerc/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("charles_leclerc"),
     timeline: createTimeline(2018, [
       {
@@ -262,13 +247,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 22,
     poles: 6,
     fastestLaps: 8,
-    helmetImage: "/images/drivers/helmets/oscar-piastri.png",
-    gallery: [
-      "/images/drivers/oscar-piastri/1.jpg",
-      "/images/drivers/oscar-piastri/2.jpg",
-      "/images/drivers/oscar-piastri/3.jpg",
-      "/images/drivers/oscar-piastri/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("oscarpiastri"),
     timeline: createTimeline(2023, [
       {
@@ -334,13 +314,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 202,
     poles: 104,
     fastestLaps: 68,
-    helmetImage: "/images/drivers/helmets/lewis-hamilton.png",
-    gallery: [
-      "/images/drivers/lewis-hamilton/1.jpg",
-      "/images/drivers/lewis-hamilton/2.jpg",
-      "/images/drivers/lewis-hamilton/3.jpg",
-      "/images/drivers/lewis-hamilton/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("lewishamilton"),
     timeline: createTimeline(2007, [
       {
@@ -400,13 +375,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 18,
     poles: 6,
     fastestLaps: 7,
-    helmetImage: "/images/drivers/helmets/george-russell.png",
-    gallery: [
-      "/images/drivers/george-russell/1.jpg",
-      "/images/drivers/george-russell/2.jpg",
-      "/images/drivers/george-russell/3.jpg",
-      "/images/drivers/george-russell/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("georgerussell63"),
     timeline: createTimeline(2019, [
       {
@@ -460,13 +430,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 106,
     poles: 22,
     fastestLaps: 26,
-    helmetImage: "/images/drivers/helmets/fernando-alonso.png",
-    gallery: [
-      "/images/drivers/fernando-alonso/1.jpg",
-      "/images/drivers/fernando-alonso/2.jpg",
-      "/images/drivers/fernando-alonso/3.jpg",
-      "/images/drivers/fernando-alonso/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("fernandoalo_oficial"),
     timeline: createTimeline(2001, [
       {
@@ -526,13 +491,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 28,
     poles: 6,
     fastestLaps: 5,
-    helmetImage: "/images/drivers/helmets/carlos-sainz.png",
-    gallery: [
-      "/images/drivers/carlos-sainz/1.jpg",
-      "/images/drivers/carlos-sainz/2.jpg",
-      "/images/drivers/carlos-sainz/3.jpg",
-      "/images/drivers/carlos-sainz/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("carlossainz55"),
     timeline: createTimeline(2015, [
       {
@@ -586,13 +546,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 2,
     poles: 1,
     fastestLaps: 1,
-    helmetImage: "/images/drivers/helmets/kimi-antonelli.png",
-    gallery: [
-      "/images/drivers/kimi-antonelli/1.jpg",
-      "/images/drivers/kimi-antonelli/2.jpg",
-      "/images/drivers/kimi-antonelli/3.jpg",
-      "/images/drivers/kimi-antonelli/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("kimi.antonelli"),
     timeline: createTimeline(2025, [
       {
@@ -640,13 +595,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 2,
     poles: 0,
     fastestLaps: 1,
-    helmetImage: "/images/drivers/helmets/alexander-albon.png",
-    gallery: [
-      "/images/drivers/alexander-albon/1.jpg",
-      "/images/drivers/alexander-albon/2.jpg",
-      "/images/drivers/alexander-albon/3.jpg",
-      "/images/drivers/alexander-albon/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("alex_albon"),
     timeline: createTimeline(2019, [
       {
@@ -700,13 +650,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 5,
     poles: 0,
     fastestLaps: 3,
-    helmetImage: "/images/drivers/helmets/pierre-gasly.png",
-    gallery: [
-      "/images/drivers/pierre-gasly/1.jpg",
-      "/images/drivers/pierre-gasly/2.jpg",
-      "/images/drivers/pierre-gasly/3.jpg",
-      "/images/drivers/pierre-gasly/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("pierregasly"),
     timeline: createTimeline(2017, [
       {
@@ -760,13 +705,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 4,
     poles: 0,
     fastestLaps: 1,
-    helmetImage: "/images/drivers/helmets/esteban-ocon.png",
-    gallery: [
-      "/images/drivers/esteban-ocon/1.jpg",
-      "/images/drivers/esteban-ocon/2.jpg",
-      "/images/drivers/esteban-ocon/3.jpg",
-      "/images/drivers/esteban-ocon/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("estebanocon"),
     timeline: createTimeline(2016, [
       {
@@ -826,13 +766,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 0,
     poles: 1,
     fastestLaps: 2,
-    helmetImage: "/images/drivers/helmets/nico-hulkenberg.png",
-    gallery: [
-      "/images/drivers/nico-hulkenberg/1.jpg",
-      "/images/drivers/nico-hulkenberg/2.jpg",
-      "/images/drivers/nico-hulkenberg/3.jpg",
-      "/images/drivers/nico-hulkenberg/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("hulkhulkenberg"),
     timeline: createTimeline(2010, [
       {
@@ -886,13 +821,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 1,
     poles: 0,
     fastestLaps: 0,
-    helmetImage: "/images/drivers/helmets/gabriel-bortoleto.png",
-    gallery: [
-      "/images/drivers/gabriel-bortoleto/1.jpg",
-      "/images/drivers/gabriel-bortoleto/2.jpg",
-      "/images/drivers/gabriel-bortoleto/3.jpg",
-      "/images/drivers/gabriel-bortoleto/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("gabrielbortoleto"),
     timeline: createTimeline(2025, [
       {
@@ -934,13 +864,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 0,
     poles: 0,
     fastestLaps: 1,
-    helmetImage: "/images/drivers/helmets/yuki-tsunoda.png",
-    gallery: [
-      "/images/drivers/yuki-tsunoda/1.jpg",
-      "/images/drivers/yuki-tsunoda/2.jpg",
-      "/images/drivers/yuki-tsunoda/3.jpg",
-      "/images/drivers/yuki-tsunoda/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("yukitsunoda0511"),
     timeline: createTimeline(2021, [
       {
@@ -994,13 +919,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 0,
     poles: 0,
     fastestLaps: 0,
-    helmetImage: "/images/drivers/helmets/isack-hadjar.png",
-    gallery: [
-      "/images/drivers/isack-hadjar/1.jpg",
-      "/images/drivers/isack-hadjar/2.jpg",
-      "/images/drivers/isack-hadjar/3.jpg",
-      "/images/drivers/isack-hadjar/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("isackhadjar"),
     timeline: createTimeline(2025, [
       {
@@ -1048,13 +968,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 0,
     poles: 0,
     fastestLaps: 0,
-    helmetImage: "/images/drivers/helmets/liam-lawson.png",
-    gallery: [
-      "/images/drivers/liam-lawson/1.jpg",
-      "/images/drivers/liam-lawson/2.jpg",
-      "/images/drivers/liam-lawson/3.jpg",
-      "/images/drivers/liam-lawson/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("liamlawson30"),
     timeline: createTimeline(2023, [
       {
@@ -1102,13 +1017,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 3,
     poles: 1,
     fastestLaps: 0,
-    helmetImage: "/images/drivers/helmets/lance-stroll.png",
-    gallery: [
-      "/images/drivers/lance-stroll/1.jpg",
-      "/images/drivers/lance-stroll/2.jpg",
-      "/images/drivers/lance-stroll/3.jpg",
-      "/images/drivers/lance-stroll/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("lance_stroll"),
     timeline: createTimeline(2017, [
       {
@@ -1162,13 +1072,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 0,
     poles: 0,
     fastestLaps: 0,
-    helmetImage: "/images/drivers/helmets/oliver-bearman.png",
-    gallery: [
-      "/images/drivers/oliver-bearman/1.jpg",
-      "/images/drivers/oliver-bearman/2.jpg",
-      "/images/drivers/oliver-bearman/3.jpg",
-      "/images/drivers/oliver-bearman/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("olibearman"),
     timeline: createTimeline(2024, [
       {
@@ -1216,13 +1121,8 @@ export const driverDetails: Record<string, DriverDetails> = {
     podiums: 0,
     poles: 0,
     fastestLaps: 0,
-    helmetImage: "/images/drivers/helmets/franco-colapinto.png",
-    gallery: [
-      "/images/drivers/franco-colapinto/1.jpg",
-      "/images/drivers/franco-colapinto/2.jpg",
-      "/images/drivers/franco-colapinto/3.jpg",
-      "/images/drivers/franco-colapinto/4.jpg",
-    ],
+    helmetImage: "/icons/helmet.svg",
+    gallery: [],
     socials: createSocials("francolapinto"),
     timeline: createTimeline(2024, [
       {

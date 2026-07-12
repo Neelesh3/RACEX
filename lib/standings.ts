@@ -84,7 +84,7 @@ export const driverStandings: DriverStanding[] = [
   },
   {
     position: 8,
-    driverId: "alex-albon",
+    driverId: "alexander-albon",
     driverName: "Alexander Albon",
     team: "Williams",
     points: 54,
@@ -260,7 +260,7 @@ export const constructorStandings: ConstructorStanding[] = [
   },
   {
     position: 4,
-    teamId: "red-bull",
+    teamId: "red-bull-racing",
     teamName: "Red Bull Racing",
     points: 201,
     wins: 2,

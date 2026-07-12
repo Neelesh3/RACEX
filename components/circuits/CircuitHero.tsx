@@ -7,6 +7,7 @@ import Image from "next/image";
 import { MapPin, Calendar, Ruler, ArrowLeft, ArrowRight } from "lucide-react";
 import type { Circuit } from "@/types/circuit";
 import type { CircuitDetails } from "@/types/circuit-details";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 interface CircuitHeroProps {
   circuit?: Circuit;
@@ -39,8 +40,8 @@ export function CircuitHero({ circuit, details }: CircuitHeroProps) {
                   Formula One Circuit
                 </span>
                 <span className="inline-flex rounded-full border border-neutral-800 bg-[#111111]/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-300 backdrop-blur gap-1.5">
-                  <span>{circuit.flag}</span>
-                  <span>{circuit.country}</span>
+                  {circuit && <CountryFlag country={circuit.country} fallback={circuit.flag} />}
+                  <span>{circuit?.country}</span>
                 </span>
               </div>
 

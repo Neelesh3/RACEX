@@ -37,11 +37,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 100,
     podiums: 282,
     firstEntry: 2005,
-    gallery: [
-      "/images/teams/red-bull-1.jpg",
-      "/images/teams/red-bull-2.jpg",
-      "/images/teams/red-bull-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "redbullracing",
       "redbullracing"
@@ -106,11 +102,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 263,
     podiums: 830,
     firstEntry: 1950,
-    gallery: [
-      "/images/teams/ferrari-1.jpg",
-      "/images/teams/ferrari-2.jpg",
-      "/images/teams/ferrari-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "scuderiaferrari",
       "scuderiaf1"
@@ -174,11 +166,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 100,
     podiums: 300,
     firstEntry: 2010,
-    gallery: [
-      "/images/teams/mercedes-1.jpg",
-      "/images/teams/mercedes-2.jpg",
-      "/images/teams/mercedes-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "mercedesamgf1",
       "MercedesAMGF1"
@@ -243,11 +231,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 170,
     podiums: 530,
     firstEntry: 1966,
-    gallery: [
-      "/images/teams/mclaren-1.jpg",
-      "/images/teams/mclaren-2.jpg",
-      "/images/teams/mclaren-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "mclaren",
       "McLarenF1"
@@ -311,11 +295,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 3,
     podiums: 9,
     firstEntry: 2021,
-    gallery: [
-      "/images/teams/aston-martin-1.jpg",
-      "/images/teams/aston-martin-2.jpg",
-      "/images/teams/aston-martin-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "astonmartinf1",
       "AstonMartinF1"
@@ -380,11 +360,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 16,
     podiums: 105,
     firstEntry: 2021,
-    gallery: [
-      "/images/teams/alpine-1.jpg",
-      "/images/teams/alpine-2.jpg",
-      "/images/teams/alpine-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "alpinef1team",
       "AlpineF1Team"
@@ -448,11 +424,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 133,
     podiums: 313,
     firstEntry: 1978,
-    gallery: [
-      "/images/teams/williams-1.jpg",
-      "/images/teams/williams-2.jpg",
-      "/images/teams/williams-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "williamsracing",
       "WilliamsRacing"
@@ -517,11 +489,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 2,
     podiums: 0,
     firstEntry: 2016,
-    gallery: [
-      "/images/teams/haas-1.jpg",
-      "/images/teams/haas-2.jpg",
-      "/images/teams/haas-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "haasf1team",
       "HaasF1Team"
@@ -585,11 +553,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 4,
     podiums: 4,
     firstEntry: 1985,
-    gallery: [
-      "/images/teams/racing-bulls-1.jpg",
-      "/images/teams/racing-bulls-2.jpg",
-      "/images/teams/racing-bulls-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "visacashapprb",
       "visacashapprb"
@@ -654,11 +618,7 @@ export const teamDetails: Record<string, TeamDetails> = {
     fastestLaps: 7,
     podiums: 27,
     firstEntry: 1993,
-    gallery: [
-      "/images/teams/kick-sauber-1.jpg",
-      "/images/teams/kick-sauber-2.jpg",
-      "/images/teams/kick-sauber-3.jpg",
-    ],
+    gallery: [],
     socials: createSocials(
       "stakef1team_ks",
       "stakef1team_ks"

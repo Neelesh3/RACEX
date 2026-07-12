@@ -6,6 +6,7 @@ import { Trophy, MapPin, Wrench, ChevronRight, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { featuredTeam } from "@/lib/teams";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 export function FeaturedTeam() {
   const team = featuredTeam;
@@ -64,9 +65,7 @@ export function FeaturedTeam() {
                           {team.fullName}
                         </h3>
                         <div className="mt-1 flex items-center gap-2 text-sm text-[#808080]">
-                          <span role="img" aria-label={team.country}>
-                            {team.flag}
-                          </span>
+                          <CountryFlag country={team.country} fallback={team.flag} />
                           <span>{team.country}</span>
                         </div>
                       </div>

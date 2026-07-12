@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Medal } from "lucide-react";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 
 import type { ConstructorStanding } from "@/types/standings";
@@ -78,9 +79,10 @@ export function ConstructorStandingsTable({ constructors }: ConstructorStandings
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <span
-                        className="inline-block h-3 w-1 rounded-full"
+                        className="inline-block h-3 w-1 rounded-full animate-pulse"
                         style={{ backgroundColor: constructor.color }}
                       />
+                      <CountryFlag country={constructor.country} />
                       <span className="text-sm font-semibold text-white">
                         {constructor.teamName}
                       </span>

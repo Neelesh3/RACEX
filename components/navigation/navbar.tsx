@@ -31,13 +31,13 @@ function NavbarContent() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-200",
         isScrolled
-          ? "border-b border-white/10 bg-background/40 backdrop-blur-md supports-backdrop-filter:bg-background/30"
+          ? "border-b border-[#242424]/60 bg-[#050505]/80 backdrop-blur-md"
           : "bg-transparent"
       )}      suppressHydrationWarning      {...NAVBAR_ENTRANCE}
       role="banner"
     >
       <nav
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
         role="navigation"
         aria-label="Main navigation"
       >

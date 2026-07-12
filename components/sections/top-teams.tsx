@@ -40,7 +40,7 @@ interface Team {
 
 const TEAMS: Team[] = [
   {
-    id: "red-bull",
+    id: "red-bull-racing",
     name: "Oracle Red Bull Racing",
     shortName: "Red Bull",
     color: "#3671C6",
@@ -51,7 +51,7 @@ const TEAMS: Team[] = [
     ],
     stats: { points: 387, wins: 8, podiums: 19 },
     position: 1,
-    href: "/teams/red-bull",
+    href: "/teams/red-bull-racing",
   },
   {
     id: "mclaren",

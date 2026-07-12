@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 /* ── Navigation Data ─────────────────────────────────────────────── */
 
@@ -180,8 +181,25 @@ export function Footer() {
           </div>
         </motion.div>
 
+        {/* Partner Logos */}
+        <div className="mt-16 border-t border-border/40 pt-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#5f5f5f] mb-6">
+            Official Platform Partners
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-35 grayscale contrast-200 transition-opacity duration-300 hover:opacity-60">
+            <Image src="/logos/f1-logo.svg" alt="F1 Logo" width={48} height={20} className="h-5 w-auto object-contain" />
+            <Image src="/logos/fia-logo.svg" alt="FIA Logo" width={40} height={40} className="h-8 w-auto object-contain" />
+            <Image src="/logos/rolex-logo.svg" alt="Rolex Logo" width={60} height={24} className="h-6 w-auto object-contain" />
+            <Image src="/logos/pirelli-logo.svg" alt="Pirelli Logo" width={64} height={20} className="h-5 w-auto object-contain" />
+            <Image src="/logos/sponsors/dhl.svg" alt="DHL Logo" width={56} height={16} className="h-4 w-auto object-contain" />
+            <Image src="/logos/sponsors/aws.svg" alt="AWS Logo" width={44} height={24} className="h-6 w-auto object-contain" />
+            <Image src="/logos/sponsors/aramco.svg" alt="Aramco Logo" width={64} height={20} className="h-5 w-auto object-contain" />
+            <Image src="/logos/sponsors/lenovo.svg" alt="Lenovo Logo" width={60} height={16} className="h-4.5 w-auto object-contain" />
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <Separator className="mt-16 bg-border" />
+        <Separator className="mt-12 bg-border" />
 
         <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
           <p className="text-xs text-[#5F5F5F]">

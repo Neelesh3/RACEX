@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Medal } from "lucide-react";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 
 
@@ -80,9 +81,12 @@ export function DriverStandingsTable({ drivers }: DriverStandingsTableProps) {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm font-semibold text-white">
-                      {driver.driverName}
-                    </span>
+                    <div className="flex items-center gap-2.5">
+                      <CountryFlag country={driver.country} fallback={driver.flag} />
+                      <span className="text-sm font-semibold text-white">
+                        {driver.driverName}
+                      </span>
+                    </div>
                   </td>
                   <td className="px-6 py-4">
                     <span className="text-sm text-neutral-400">{driver.team}</span>

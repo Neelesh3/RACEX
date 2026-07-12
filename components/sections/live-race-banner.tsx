@@ -290,7 +290,7 @@ export default function LiveRaceBanner() {
                     {/* Right: CTA button */}
                     <div className="flex-shrink-0 lg:pl-4">
                         <Link
-                            href="/races/belgian-grand-prix-2026"
+                            href="/races/belgian-grand-prix"
                             className="
     group inline-flex items-center gap-2
     px-5 py-3 sm:px-6 sm:py-3.5

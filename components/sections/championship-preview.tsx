@@ -10,6 +10,7 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 import {
   Card,
@@ -213,8 +214,7 @@ function DriverStandingsCard() {
 
               <div>
                 <div className="flex items-center gap-2">
-                  <span>{driver.flag}</span>
-
+                  <CountryFlag country={driver.flag} fallback={driver.flag} />
                   <span className="font-semibold text-white">
                     {driver.name}
                   </span>

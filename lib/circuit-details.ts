@@ -39,11 +39,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 4, name: "Oasis", type: "Medium Right-Hander", speed: 140 },
       { number: 10, name: "Desert Hairpin", type: "Off-Camber Left", speed: 80 }
     ],
-    gallery: [
-      "/images/circuits/bahrain-gallery-1.jpg",
-      "/images/circuits/bahrain-gallery-2.jpg",
-      "/images/circuits/bahrain-gallery-3.jpg"
-    ]
+    gallery: []
   },
   jeddah: {
     circuitId: "jeddah",
@@ -83,11 +79,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 13, name: "The Loop", type: "Banked Hairpin", speed: 170 },
       { number: 22, name: "High-Speed S-Curve Entry", type: "Fast Left-Hander", speed: 250 }
     ],
-    gallery: [
-      "/images/circuits/jeddah-gallery-1.jpg",
-      "/images/circuits/jeddah-gallery-2.jpg",
-      "/images/circuits/jeddah-gallery-3.jpg"
-    ]
+    gallery: []
   },
   melbourne: {
     circuitId: "melbourne",
@@ -127,11 +119,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 9, name: "Waite Corner", type: "High-Speed Chicane", speed: 235 },
       { number: 13, name: "Ascari Corner", type: "Tight Right", speed: 115 }
     ],
-    gallery: [
-      "/images/circuits/melbourne-gallery-1.jpg",
-      "/images/circuits/melbourne-gallery-2.jpg",
-      "/images/circuits/melbourne-gallery-3.jpg"
-    ]
+    gallery: []
   },
   suzuka: {
     circuitId: "suzuka",
@@ -171,11 +159,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 11, name: "Hairpin", type: "Tight Hairpin", speed: 65 },
       { number: 15, name: "130R", type: "Flat-Out Left-Hander", speed: 300 }
     ],
-    gallery: [
-      "/images/circuits/suzuka-gallery-1.jpg",
-      "/images/circuits/suzuka-gallery-2.jpg",
-      "/images/circuits/suzuka-gallery-3.jpg"
-    ]
+    gallery: []
   },
   shanghai: {
     circuitId: "shanghai",
@@ -215,11 +199,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 13, name: "Banked Entry", type: "Banked Right-Hander", speed: 175 },
       { number: 14, name: "Main Hairpin", type: "Heavy Braking Left", speed: 70 }
     ],
-    gallery: [
-      "/images/circuits/shanghai-gallery-1.jpg",
-      "/images/circuits/shanghai-gallery-2.jpg",
-      "/images/circuits/shanghai-gallery-3.jpg"
-    ]
+    gallery: []
   },
   miami: {
     circuitId: "miami",
@@ -259,11 +239,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 14, name: "Stadium Chicane", type: "Tight Left-Right Chicane", speed: 75 },
       { number: 17, name: "Turnpike Hairpin", type: "Left Hairpin", speed: 80 }
     ],
-    gallery: [
-      "/images/circuits/miami-gallery-1.jpg",
-      "/images/circuits/miami-gallery-2.jpg",
-      "/images/circuits/miami-gallery-3.jpg"
-    ]
+    gallery: []
   },
   imola: {
     circuitId: "imola",
@@ -303,11 +279,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 7, name: "Tosa", type: "Uphill Left Hairpin", speed: 95 },
       { number: 12, name: "Acque Minerali", type: "Fast Right-Right", speed: 205 }
     ],
-    gallery: [
-      "/images/circuits/imola-gallery-1.jpg",
-      "/images/circuits/imola-gallery-2.jpg",
-      "/images/circuits/imola-gallery-3.jpg"
-    ]
+    gallery: []
   },
   monaco: {
     circuitId: "monaco",
@@ -347,11 +319,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 6, name: "Grand Hotel Hairpin", type: "Tightest Left", speed: 45 },
       { number: 12, name: "Tabac", type: "Left-Hander", speed: 160 }
     ],
-    gallery: [
-      "/images/circuits/monaco-gallery-1.jpg",
-      "/images/circuits/monaco-gallery-2.jpg",
-      "/images/circuits/monaco-gallery-3.jpg"
-    ]
+    gallery: []
   },
   montreal: {
     circuitId: "montreal",
@@ -391,11 +359,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 10, name: "L'Epingle", type: "Tight Hairpin", speed: 60 },
       { number: 14, name: "Wall of Champions", type: "Chicane Exit Wall", speed: 145 }
     ],
-    gallery: [
-      "/images/circuits/montreal-gallery-1.jpg",
-      "/images/circuits/montreal-gallery-2.jpg",
-      "/images/circuits/montreal-gallery-3.jpg"
-    ]
+    gallery: []
   },
   silverstone: {
     circuitId: "silverstone",
@@ -435,11 +399,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 12, name: "Becketts", type: "High-Speed Sweeping Left", speed: 235 },
       { number: 15, name: "Stowe", type: "Fast Right-Hander", speed: 200 }
     ],
-    gallery: [
-      "/images/circuits/silverstone-gallery-1.jpg",
-      "/images/circuits/silverstone-gallery-2.jpg",
-      "/images/circuits/silverstone-gallery-3.jpg"
-    ]
+    gallery: []
   },
   spa: {
     circuitId: "spa",
@@ -479,11 +439,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 4, name: "Eau Rouge / Raidillon", type: "Uphill Compression Chicane", speed: 290 },
       { number: 10, name: "Pouhon", type: "Double Left-Hander", speed: 220 }
     ],
-    gallery: [
-      "/images/circuits/spa-gallery-1.jpg",
-      "/images/circuits/spa-gallery-2.jpg",
-      "/images/circuits/spa-gallery-3.jpg"
-    ]
+    gallery: []
   },
   hungaroring: {
     circuitId: "hungaroring",
@@ -523,11 +479,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 4, name: "Turn 4 Fast Left", type: "Blind Uphill Left", speed: 215 },
       { number: 12, name: "Turn 12 Right", type: "90-degree Right", speed: 120 }
     ],
-    gallery: [
-      "/images/circuits/hungaroring-gallery-1.jpg",
-      "/images/circuits/hungaroring-gallery-2.jpg",
-      "/images/circuits/hungaroring-gallery-3.jpg"
-    ]
+    gallery: []
   },
   zandvoort: {
     circuitId: "zandvoort",
@@ -567,11 +519,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 3, name: "Hugenholtz Bocht", type: "Progressively Banked Left", speed: 90 },
       { number: 14, name: "Arie Luyendyk Bocht", type: "High-Speed Banking", speed: 245 }
     ],
-    gallery: [
-      "/images/circuits/zandvoort-gallery-1.jpg",
-      "/images/circuits/zandvoort-gallery-2.jpg",
-      "/images/circuits/zandvoort-gallery-3.jpg"
-    ]
+    gallery: []
   },
   monza: {
     circuitId: "monza",
@@ -611,11 +559,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 8, name: "Variante Ascari", type: "High-Speed Chicane", speed: 195 },
       { number: 11, name: "Curva Alboreto (Parabolica)", type: "Long Right Sweeper", speed: 215 }
     ],
-    gallery: [
-      "/images/circuits/monza-gallery-1.jpg",
-      "/images/circuits/monza-gallery-2.jpg",
-      "/images/circuits/monza-gallery-3.jpg"
-    ]
+    gallery: []
   },
   baku: {
     circuitId: "baku",
@@ -655,11 +599,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 8, name: "Castle Turn", type: "Ultra-Narrow Left", speed: 60 },
       { number: 15, name: "Shemakha Downhill", type: "Downhill Left", speed: 145 }
     ],
-    gallery: [
-      "/images/circuits/baku-gallery-1.jpg",
-      "/images/circuits/baku-gallery-2.jpg",
-      "/images/circuits/baku-gallery-3.jpg"
-    ]
+    gallery: []
   },
   "marina-bay": {
     circuitId: "marina-bay",
@@ -699,11 +639,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 7, name: "Memorial Corner", type: "90-degree Left", speed: 115 },
       { number: 14, name: "Connaught Bridge", type: "Right-Hander", speed: 85 }
     ],
-    gallery: [
-      "/images/circuits/singapore-gallery-1.jpg",
-      "/images/circuits/singapore-gallery-2.jpg",
-      "/images/circuits/singapore-gallery-3.jpg"
-    ]
+    gallery: []
   },
   cota: {
     circuitId: "cota",
@@ -743,11 +679,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 4, name: "Becketts Replica", type: "High-Speed S-Curve", speed: 240 },
       { number: 12, name: "Back Straight Hairpin", type: "Tight Left", speed: 85 }
     ],
-    gallery: [
-      "/images/circuits/cota-gallery-1.jpg",
-      "/images/circuits/cota-gallery-2.jpg",
-      "/images/circuits/cota-gallery-3.jpg"
-    ]
+    gallery: []
   },
   "mexico-city": {
     circuitId: "mexico-city",
@@ -787,11 +719,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 10, name: "Esses Mid-point", type: "Sweeping Left", speed: 190 },
       { number: 13, name: "Foro Sol Entry", type: "Slow Hairpin", speed: 65 }
     ],
-    gallery: [
-      "/images/circuits/mexico-gallery-1.jpg",
-      "/images/circuits/mexico-gallery-2.jpg",
-      "/images/circuits/mexico-gallery-3.jpg"
-    ]
+    gallery: []
   },
   interlagos: {
     circuitId: "interlagos",
@@ -831,11 +759,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 8, name: "Ferradura", type: "Double Right-Hander", speed: 190 },
       { number: 10, name: "Bico de Pato", type: "Tight Hairpin", speed: 80 }
     ],
-    gallery: [
-      "/images/circuits/interlagos-gallery-1.jpg",
-      "/images/circuits/interlagos-gallery-2.jpg",
-      "/images/circuits/interlagos-gallery-3.jpg"
-    ]
+    gallery: []
   },
   "las-vegas": {
     circuitId: "las-vegas",
@@ -875,11 +799,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 14, name: "Strip Exit Chicane", type: "90-degree Left-Right", speed: 95 },
       { number: 17, name: "Final Corner Sweep", type: "Fast Left-Hander", speed: 220 }
     ],
-    gallery: [
-      "/images/circuits/lasvegas-gallery-1.jpg",
-      "/images/circuits/lasvegas-gallery-2.jpg",
-      "/images/circuits/lasvegas-gallery-3.jpg"
-    ]
+    gallery: []
   },
   lusail: {
     circuitId: "lusail",
@@ -919,11 +839,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 10, name: "Club Corner", type: "Fast Right", speed: 200 },
       { number: 13, name: "Triple Apex Mid", type: "High-Speed Sweeper", speed: 215 }
     ],
-    gallery: [
-      "/images/circuits/lusail-gallery-1.jpg",
-      "/images/circuits/lusail-gallery-2.jpg",
-      "/images/circuits/lusail-gallery-3.jpg"
-    ]
+    gallery: []
   },
   "yas-marina": {
     circuitId: "yas-marina",
@@ -963,11 +879,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 9, name: "Marsa Banking", type: "Banked Sweeper", speed: 175 },
       { number: 13, name: "Hotel Pass", type: "Off-Camber Left", speed: 90 }
     ],
-    gallery: [
-      "/images/circuits/yasmarina-gallery-1.jpg",
-      "/images/circuits/yasmarina-gallery-2.jpg",
-      "/images/circuits/yasmarina-gallery-3.jpg"
-    ]
+    gallery: []
   },
   "red-bull-ring": {
     circuitId: "red-bull-ring",
@@ -1007,11 +919,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 3, name: "Remus Kurve", type: "Tight Uphill Right", speed: 75 },
       { number: 9, name: "Rindt Kurve", type: "Downhill Right", speed: 205 }
     ],
-    gallery: [
-      "/images/circuits/redbullring-gallery-1.jpg",
-      "/images/circuits/redbullring-gallery-2.jpg",
-      "/images/circuits/redbullring-gallery-3.jpg"
-    ]
+    gallery: []
   },
   catalunya: {
     circuitId: "catalunya",
@@ -1051,11 +959,7 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 3, name: "Curva Renault", type: "Long Sweeping Right", speed: 230 },
       { number: 9, name: "Campsa", type: "Blind Right-Hander", speed: 215 }
     ],
-    gallery: [
-      "/images/circuits/barcelona-gallery-1.jpg",
-      "/images/circuits/barcelona-gallery-2.jpg",
-      "/images/circuits/barcelona-gallery-3.jpg"
-    ]
+    gallery: []
   },
   hockenheim: {
     circuitId: "hockenheim",
@@ -1095,10 +999,6 @@ export const circuitDetails: Record<string, CircuitDetails> = {
       { number: 6, name: "Spitzkehre", type: "Tight Hairpin", speed: 70 },
       { number: 12, name: "Sachskurve", type: "Stadium Left Hairpin", speed: 85 }
     ],
-    gallery: [
-      "/images/circuits/hockenheim-gallery-1.jpg",
-      "/images/circuits/hockenheim-gallery-2.jpg",
-      "/images/circuits/hockenheim-gallery-3.jpg"
-    ]
+    gallery: []
   }
 };

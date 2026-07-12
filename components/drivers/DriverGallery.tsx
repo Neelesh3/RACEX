@@ -10,6 +10,10 @@ interface DriverGalleryProps {
 }
 
 export function DriverGallery({ details }: DriverGalleryProps) {
+  if (!details.gallery || details.gallery.length === 0) {
+    return null;
+  }
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 24 }}
