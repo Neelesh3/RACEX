@@ -24,19 +24,19 @@ export function RevealScene() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animate the reveal timeline phase durations in react space (4.5s total transition pacing)
+  // Animate the reveal timeline phase durations in react space (6.0s total cinematic orbit choreography)
   useEffect(() => {
     const timer = setInterval(() => {
       setIntroTime((prev) => {
         const next = prev + 0.1;
-        if (next < 1.2) {
+        if (next < 1.0) {
           setTimelinePhase("darkness");
-        } else if (next < 2.4) {
-          setTimelinePhase("ignition");
-        } else if (next < 4.5) {
-          setTimelinePhase("discovery");
+        } else if (next < 2.5) {
+          setTimelinePhase("ignition"); // Overhead reveal light sweep
+        } else if (next < 6.0) {
+          setTimelinePhase("discovery"); // Side orbit -> Front Three-Quarter transition
         } else {
-          setTimelinePhase("reveal");
+          setTimelinePhase("reveal"); // Hero Lock state
           clearInterval(timer);
         }
         return next;
@@ -51,48 +51,67 @@ export function RevealScene() {
   let resolvedAmbientIntensity = 0.02;
 
   if (timelinePhase === "ignition") {
-    resolvedKeyIntensity = 0.2;
+    resolvedKeyIntensity = 0.35; // Light sweep ignition start
     resolvedAmbientIntensity = 0.05;
   } else if (timelinePhase === "discovery") {
-    // Smooth ramp-up interpolation over the 2.1-second sweep
-    const factor = (introTime - 2.4) / 2.1; // 0 to 1
-    resolvedKeyIntensity = 0.2 + factor * 1.0; // 0.2 -> 1.2
+    // Smooth lighting ramp-up across discovery orbits
+    const factor = Math.min((introTime - 2.5) / 1.7, 1);
+    resolvedKeyIntensity = 0.35 + factor * 0.85; // 0.35 -> 1.2
     resolvedAmbientIntensity = 0.05 + factor * 0.10; // 0.05 -> 0.15
   } else if (timelinePhase === "reveal") {
     resolvedKeyIntensity = 1.2;
     resolvedAmbientIntensity = 0.15;
   }
 
-  // Calculate scroll transitions (Model rotation / camera offset triggers)
+  // Calculate scroll transitions with a power-curve dead-zone to prevent early scroll jitter
   const maxScroll = 600;
-  const scrollRatio = Math.min(scrollY / maxScroll, 1);
+  const rawRatio = Math.min(scrollY / maxScroll, 1);
+  const easedScroll = Math.pow(rawRatio, 1.8); // Eased transition curve
 
-  // Rotate F1 car model slowly on scroll and lower position
-  const carPosition: [number, number, number] = [0, -0.8 - scrollRatio * 0.6, -scrollRatio * 1.5];
-  const carRotation: [number, number, number] = [0, -Math.PI / 6 + scrollRatio * (Math.PI / 4), 0];
+  // Ground the F1 car statically on the matte floor, keeping rotation locked parallel
+  const carPosition: [number, number, number] = [0, -0.8, 0];
+  const carRotation: [number, number, number] = [0, 0, 0];
 
-  // Adjust camera rig base positions depending on dynamic timeline phase and scroll compression
-  let basePosition: [number, number, number] = [0, 1.2, 7];
-  let baseTarget: [number, number, number] = [0, 0.4, 0];
+  // Adjust camera rig base positions using smooth piecewise interpolation
+  let basePosition: [number, number, number] = [0, 5, 0.1];
+  let baseTarget: [number, number, number] = [0, 0, 0];
 
-  if (timelinePhase === "darkness") {
-    basePosition = [0, 0.6, 12];
-    baseTarget = [0, 0.2, 0];
-  } else if (timelinePhase === "ignition") {
-    basePosition = [-1.5, 0.8, 9];
-    baseTarget = [0, 0.3, 0];
-  } else if (timelinePhase === "discovery") {
-    const factor = (introTime - 2.4) / 2.1;
+  const t = introTime;
+  if (t <= 1.0) {
+    // 1. Darkness: camera directly above (higher Y=8.5 for full overhead framing)
+    basePosition = [0, 8.5, 0.1];
+    baseTarget = [0, 0, 0];
+  } else if (t <= 2.5) {
+    // 2. Overhead Reveal: camera pulls up and backward
+    const f = (t - 1.0) / 1.5;
+    basePosition = [0, 8.5 + f * 2.5, 0.1 + f * 2.7]; // Sweeps up to [0, 11.0, 2.8]
+    baseTarget = [0, 0, 0];
+  } else if (t <= 4.2) {
+    // 3. Side Hero: camera orbits down to a full side profile (ends at [9.5, 1.2, 1.2] to fit complete wheelbase)
+    const f = (t - 2.5) / 1.7;
     basePosition = [
-      -1.5 + factor * 1.5,
-      0.8 + factor * 0.4,
-      9 - factor * 2
+      f * 9.5,
+      11.0 - f * 9.8,
+      2.8 - f * 1.6
     ];
-    baseTarget = [0, 0.3 + factor * 0.1, 0];
-  } else if (timelinePhase === "reveal") {
-    // Settle target coordinates and apply scroll compression vertical offsets
-    basePosition = [0, 1.2 + scrollRatio * 0.8, 7];
-    baseTarget = [0, 0.4 - scrollRatio * 0.4, 0];
+    baseTarget = [0, f * 0.2, 0];
+  } else if (t <= 6.0) {
+    // 4. Front Three-Quarter Hero: camera orbits to a 45° angle (ends at [6.8, 1.3, 6.8])
+    const f = (t - 4.2) / 1.8;
+    basePosition = [
+      9.5 - f * 2.7,
+      1.2 + f * 0.1,
+      1.2 + f * 5.6
+    ];
+    baseTarget = [0, 0.2 + f * 0.1, 0];
+  } else {
+    // 5. Hero Lock & Scroll: locked 45° angle (Z=6.8/X=6.8 wide lens framing), pulls back on exit scroll
+    basePosition = [
+      6.8 + easedScroll * 2.0,
+      1.3 + easedScroll * 1.0,
+      6.8 + easedScroll * 2.0
+    ];
+    baseTarget = [0, 0.3, 0];
   }
 
   return (
@@ -101,7 +120,7 @@ export function RevealScene() {
       <StudioLighting
         keyIntensity={resolvedKeyIntensity}
         ambientIntensity={resolvedAmbientIntensity}
-        castShadow={timelinePhase === "reveal"}
+        castShadow={timelinePhase === "reveal" || introTime >= 2.5}
       />
       <F1Car
         position={carPosition}
@@ -129,9 +148,9 @@ export function RevealScene() {
         preset="reveal"
         basePosition={basePosition}
         baseTarget={baseTarget}
-        parallaxStrength={timelinePhase === "reveal" ? 0.55 : 0.05}
-        breathingStrength={timelinePhase === "reveal" ? 0.03 : 0.005}
-        dampingSpeed={2.8}
+        parallaxStrength={timelinePhase === "reveal" ? 0.25 : 0.02}
+        breathingStrength={timelinePhase === "reveal" ? 0.02 : 0.003}
+        dampingSpeed={1.6}
       />
     </group>
   );

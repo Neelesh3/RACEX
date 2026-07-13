@@ -27,7 +27,7 @@ function StatCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
-        delay: 5.1 + index * 0.1,
+        delay: 2.1 + index * 0.1,
         ease: "easeOut",
       }}
       className={cn(
@@ -109,7 +109,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 4.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 1.5, ease: "easeOut" }}
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-[#E10600]/20 bg-[#E10600]/5 px-4 py-1.5 text-sm font-medium text-[#E10600]">
                 <Flag className="h-3.5 w-3.5" />
@@ -123,7 +123,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 4.6, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 1.6, ease: "easeOut" }}
               className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
             >
               Experience{" "}
@@ -137,7 +137,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 4.75, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 1.75, ease: "easeOut" }}
               className="mt-5 max-w-lg text-base leading-relaxed text-[#B5B5B5] sm:text-lg"
             >
               Follow every Grand Prix, driver, constructor, standings, live race
@@ -148,7 +148,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 4.85, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 1.85, ease: "easeOut" }}
               className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start"
             >
               <Link

@@ -49,7 +49,7 @@ export function CameraRig({
 
     // 2. Mouse Parallax Easing (Reads pointer coordinate grid [-1, 1])
     const mx = state.pointer.x * parallaxStrength;
-    const my = state.pointer.y * (parallaxStrength * 0.5);
+    const my = state.pointer.y * (parallaxStrength * 0.18);
 
     // Calculate next target positions combining base, parallax, and breathing offsets
     targetPos.current.set(
