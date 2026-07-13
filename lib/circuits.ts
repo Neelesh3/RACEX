@@ -15,7 +15,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:31.447",
     corners: 15,
     drsZones: 3,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/bahrain.png",
     description:
       "A modern desert circuit famous for dramatic night races, heavy braking zones, and multiple overtaking opportunities."
   },
@@ -33,7 +33,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:30.734",
     corners: 27,
     drsZones: 3,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/jeddah.png",
     description:
       "One of Formula One's fastest street circuits featuring sweeping high-speed corners along the Red Sea coastline."
   },
@@ -51,7 +51,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:19.813",
     corners: 14,
     drsZones: 4,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/albert-park.png",
     description:
       "A fast semi-street circuit around Albert Park combining flowing corners with heavy braking zones."
   },
@@ -69,7 +69,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:30.983",
     corners: 18,
     drsZones: 1,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/suzuka.png",
     description:
       "An iconic figure-eight layout loved by drivers for its flowing Esses, Degner curves, and the legendary 130R."
   },
@@ -87,7 +87,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:32.238",
     corners: 16,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/shanghai.png",
     description:
       "A technical Hermann Tilke design featuring one of Formula One's longest back straights and a challenging opening sector."
   },
@@ -105,7 +105,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:29.708",
     corners: 19,
     drsZones: 3,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/miami.png",
     description:
       "A modern stadium circuit combining long straights, technical chicanes, and overtaking opportunities."
   },
@@ -159,7 +159,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:13.078",
     corners: 14,
     drsZones: 3,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/montreal.png",
     description:
       "A fan-favorite circuit featuring long straights, heavy braking zones, and the legendary Wall of Champions."
   },
@@ -177,7 +177,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:27.097",
     corners: 18,
     drsZones: 2,
-    image: "/circuits/hero/silverstone.png",
+    image: "/circuits/hero/silverstone.jpg",
     description:
       "The birthplace of Formula One, renowned for ultra-fast corners including Maggotts, Becketts, and Copse."
   },
@@ -213,7 +213,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:16.627",
     corners: 14,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/hungaroring.jpg",
     description:
       "A technical and twisty circuit often compared to a kart track where rhythm and tire management are crucial."
   },
@@ -231,7 +231,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:11.097",
     corners: 14,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/zandvoort.jpg",
     description:
       "A flowing seaside circuit featuring dramatic banking, fast corners, and passionate Formula One fans."
   },
@@ -267,7 +267,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:43.009",
     corners: 20,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/baku.png",
     description:
       "A unique street circuit combining ultra-fast straights with the famously narrow castle section."
   },
@@ -285,7 +285,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:35.867",
     corners: 19,
     drsZones: 4,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/marina-bay.png",
     description:
       "Formula One's original night race featuring humid conditions, unforgiving barriers, and a demanding street layout."
   },
@@ -303,7 +303,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:36.169",
     corners: 20,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/austin.png",
     description:
       "A modern circuit inspired by iconic corners from legendary Formula One venues around the world."
   },
@@ -321,7 +321,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:17.774",
     corners: 17,
     drsZones: 3,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/mexico-city.png",
     description:
       "A high-altitude circuit known for its massive stadium section, long straight, and reduced aerodynamic drag."
   },  {
@@ -338,7 +338,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:10.540",
     corners: 15,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/interlagos.jpg",
     description:
       "One of Formula One's most iconic circuits, featuring elevation changes, passionate fans, and unforgettable championship finales."
   },
@@ -374,7 +374,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:24.319",
     corners: 16,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/lusail.png",
     description:
       "A fast-flowing circuit under floodlights that rewards confidence through medium- and high-speed corners."
   },
@@ -392,7 +392,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:26.103",
     corners: 16,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/yas-marina.png",
     description:
       "The traditional Formula One season finale featuring a modern layout, marina backdrop, and sunset-to-night racing."
   },
@@ -410,7 +410,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:05.619",
     corners: 10,
     drsZones: 3,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/red-bull-ring.jpg",
     description:
       "A short but action-packed circuit nestled in the Styrian mountains, known for steep elevation changes and overtaking."
   },
@@ -428,7 +428,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:16.330",
     corners: 14,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/barcelona.png",
     description:
       "A balanced circuit combining long corners, technical sections, and a main straight that has long been used for Formula One testing."
   },
@@ -446,7 +446,7 @@ export const circuits: Circuit[] = [
     lapRecord: "1:13.780",
     corners: 17,
     drsZones: 2,
-    image: "/circuits/hero/monza.png",
+    image: "/circuits/hero/hockenheim.png",
     description:
       "A fast track through the Baden-Württemberg forests, combining high-speed straights with a tight, amphitheater-like stadium section."
   }

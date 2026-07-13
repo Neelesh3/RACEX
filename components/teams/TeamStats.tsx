@@ -12,7 +12,6 @@ import {
 
 import { Card, CardContent } from "@/components/ui/card";
 import type { TeamDetails } from "@/types/team-details";
-import type { ElementType } from "react";
 
 interface TeamStatsProps {
   details?: TeamDetails;
@@ -85,17 +84,21 @@ function ListingStatCard({
   );
 }
 
+import type { ComponentType } from "react";
+
+interface DetailStatCardProps {
+  title: string;
+  value: number;
+  icon: ComponentType<{ className?: string }>;
+  index: number;
+}
+
 function DetailStatCard({
   title,
   value,
   icon: Icon,
   index,
-}: {
-  title: string;
-  value: number;
-  icon: ElementType;
-  index: number;
-}) {
+}: DetailStatCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}

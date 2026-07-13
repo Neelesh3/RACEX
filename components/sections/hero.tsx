@@ -27,7 +27,7 @@ function StatCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
-        delay: 0.6 + index * 0.1,
+        delay: 5.1 + index * 0.1,
         ease: "easeOut",
       }}
       className={cn(
@@ -50,57 +50,26 @@ function StatCard({
   );
 }
 
+import React from "react";
+import { SceneCanvas } from "../three/canvas/SceneCanvas";
+import { RevealScene } from "../three/scenes/RevealScene";
+import { CanvasLoader } from "../three/loaders/CanvasLoader";
+
 function FormulaOneVisual() {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-      className="relative flex h-full w-full items-center justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+      className="relative h-full w-full rounded-2xl border border-white/[0.06] bg-[#050505] overflow-hidden"
       aria-hidden="true"
     >
-      {/* Outer glow ring */}
-      <div className="absolute h-[420px] w-[420px] rounded-full border border-[#E10600]/[0.08]" />
-      <div className="absolute h-[380px] w-[380px] rounded-full border border-[#E10600]/[0.12]" />
-      <div className="absolute h-[340px] w-[340px] rounded-full border border-[#E10600]/[0.16]" />
-
-      {/* Central orb */}
-      <div className="absolute h-[280px] w-[280px] rounded-full bg-[#E10600]/[0.06] blur-[80px]" />
-      <div className="absolute h-[180px] w-[180px] rounded-full bg-[#E10600]/[0.1] blur-[50px]" />
-
-      {/* Racing lines - top */}
-      <div className="absolute top-[15%] h-[1px] w-[200px] bg-gradient-to-r from-transparent via-[#E10600]/30 to-transparent" />
-      <div className="absolute top-[18%] h-[1px] w-[160px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      {/* Racing lines - bottom */}
-      <div className="absolute bottom-[15%] h-[1px] w-[200px] bg-gradient-to-r from-transparent via-[#E10600]/30 to-transparent" />
-      <div className="absolute bottom-[18%] h-[1px] w-[160px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      {/* Racing lines - diagonal */}
-      <div className="absolute h-[1px] w-[140px] rotate-[25deg] bg-gradient-to-r from-transparent via-[#E10600]/20 to-transparent" />
-      <div className="absolute h-[1px] w-[120px] -rotate-[25deg] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-
-      {/* Floating accent dots */}
-      <motion.div
-        animate={{ y: [0, -12, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[22%] right-[28%] h-2 w-2 rounded-full bg-[#E10600]/40"
-      />
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-[24%] left-[26%] h-1.5 w-1.5 rounded-full bg-white/20"
-      />
-      <motion.div
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className="absolute top-[40%] left-[20%] h-1 w-1 rounded-full bg-[#E10600]/30"
-      />
-
-      {/* Center mark */}
-      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-[#E10600]/20 bg-[#E10600]/5">
-        <Flag className="h-7 w-7 text-[#E10600]" />
-      </div>
+      <SceneCanvas>
+        <React.Suspense fallback={null}>
+          <RevealScene />
+          <CanvasLoader />
+        </React.Suspense>
+      </SceneCanvas>
     </motion.div>
   );
 }
@@ -140,7 +109,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 4.5, ease: "easeOut" }}
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-[#E10600]/20 bg-[#E10600]/5 px-4 py-1.5 text-sm font-medium text-[#E10600]">
                 <Flag className="h-3.5 w-3.5" />
@@ -154,7 +123,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 4.6, ease: "easeOut" }}
               className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
             >
               Experience{" "}
@@ -168,7 +137,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 4.75, ease: "easeOut" }}
               className="mt-5 max-w-lg text-base leading-relaxed text-[#B5B5B5] sm:text-lg"
             >
               Follow every Grand Prix, driver, constructor, standings, live race
@@ -179,7 +148,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 4.85, ease: "easeOut" }}
               className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start"
             >
               <Link
