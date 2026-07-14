@@ -59,9 +59,9 @@ export default function CircuitsPage() {
                   </Button>
                 </Link>
 
-                <Link href="/teams">
+                <Link href="/garage">
                   <Button size="lg" variant="outline">
-                    Explore Teams
+                    Explore Constructors
                   </Button>
                 </Link>
               </div>

@@ -85,9 +85,9 @@ export default function RacesPage() {
                   <Button size="lg">Explore Drivers</Button>
                 </Link>
 
-                <Link href="/teams">
+                <Link href="/garage">
                   <Button size="lg" variant="outline">
-                    View Teams
+                    View Constructors
                   </Button>
                 </Link>
               </div>

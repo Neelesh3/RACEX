@@ -1,9 +1,7 @@
 import type { MetadataRoute } from "next";
 import { drivers } from "@/lib/drivers";
-import { teams } from "@/lib/teams";
 import { circuits } from "@/lib/circuits";
 import { races } from "@/lib/races";
-import { news } from "@/lib/news";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://racex.vercel.app";
@@ -12,11 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/drivers",
-    "/teams",
+    "/garage",
     "/circuits",
     "/races",
-    "/news",
     "/standings",
+    "/about",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -27,13 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic routes
   const driverRoutes = drivers.map((d) => ({
     url: `${baseUrl}/drivers/${d.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
-
-  const teamRoutes = teams.map((t) => ({
-    url: `${baseUrl}/teams/${t.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
@@ -53,19 +44,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const newsRoutes = news.map((n) => ({
-    url: `${baseUrl}/news/${n.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
-
   return [
     ...routes,
     ...driverRoutes,
-    ...teamRoutes,
     ...circuitRoutes,
     ...raceRoutes,
-    ...newsRoutes,
   ];
 }

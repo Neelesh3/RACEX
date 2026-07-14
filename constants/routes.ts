@@ -5,12 +5,11 @@
 export const ROUTES = {
   HOME: "/",
   DRIVERS: "/drivers",
-  TEAMS: "/teams",
-  GARAGE: "/garage",
-  RACES: "/races",
+  CONSTRUCTORS: "/garage", // Pointing to Constructor Garage
   CIRCUITS: "/circuits",
+  RACES: "/races",
   STANDINGS: "/standings",
-  NEWS: "/news",
+  ABOUT: "/about",
   DASHBOARD: "/dashboard",
   PROFILE: "/profile",
   SETTINGS: "/settings",
@@ -23,8 +22,8 @@ export const NAVIGATION_ITEMS = [
     description: "RaceX Dashboard",
   },
   {
-    label: "Garage",
-    href: ROUTES.GARAGE,
+    label: "Constructors",
+    href: ROUTES.CONSTRUCTORS,
     description: "Constructor Garage Experience",
   },
   {
@@ -33,9 +32,9 @@ export const NAVIGATION_ITEMS = [
     description: "Driver Standings and Profiles",
   },
   {
-    label: "Teams",
-    href: ROUTES.TEAMS,
-    description: "Constructor Standings",
+    label: "Circuits",
+    href: ROUTES.CIRCUITS,
+    description: "Track Information",
   },
   {
     label: "Races",
@@ -43,19 +42,14 @@ export const NAVIGATION_ITEMS = [
     description: "Race Schedule and Results",
   },
   {
-    label: "Circuits",
-    href: ROUTES.CIRCUITS,
-    description: "Track Information",
-  },
-  {
     label: "Standings",
     href: ROUTES.STANDINGS,
     description: "Championship Standings",
   },
   {
-    label: "News",
-    href: ROUTES.NEWS,
-    description: "Latest F1 News",
+    label: "About",
+    href: ROUTES.ABOUT,
+    description: "About the RACEX Project",
   },
 ] as const;
 

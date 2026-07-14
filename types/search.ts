@@ -1,4 +1,4 @@
-export type SearchCategory = "driver" | "team" | "race" | "circuit" | "news";
+export type SearchCategory = "driver" | "constructor" | "race" | "circuit";
 
 export interface SearchItem {
   id: string;

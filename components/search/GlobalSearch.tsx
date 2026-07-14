@@ -22,7 +22,7 @@ const CATEGORY_CONFIG = {
     icon: User,
     badgeClass: "border-red-500/20 bg-red-500/10 text-red-400",
   },
-  team: {
+  constructor: {
     icon: Shield,
     badgeClass: "border-blue-500/20 bg-blue-500/10 text-blue-400",
   },
@@ -33,10 +33,6 @@ const CATEGORY_CONFIG = {
   circuit: {
     icon: Compass,
     badgeClass: "border-emerald-500/20 bg-emerald-500/10 text-emerald-400",
-  },
-  news: {
-    icon: Newspaper,
-    badgeClass: "border-neutral-500/20 bg-neutral-500/10 text-neutral-400",
   },
 } as const;
 
@@ -95,10 +91,9 @@ export function GlobalSearch() {
   // Group search index items by category
   const groupedIndex = {
     driver: searchIndex.filter((item) => item.category === "driver"),
-    team: searchIndex.filter((item) => item.category === "team"),
+    constructor: searchIndex.filter((item) => item.category === "constructor"),
     race: searchIndex.filter((item) => item.category === "race"),
     circuit: searchIndex.filter((item) => item.category === "circuit"),
-    news: searchIndex.filter((item) => item.category === "news"),
   };
 
   return (
@@ -111,7 +106,7 @@ export function GlobalSearch() {
     >
       <Command className="bg-transparent border-none">
         <CommandInput
-          placeholder="Search drivers, teams, races, circuits..."
+          placeholder="Search drivers, constructors, races, circuits..."
           value={searchQuery}
           onValueChange={setSearchQuery}
           className="border-[#242424] focus:border-[#E10600]/30"

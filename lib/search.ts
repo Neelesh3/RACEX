@@ -1,8 +1,7 @@
 import { drivers } from "./drivers";
-import { teams } from "./teams";
+import { CONSTRUCTORS } from "./constructors";
 import { races } from "./races";
 import { circuits } from "./circuits";
-import { news } from "./news";
 import type { SearchItem } from "@/types/search";
 
 export const searchIndex: SearchItem[] = [
@@ -18,15 +17,15 @@ export const searchIndex: SearchItem[] = [
     })
   ),
 
-  // Teams
-  ...teams.map(
-    (team): SearchItem => ({
-      id: `team-${team.id}`,
-      title: team.name,
-      subtitle: team.teamPrincipal,
-      href: `/teams/${team.slug}`,
-      category: "team",
-      meta: team.engine,
+  // Constructors
+  ...CONSTRUCTORS.map(
+    (c): SearchItem => ({
+      id: `constructor-${c.id}`,
+      title: c.teamName,
+      subtitle: c.carName,
+      href: `/garage`,
+      category: "constructor",
+      meta: c.engine,
     })
   ),
 
@@ -51,18 +50,6 @@ export const searchIndex: SearchItem[] = [
       href: `/circuits/${circuit.slug}`,
       category: "circuit",
       meta: circuit.length,
-    })
-  ),
-
-  // News articles
-  ...news.map(
-    (article): SearchItem => ({
-      id: `news-${article.id}`,
-      title: article.title,
-      subtitle: article.category,
-      href: `/news/${article.slug}`,
-      category: "news",
-      meta: article.publishedAt,
     })
   ),
 ];
