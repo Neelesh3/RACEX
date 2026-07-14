@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import type { Race } from "@/types/race";
 
@@ -19,9 +20,9 @@ export default function RaceSchedule({ race }: RaceScheduleProps) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[#E10600] pl-3">
-        Weekend Session Schedule
-      </h2>
+      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block">
+        {"// SCHEDULE TIMELINE"}
+      </span>
 
       <div className="flex flex-col gap-4">
         {scheduleItems.map((item, idx) => {
@@ -29,8 +30,12 @@ export default function RaceSchedule({ race }: RaceScheduleProps) {
           const isConcluded = race.status === "completed";
 
           return (
-            <div
+            <motion.div
               key={item.name}
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
               className={`rounded-2xl border p-5 flex items-center justify-between transition-all duration-300 ${
                 isRaceSession 
                   ? "border-[#E10600]/30 bg-gradient-to-r from-[#E10600]/5 to-transparent hover:border-[#E10600]/50" 
@@ -47,7 +52,7 @@ export default function RaceSchedule({ race }: RaceScheduleProps) {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white uppercase tracking-wider">{item.name}</h4>
-                  <span className="text-[10px] text-neutral-500 uppercase tracking-widest mt-0.5 block">{item.type} session</span>
+                  <span className="text-[9px] text-neutral-500 uppercase tracking-widest mt-0.5 block">{item.type} session</span>
                 </div>
               </div>
 
@@ -60,7 +65,7 @@ export default function RaceSchedule({ race }: RaceScheduleProps) {
                   <CheckCircle className="w-4 h-4 text-emerald-500" />
                 )}
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

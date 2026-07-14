@@ -26,7 +26,7 @@ export default function RaceCountdown({ race }: RaceCountdownProps) {
     }
 
     const calculateTime = () => {
-      const targetDate = new Date(`${race.date}T14:00:00Z`).getTime(); // Assuming standard 14:00 local/UTC GP start
+      const targetDate = new Date(`${race.date}T14:00:00Z`).getTime();
       const now = new Date().getTime();
       const difference = targetDate - now;
 
@@ -50,47 +50,47 @@ export default function RaceCountdown({ race }: RaceCountdownProps) {
 
   if (timeLeft.isOver) {
     return (
-      <div className="flex flex-col items-center justify-center p-6 rounded-2xl border border-white/[0.06] bg-white/[0.01] max-w-md mx-auto text-center mt-[-40px] relative z-20 backdrop-blur-md">
-        <span className="text-[10px] font-black uppercase tracking-widest text-[#808080]">Event Status</span>
-        <span className="text-sm font-bold text-white uppercase tracking-wider mt-1 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-neutral-500 animate-pulse" />
-          Grand Prix Concluded
+      <div className="flex flex-col items-center justify-center p-6 rounded-2xl border border-white/[0.06] bg-white/[0.01] max-w-md mx-auto text-center mt-[-45px] relative z-20 backdrop-blur-md">
+        <span className="text-[9px] font-black uppercase tracking-widest text-[#808080]">Briefing status</span>
+        <span className="text-xs font-bold text-white uppercase tracking-wider mt-1.5 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-neutral-600 animate-pulse" />
+          Event Concluded
         </span>
       </div>
     );
   }
 
   return (
-    <div className="relative z-20 mt-[-40px] max-w-lg mx-auto px-6 py-4 rounded-2xl border border-white/[0.06] bg-white/[0.01] backdrop-blur-md shadow-2xl flex flex-col items-center gap-3">
-      <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#E10600] flex items-center gap-1.5">
-        <Clock className="w-3.5 h-3.5" />
-        <span>T-minus to track reveal</span>
+    <div className="relative z-20 mt-[-45px] max-w-xl mx-auto px-8 py-5 rounded-2xl border border-[#E10600]/20 bg-[#0A0A0A]/90 backdrop-blur-md shadow-2xl flex flex-col items-center gap-4">
+      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E10600] flex items-center gap-2">
+        <Clock className="w-4 h-4 animate-spin" style={{ animationDuration: "10s" }} />
+        <span>T-MINUS TO LIGHTS OUT</span>
       </span>
 
-      <div className="grid grid-cols-4 gap-4 sm:gap-6 text-center">
+      <div className="grid grid-cols-4 gap-6 text-center font-mono w-full">
         <div>
-          <span className="block text-2xl sm:text-3xl font-black text-white tabular-nums">
+          <span className="block text-3xl sm:text-4xl font-black text-white tracking-tight tabular-nums">
             {timeLeft.days.toString().padStart(2, "0")}
           </span>
-          <span className="text-[8px] font-bold text-[#808080] uppercase tracking-widest mt-0.5 block">Days</span>
+          <span className="text-[9px] font-bold text-[#808080] uppercase tracking-widest mt-1 block">Days</span>
         </div>
-        <div className="border-l border-white/[0.04] pl-4 sm:pl-6">
-          <span className="block text-2xl sm:text-3xl font-black text-white tabular-nums">
+        <div className="border-l border-white/[0.05] pl-6">
+          <span className="block text-3xl sm:text-4xl font-black text-white tracking-tight tabular-nums">
             {timeLeft.hours.toString().padStart(2, "0")}
           </span>
-          <span className="text-[8px] font-bold text-[#808080] uppercase tracking-widest mt-0.5 block">Hrs</span>
+          <span className="text-[9px] font-bold text-[#808080] uppercase tracking-widest mt-1 block">Hrs</span>
         </div>
-        <div className="border-l border-white/[0.04] pl-4 sm:pl-6">
-          <span className="block text-2xl sm:text-3xl font-black text-white tabular-nums">
+        <div className="border-l border-white/[0.05] pl-6">
+          <span className="block text-3xl sm:text-4xl font-black text-white tracking-tight tabular-nums">
             {timeLeft.minutes.toString().padStart(2, "0")}
           </span>
-          <span className="text-[8px] font-bold text-[#808080] uppercase tracking-widest mt-0.5 block">Mins</span>
+          <span className="text-[9px] font-bold text-[#808080] uppercase tracking-widest mt-1 block">Mins</span>
         </div>
-        <div className="border-l border-white/[0.04] pl-4 sm:pl-6">
-          <span className="block text-2xl sm:text-3xl font-black text-white tabular-nums">
+        <div className="border-l border-[#E10600]/25 pl-6">
+          <span className="block text-3xl sm:text-4xl font-black text-[#E10600] tracking-tight tabular-nums">
             {timeLeft.seconds.toString().padStart(2, "0")}
           </span>
-          <span className="text-[8px] font-bold text-[#808080] uppercase tracking-widest mt-0.5 block">Secs</span>
+          <span className="text-[9px] font-bold text-[#808080] uppercase tracking-widest mt-1 block">Secs</span>
         </div>
       </div>
     </div>

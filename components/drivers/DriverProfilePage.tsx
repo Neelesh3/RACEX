@@ -1,13 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronLeft, Calendar, MapPin, Ruler, Weight } from "lucide-react";
+import { ChevronLeft, Star } from "lucide-react";
 import type { Driver } from "@/types/driver";
 import type { DriverDetails } from "@/types/driver-details";
 import { CountryFlag } from "@/components/ui/CountryFlag";
+
+// Static particle templates array to keep the component pure and compile cleanly under React 19 / ESLint purity checks
+const PARTICLE_TEMPLATES = [
+  { id: 1, x: 15, y: 80, size: 2.2, duration: 14, delay: 0 },
+  { id: 2, x: 42, y: 75, size: 3.0, duration: 16, delay: 1 },
+  { id: 3, x: 73, y: 90, size: 1.8, duration: 18, delay: 2 },
+  { id: 4, x: 28, y: 65, size: 2.5, duration: 12, delay: 0.5 },
+  { id: 5, x: 59, y: 88, size: 1.5, duration: 15, delay: 1.5 },
+  { id: 6, x: 85, y: 70, size: 2.8, duration: 17, delay: 2.5 },
+  { id: 7, x: 31, y: 95, size: 1.2, duration: 20, delay: 3 },
+  { id: 8, x: 64, y: 60, size: 2.6, duration: 13, delay: 0.8 },
+  { id: 9, x: 19, y: 50, size: 2.0, duration: 19, delay: 1.2 },
+  { id: 10, x: 80, y: 40, size: 1.7, duration: 14, delay: 2.2 },
+];
 
 interface DriverProfilePageProps {
   driver: Driver;
@@ -15,44 +29,85 @@ interface DriverProfilePageProps {
 }
 
 export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
-  // Fallback mechanisms
   const resolvedPortrait = driver.image && driver.image !== "/icons/helmet.svg" ? driver.image : "/icons/helmet.svg";
+
+  // Procedural cursive path for driver initials signature animation
+  const signaturePath = useMemo(() => {
+    return "M 10,40 C 30,10 40,70 60,30 C 70,10 80,60 100,40 C 110,30 120,20 140,50 C 160,80 180,20 200,40";
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#050505] text-white overflow-hidden relative">
       {/* ── Background Atmospheric Layers ── */}
-      <div className="absolute inset-0 z-0">
-        {/* Dynamic color glow matching driver's constructor/team color */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Ambient Team Glow */}
         <div
-          className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] rounded-full blur-[140px] opacity-15 pointer-events-none mix-blend-screen"
+          className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[85vw] h-[85vw] rounded-full blur-[160px] opacity-25 mix-blend-screen transition-all duration-1000"
           style={{ backgroundColor: driver.teamColor }}
         />
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-[0.015] bg-[linear-gradient(#ffffff_1px,transparent_1px),linear-gradient(90deg,#ffffff_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        {/* Cinematic vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#050505_95%)] opacity-90 pointer-events-none" />
+        
+        {/* Tech Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.012] bg-[linear-gradient(#ffffff_1px,transparent_1px),linear-gradient(90deg,#ffffff_1px,transparent_1px)] bg-[size:50px_50px]" />
+        
+        {/* Soft Fog Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#050505_95%)] opacity-95" />
+
+        {/* Floating Particles */}
+        {PARTICLE_TEMPLATES.map((p) => (
+          <motion.div
+            key={p.id}
+            className="absolute rounded-full bg-white opacity-20"
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: p.size,
+              height: p.size,
+              boxShadow: `0 0 8px ${driver.teamColor}`,
+            }}
+            animate={{
+              y: ["0vh", "-20vh"],
+              opacity: [0.1, 0.4, 0.1],
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              delay: p.delay,
+              ease: "linear",
+            }}
+          />
+        ))}
+
+        {/* Helmet Silhouette Watermark */}
+        <div className="absolute top-[25%] right-[-5%] w-[45vw] h-[45vw] opacity-[0.02] select-none text-white">
+          <Image
+            src="/icons/helmet.svg"
+            alt="Helmet Watermark"
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
 
-      {/* Back Link Button */}
+      {/* Back to roster link */}
       <div className="absolute top-28 left-6 sm:left-12 z-30 pointer-events-auto">
         <Link
           href="/drivers"
-          className="flex items-center gap-2 text-xs font-bold tracking-widest text-white/50 hover:text-white uppercase transition-colors"
+          className="flex items-center gap-2 text-xs font-black tracking-[0.25em] text-white/40 hover:text-white uppercase transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>Drivers roster</span>
         </Link>
       </div>
 
-      {/* ── 1. Hero Reveal Section ── */}
-      <section className="relative min-h-[92vh] flex flex-col justify-end items-center px-6 pb-12 z-10">
-        {/* Giant Background Driver Number */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 mt-12">
+      {/* ── Section 1: Hero Portrait (Documentary Style) ── */}
+      <section className="relative min-h-screen flex flex-col justify-end items-center px-6 pb-20 z-10">
+        {/* Giant Translucent Racing Number */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 mt-8">
           <motion.span
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 0.07, scale: 1 }}
-            transition={{ duration: 1.1, ease: "easeOut" }}
-            className="text-[32vw] font-black font-mono leading-none tracking-tighter"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 0.08, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="text-[38vw] font-black font-mono leading-none tracking-tighter"
             style={{
               WebkitTextStroke: `2px ${driver.teamColor}`,
               color: "transparent",
@@ -62,187 +117,236 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
           </motion.span>
         </div>
 
-        {/* Large Driver Portrait */}
-        <div className="relative w-full max-w-[80vw] sm:max-w-[50vw] lg:max-w-[32vw] aspect-[3/4] flex items-end justify-center z-10">
+        {/* Main large portrait */}
+        <div className="relative w-full max-w-[90vw] sm:max-w-[65vw] lg:max-w-[42vw] aspect-[3/4] flex items-end justify-center z-10">
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.96 }}
+            initial={{ opacity: 0, y: 120, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full h-[85%] flex justify-center items-end"
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full h-[90%] flex justify-center items-end"
           >
             {resolvedPortrait === "/icons/helmet.svg" ? (
               <div className="flex flex-col items-center justify-center p-8 bg-white/[0.02] border border-white/5 rounded-3xl h-full w-full backdrop-blur-md">
                 <Image
                   src="/icons/helmet.svg"
                   alt={driver.name}
-                  width={140}
-                  height={140}
-                  className="opacity-60 filter drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-                  style={{ filter: `drop-shadow(0 0 16px ${driver.teamColor}35)` }}
+                  width={160}
+                  height={160}
+                  className="opacity-40 filter drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                  style={{ filter: `drop-shadow(0 0 16px ${driver.teamColor}25)` }}
                 />
-                <span className="mt-4 text-xs font-bold tracking-[0.2em] text-white/40 uppercase">Helmet graphic</span>
               </div>
             ) : (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={resolvedPortrait}
                 alt={driver.name}
-                className="max-h-full w-auto object-contain filter drop-shadow-[0_25px_45px_rgba(0,0,0,0.8)] z-10"
+                fill
+                className="object-contain filter drop-shadow-[0_30px_60px_rgba(0,0,0,0.95)] z-10"
+                priority
               />
             )}
-            {/* Portrait grounding shadow */}
-            <div className="absolute bottom-0 w-[80%] h-8 bg-black/80 blur-xl rounded-full pointer-events-none -z-10" />
+            {/* Ground shadow */}
+            <div className="absolute bottom-0 w-[90%] h-12 bg-black/95 blur-2xl rounded-full pointer-events-none -z-10" />
           </motion.div>
         </div>
 
-        {/* Driver Core Details */}
-        <div className="text-center z-20 mt-8 max-w-xl">
+        {/* Title reveal & Cursive initials */}
+        <div className="text-center z-20 mt-10 max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center justify-center gap-3 text-xs font-black uppercase tracking-[0.2em]"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex items-center justify-center gap-3 text-xs font-black uppercase tracking-[0.25em]"
           >
             <span style={{ color: driver.teamColor }}>{driver.team}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-            <span className="flex items-center gap-1.5 text-white/60">
-              <CountryFlag country={driver.country} fallback={driver.flag} className="w-4 h-3 rounded-sm" />
+            <span className="flex items-center gap-2 text-white/50">
+              <CountryFlag country={driver.country} fallback={driver.flag} className="w-4.5 h-3 rounded-sm" />
               {driver.country}
             </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-none text-white"
           >
-            {driver.name}
+            {driver.name.split(" ")[0]}
+            <span className="block text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.8)" }}>
+              {driver.name.split(" ").slice(1).join(" ")}
+            </span>
           </motion.h1>
 
-          {/* Signature placeholder / cursive initials */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.25 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-4 flex justify-center h-8"
-          >
-            <span className="font-serif italic text-lg tracking-[0.2em] text-white">
-              {driver.name.split(" ").map(n => n[0]).join(".")}
-            </span>
-          </motion.div>
+          {/* Underline line animation */}
+          <div className="flex justify-center mt-6">
+            <svg width="220" height="60" viewBox="0 0 220 60" className="opacity-40">
+              <motion.path
+                d={signaturePath}
+                fill="none"
+                stroke={driver.teamColor}
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.8, delay: 1.0, ease: "easeInOut" }}
+              />
+            </svg>
+          </div>
         </div>
       </section>
 
-      {/* ── 2. Cinematic Info Grid & Statistics ── */}
-      <section className="relative z-10 mx-auto max-w-5xl px-6 py-20 border-t border-white/[0.05]">
-        
-        {/* Statistics highlights bar */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-20 text-center">
-          <div className="border-r border-white/[0.05] py-4">
-            <span className="block text-3xl font-black text-white">{details.championships}</span>
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mt-1">Championships</span>
-          </div>
-          <div className="border-r border-white/[0.05] py-4">
-            <span className="block text-3xl font-black text-white">{details.wins}</span>
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mt-1">GP Wins</span>
-          </div>
-          <div className="border-r border-white/[0.05] py-4">
-            <span className="block text-3xl font-black text-white">{details.podiums}</span>
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mt-1">Podiums</span>
-          </div>
-          <div className="border-r border-white/[0.05] py-4">
-            <span className="block text-3xl font-black text-white">{details.poles}</span>
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mt-1">Poles</span>
-          </div>
-          <div className="py-4">
-            <span className="block text-3xl font-black text-white">{details.fastestLaps}</span>
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mt-1">Fastest Laps</span>
-          </div>
-        </div>
+      {/* ── Section 2: Career Snapshot ── */}
+      <section className="relative z-10 mx-auto max-w-4xl px-6 py-32 text-center sm:text-left">
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block mb-6">
+          {"// THE LEGACY"}
+        </span>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight text-white max-w-3xl"
+        >
+          {driver.name.split(" ")[0]} made his F1 debut in <span style={{ color: driver.teamColor }}>{details.debutSeason}</span>. Since then, he has established himself as a dominant presence on the grid.
+        </motion.h2>
+      </section>
 
-        {/* Narrative & Vital Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start mb-20">
-          {/* Bio Story */}
-          <div className="md:col-span-2 space-y-6">
-            <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[#E10600] pl-3">
-              Career narrative
-            </h2>
-            <p className="text-sm sm:text-base leading-relaxed text-[#B5B5B5]">
-              {details.biography}
-            </p>
-            <p className="text-xs sm:text-sm leading-relaxed text-neutral-400">
-              {details.careerSummary}
-            </p>
+      {/* ── Section 3: Achievements (Championship Stars) ── */}
+      <section className="relative z-10 mx-auto max-w-5xl px-6 py-24 border-t border-white/[0.05]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          {/* Achievements Stats */}
+          <div className="md:col-span-8 grid grid-cols-2 gap-8 text-center sm:text-left">
+            <div>
+              <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest block">GP Victories</span>
+              <span className="text-5xl sm:text-6xl font-black text-white block mt-2 font-mono">{details.wins}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest block">Podium Finishes</span>
+              <span className="text-5xl sm:text-6xl font-black text-white block mt-2 font-mono">{details.podiums}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest block">Pole Positions</span>
+              <span className="text-5xl sm:text-6xl font-black text-white block mt-2 font-mono">{details.poles}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest block">Fastest Laps</span>
+              <span className="text-5xl sm:text-6xl font-black text-white block mt-2 font-mono">{details.fastestLaps}</span>
+            </div>
           </div>
 
-          {/* Physical Stats Vitals Card */}
-          <div className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-6 space-y-4">
-            <h3 className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">Driver Vitals</h3>
+          {/* Championship Stars Card */}
+          <div className="md:col-span-4 rounded-3xl border border-white/[0.06] bg-white/[0.01] p-8 text-center backdrop-blur-md relative">
+            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-neutral-500 block mb-6">Titles Won</span>
             
-            <div className="flex items-center gap-3 border-b border-white/[0.04] pb-2 text-xs">
-              <Calendar className="w-4 h-4 text-[#E10600]" />
-              <div className="flex-1 flex justify-between">
-                <span className="text-[#808080]">Born</span>
-                <span className="font-semibold text-white/80">{details.birthDate}</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 border-b border-white/[0.04] pb-2 text-xs">
-              <MapPin className="w-4 h-4 text-[#E10600]" />
-              <div className="flex-1 flex justify-between">
-                <span className="text-[#808080]">Home</span>
-                <span className="font-semibold text-white/80">{details.birthPlace}</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 border-b border-white/[0.04] pb-2 text-xs">
-              <Ruler className="w-4 h-4 text-[#E10600]" />
-              <div className="flex-1 flex-between flex justify-between">
-                <span className="text-[#808080]">Height</span>
-                <span className="font-semibold text-white/80">{details.height}</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 text-xs">
-              <Weight className="w-4 h-4 text-[#E10600]" />
-              <div className="flex-1 flex justify-between">
-                <span className="text-[#808080]">Weight</span>
-                <span className="font-semibold text-white/80">{details.weight}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Career Highlights Timeline ── */}
-        <div className="space-y-12">
-          <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[#E10600] pl-3">
-            Career highlights
-          </h2>
-          
-          <div className="relative border-l border-white/[0.08] ml-4 pl-8 space-y-10">
-            {details.timeline.map((item, idx) => (
-              <div key={`${item.year}-${idx}`} className="relative">
-                {/* Timeline node */}
-                <div 
-                  className="absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border border-white/20 bg-[#050505] flex items-center justify-center transition-colors hover:border-[#E10600]"
-                  style={{ borderColor: idx === 0 ? driver.teamColor : "" }}
-                >
-                  <div 
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: idx === 0 ? driver.teamColor : "rgba(255,255,255,0.3)" }}
-                  />
+            {details.championships > 0 ? (
+              <div className="flex flex-col items-center">
+                <div className="flex justify-center gap-2 mb-4">
+                  {Array.from({ length: details.championships }).map((_, idx) => (
+                    <motion.div
+                      key={idx}
+                      animate={{ rotate: 360, scale: [1, 1.15, 1] }}
+                      transition={{ duration: 6, repeat: Infinity, delay: idx * 0.5 }}
+                    >
+                      <Star className="w-6 h-6 text-[#FFD700] fill-[#FFD700]" />
+                    </motion.div>
+                  ))}
                 </div>
-                
-                <span className="text-xs font-mono font-bold tracking-widest text-[#808080] bg-white/[0.03] border border-white/[0.05] px-2 py-0.5 rounded">
-                  {item.year}
-                </span>
-                <h3 className="text-base font-bold text-white mt-2">{item.achievement}</h3>
-                {item.description && (
-                  <p className="text-xs text-neutral-400 mt-1 leading-relaxed max-w-2xl">{item.description}</p>
-                )}
+                <h3 className="text-xl font-black uppercase text-white">{details.championships}x World Champion</h3>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-wider block mt-1">Formula One Drivers Champion</span>
               </div>
-            ))}
+            ) : (
+              <div className="flex flex-col items-center py-4">
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center mb-4">
+                  <Star className="w-5 h-5 text-neutral-600" />
+                </div>
+                <h3 className="text-sm font-bold uppercase text-white">Grid Contender</h3>
+                <span className="text-[9px] text-neutral-500 uppercase tracking-wider block mt-1">Pursuing Maiden Title Campaign</span>
+              </div>
+            )}
           </div>
         </div>
+      </section>
 
+      {/* ── Section 4: Career Timeline (Scroll Reveal) ── */}
+      <section className="relative z-10 mx-auto max-w-4xl px-6 py-24 border-t border-white/[0.05]">
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block mb-12">
+          {"// CHRONOLOGY"}
+        </span>
+
+        <div className="relative border-l border-white/[0.08] ml-4 pl-8 space-y-12">
+          {details.timeline.map((item, idx) => (
+            <motion.div
+              key={`${item.year}-${idx}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
+            >
+              {/* Timeline circle node */}
+              <div 
+                className="absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border border-white/20 bg-[#050505] flex items-center justify-center"
+                style={{ borderColor: idx === 0 ? driver.teamColor : "" }}
+              >
+                <div 
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: idx === 0 ? driver.teamColor : "rgba(255,255,255,0.3)" }}
+                />
+              </div>
+
+              <span className="text-xs font-mono font-bold text-[#808080] bg-white/[0.03] border border-white/[0.05] px-2 py-0.5 rounded">
+                {item.year}
+              </span>
+              <h3 className="text-lg font-black text-white uppercase tracking-wider mt-2">{item.achievement}</h3>
+              {item.description && (
+                <p className="text-xs text-neutral-400 mt-1.5 leading-relaxed max-w-2xl">{item.description}</p>
+              )}
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Section 5: Driver Story (Editorial Narratives) ── */}
+      <section className="relative z-10 mx-auto max-w-3xl px-6 py-24 border-t border-white/[0.05] space-y-12">
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block">
+          {"// IN DEPTH"}
+        </span>
+
+        <div className="space-y-8">
+          <p className="text-lg sm:text-xl font-light leading-relaxed text-zinc-300 italic border-l-2 border-white/10 pl-6">
+            &ldquo;{details.biography}&rdquo;
+          </p>
+          <p className="text-sm leading-relaxed text-neutral-400">
+            {details.careerSummary}
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 6: Career Statistics (Telemetry style) ── */}
+      <section className="relative z-10 mx-auto max-w-4xl px-6 py-24 border-t border-white/[0.05]">
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block mb-12">
+          {"// DRIVER TELEMETRY"}
+        </span>
+
+        {/* Terminals specs block */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 rounded-3xl border border-white/[0.06] bg-white/[0.01] p-8 font-mono">
+          <div>
+            <span className="text-[8px] font-bold text-neutral-600 uppercase tracking-widest block">Born</span>
+            <span className="text-sm font-black text-white block mt-1">{details.birthDate}</span>
+          </div>
+          <div>
+            <span className="text-[8px] font-bold text-neutral-600 uppercase tracking-widest block">Origin</span>
+            <span className="text-sm font-black text-white block mt-1 truncate">{details.birthPlace.split(",")[0]}</span>
+          </div>
+          <div>
+            <span className="text-[8px] font-bold text-neutral-600 uppercase tracking-widest block">Height</span>
+            <span className="text-sm font-black text-white block mt-1">{details.height}</span>
+          </div>
+          <div>
+            <span className="text-[8px] font-bold text-neutral-600 uppercase tracking-widest block">Weight</span>
+            <span className="text-sm font-black text-white block mt-1">{details.weight}</span>
+          </div>
+        </div>
       </section>
 
       {/* Explore Grid Navigation Footer */}
