@@ -94,7 +94,7 @@ export function RevealScene() {
       11.0 - f * 9.8,
       2.8 - f * 1.6
     ];
-    baseTarget = [0, f * 0.2, 0];
+    baseTarget = [-1.0 * f, f * 0.2, 0];
   } else if (t <= 6.0) {
     // 4. Front Three-Quarter Hero: camera orbits to a 45° angle (ends at [6.8, 1.3, 6.8])
     const f = (t - 4.2) / 1.8;
@@ -103,7 +103,7 @@ export function RevealScene() {
       1.2 + f * 0.1,
       1.2 + f * 5.6
     ];
-    baseTarget = [0, 0.2 + f * 0.1, 0];
+    baseTarget = [-1.0 - 0.2 * f, 0.2 + f * 0.1, 0];
   } else {
     // 5. Hero Lock & Scroll: locked 45° angle (Z=6.8/X=6.8 wide lens framing), pulls back on exit scroll
     basePosition = [
@@ -111,7 +111,7 @@ export function RevealScene() {
       1.3 + easedScroll * 1.0,
       6.8 + easedScroll * 2.0
     ];
-    baseTarget = [0, 0.3, 0];
+    baseTarget = [-1.2, 0.3, 0];
   }
 
   return (
@@ -137,11 +137,63 @@ export function RevealScene() {
         far={2}
       />
 
-      {/* Dark matte reflective floor ground plane mesh receiver */}
+      {/* Premium dark reflective epoxy floor with physical clearcoat properties */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.805, 0]} receiveShadow>
-        <planeGeometry args={[40, 40]} />
-        <meshStandardMaterial color="#080808" roughness={0.7} metalness={0.15} />
+        <planeGeometry args={[80, 80]} />
+        <meshPhysicalMaterial 
+          color="#040404" 
+          roughness={0.22} 
+          metalness={0.8}
+          clearcoat={1.0}
+          clearcoatRoughness={0.12}
+          reflectivity={0.9}
+        />
       </mesh>
+
+      {/* Industrial Garage Architecture (Beams & Columns) pushed deeper into atmospheric fog */}
+      <group position={[0, 0, -12]}>
+        {/* Support Pillars */}
+        <mesh position={[-8, 2, 0]}>
+          <boxGeometry args={[0.5, 6, 0.5]} />
+          <meshStandardMaterial color="#0c0c0c" roughness={0.8} metalness={0.9} />
+        </mesh>
+        <mesh position={[8, 2, 0]}>
+          <boxGeometry args={[0.5, 6, 0.5]} />
+          <meshStandardMaterial color="#0c0c0c" roughness={0.8} metalness={0.9} />
+        </mesh>
+        
+        {/* Vertical LED light bars on pillars to cast elegant vertical reflection lines */}
+        <mesh position={[-7.72, 2, 0.28]}>
+          <boxGeometry args={[0.06, 3.5, 0.02]} />
+          <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={6} />
+        </mesh>
+        <mesh position={[7.72, 2, 0.28]}>
+          <boxGeometry args={[0.06, 3.5, 0.02]} />
+          <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={6} />
+        </mesh>
+
+        {/* Ceiling beams */}
+        <mesh position={[0, 5, 0]}>
+          <boxGeometry args={[20, 0.3, 0.5]} />
+          <meshStandardMaterial color="#101010" roughness={0.7} metalness={0.8} />
+        </mesh>
+      </group>
+
+      {/* Overhead LED strip lights to cast reflections onto epoxy floor & F1 car */}
+      <group position={[0, 4.2, -2]}>
+        <mesh position={[-4, 0, 0]} rotation={[0, 0, 0]}>
+          <boxGeometry args={[0.08, 0.02, 12]} />
+          <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={6} />
+        </mesh>
+        <mesh position={[4, 0, 0]} rotation={[0, 0, 0]}>
+          <boxGeometry args={[0.08, 0.02, 12]} />
+          <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={6} />
+        </mesh>
+        <mesh position={[0, 0, -4]} rotation={[0, 0, Math.PI / 2]}>
+          <boxGeometry args={[0.08, 0.02, 14]} />
+          <meshStandardMaterial color="#ff1a1a" emissive="#ff1a1a" emissiveIntensity={4} />
+        </mesh>
+      </group>
 
       <RevealEffects />
       <CameraRig

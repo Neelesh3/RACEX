@@ -6,6 +6,7 @@ export const ROUTES = {
   HOME: "/",
   DRIVERS: "/drivers",
   TEAMS: "/teams",
+  GARAGE: "/garage",
   RACES: "/races",
   CIRCUITS: "/circuits",
   STANDINGS: "/standings",
@@ -20,6 +21,11 @@ export const NAVIGATION_ITEMS = [
     label: "Home",
     href: ROUTES.HOME,
     description: "RaceX Dashboard",
+  },
+  {
+    label: "Garage",
+    href: ROUTES.GARAGE,
+    description: "Constructor Garage Experience",
   },
   {
     label: "Drivers",

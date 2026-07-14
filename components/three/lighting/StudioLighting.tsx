@@ -52,15 +52,26 @@ export function StudioLighting({
 
       {/* Back Light / Rim Light (Highlights car edges and carbon silhouette) */}
       <directionalLight
-        position={[0, 6, -8]}
-        intensity={rimIntensity}
+        position={[0, 5, -6]}
+        intensity={rimIntensity * 1.5}
+        color="#ffffff"
+      />
+
+      {/* Volumetric Studio SpotLight sculpting the top-down nosecone/cockpit details */}
+      <spotLight
+        position={[0, 8, 0]}
+        intensity={2.0}
+        angle={0.55}
+        penumbra={0.95}
+        castShadow={castShadow}
+        shadow-bias={-0.0001}
         color="#ffffff"
       />
 
       {/* Subtle floor-bounce point light */}
       <pointLight
         position={[0, -2, 0]}
-        intensity={0.2}
+        intensity={0.15}
         color="#E10600"
       />
     </group>

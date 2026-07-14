@@ -1,0 +1,248 @@
+export interface GarageDriver {
+  name: string;
+  number: number;
+  flag: string;
+}
+
+export interface GarageTeamConfig {
+  id: string;
+  teamName: string;
+  carName: string;
+  season: string;
+  primaryColor: string;
+  secondaryColor: string;
+  backgroundAsset: string;
+  carAsset: string;
+  logoAsset: string;
+  typography: string;
+  championships: number;
+  wins: number;
+  podiums: number;
+  drivers: GarageDriver[];
+  engine: string;
+  shortStory: string;
+  gradient: string; // Base background gradient fallback
+}
+
+export const GARAGE_TEAMS: GarageTeamConfig[] = [
+  {
+    id: "ferrari",
+    teamName: "Scuderia Ferrari",
+    carName: "SF-24",
+    season: "2026",
+    primaryColor: "#DC0000",
+    secondaryColor: "#FFFFFF",
+    backgroundAsset: "/garage/backgrounds/ferrari.webp",
+    carAsset: "/teams/cars/ferrari.png", // fallback to existing png
+    logoAsset: "/teams/logos/ferrari.svg",
+    typography: "FERRARI",
+    championships: 16,
+    wins: 243,
+    podiums: 810,
+    drivers: [
+      { name: "Charles Leclerc", number: 16, flag: "🇲🇨" },
+      { name: "Lewis Hamilton", number: 44, flag: "🇬🇧" },
+    ],
+    engine: "Ferrari",
+    shortStory: "The most iconic name in motor racing. Built on Enzo Ferrari's singular focus of winning races, the Scuderia enters the 2026 era with a stellar lineup aiming to reclaim the ultimate crown.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(220, 0, 0, 0.18) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "mercedes",
+    teamName: "Mercedes-AMG Petronas",
+    carName: "W17",
+    season: "2026",
+    primaryColor: "#00D2BE",
+    secondaryColor: "#C0C0C0",
+    backgroundAsset: "/garage/backgrounds/mercedes.webp",
+    carAsset: "/teams/cars/mercedes.png",
+    logoAsset: "/teams/logos/mercedes.svg",
+    typography: "MERCEDES",
+    championships: 8,
+    wins: 125,
+    podiums: 294,
+    drivers: [
+      { name: "George Russell", number: 63, flag: "🇬🇧" },
+      { name: "Kimi Antonelli", number: 12, flag: "🇮🇹" },
+    ],
+    engine: "Mercedes",
+    shortStory: "Precision engineering meets unmatched dominance. Rebuilding for the 2026 power unit regulations, Mercedes harnesses hybrid innovation to return to their championship-winning form.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(0, 210, 190, 0.12) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "red-bull",
+    teamName: "Oracle Red Bull Racing",
+    carName: "RB22",
+    season: "2026",
+    primaryColor: "#1E41FF",
+    secondaryColor: "#FFEC00",
+    backgroundAsset: "/garage/backgrounds/red-bull.webp",
+    carAsset: "/teams/cars/red-bull.png",
+    logoAsset: "/teams/logos/red-bull.svg",
+    typography: "RED BULL",
+    championships: 6,
+    wins: 122,
+    podiums: 271,
+    drivers: [
+      { name: "Max Verstappen", number: 1, flag: "🇳🇱" },
+      { name: "Liam Lawson", number: 30, flag: "🇳🇿" },
+    ],
+    engine: "Honda RBPT",
+    shortStory: "A force of absolute speed and disruptive strategy. Red Bull has set the standard in modern aerodynamics, proving that a bold mindset and extreme innovation create grid dominance.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(30, 65, 255, 0.15) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "mclaren",
+    teamName: "McLaren Formula 1 Team",
+    carName: "MCL39",
+    season: "2026",
+    primaryColor: "#FF8000",
+    secondaryColor: "#000000",
+    backgroundAsset: "/garage/backgrounds/mclaren.webp",
+    carAsset: "/teams/cars/mclaren.png",
+    logoAsset: "/teams/logos/mclaren.svg",
+    typography: "MCLAREN",
+    championships: 8,
+    wins: 184,
+    podiums: 514,
+    drivers: [
+      { name: "Lando Norris", number: 4, flag: "🇬🇧" },
+      { name: "Oscar Piastri", number: 81, flag: "🇦🇺" },
+    ],
+    engine: "Mercedes",
+    shortStory: "Formed by Bruce McLaren in 1963, this team has defined legacy, resilience, and resurgence. Armed with a young, electric driver lineup, McLaren battles once again at the front of the grid.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(255, 128, 0, 0.15) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "aston-martin",
+    teamName: "Aston Martin Aramco",
+    carName: "AMR26",
+    season: "2026",
+    primaryColor: "#006F62",
+    secondaryColor: "#CEDC00",
+    backgroundAsset: "/garage/backgrounds/aston-martin.webp",
+    carAsset: "/teams/cars/aston-martin.png",
+    logoAsset: "/teams/logos/aston-martin.svg",
+    typography: "ASTON MARTIN",
+    championships: 0,
+    wins: 0,
+    podiums: 9,
+    drivers: [
+      { name: "Fernando Alonso", number: 14, flag: "🇪🇸" },
+      { name: "Lance Stroll", number: 18, flag: "🇨🇦" },
+    ],
+    engine: "Honda",
+    shortStory: "Understated elegance meets high-performance ambition. Propelled by state-of-the-art facilities in Silverstone and unmatched investment, Aston Martin is building an F1 powerhouse.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(0, 111, 98, 0.15) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "alpine",
+    teamName: "BWT Alpine F1 Team",
+    carName: "A526",
+    season: "2026",
+    primaryColor: "#0090FF",
+    secondaryColor: "#FF80B0",
+    backgroundAsset: "/garage/backgrounds/alpine.webp",
+    carAsset: "/teams/cars/alpine.png",
+    logoAsset: "/teams/logos/alpine.svg",
+    typography: "ALPINE",
+    championships: 2,
+    wins: 21,
+    podiums: 59,
+    drivers: [
+      { name: "Pierre Gasly", number: 10, flag: "🇫🇷" },
+      { name: "Jack Doohan", number: 7, flag: "🇦🇺" },
+    ],
+    engine: "Renault",
+    shortStory: "Celebrating French motorsport heritage with Enstone's engineering agility. Alpine continues its relentless quest to unlock performance, pushing boundaries on street and circuit alike.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(0, 144, 255, 0.12) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "williams",
+    teamName: "Williams Racing",
+    carName: "FW48",
+    season: "2026",
+    primaryColor: "#005AFF",
+    secondaryColor: "#FFFFFF",
+    backgroundAsset: "/garage/backgrounds/williams.webp",
+    carAsset: "/teams/cars/williams.png",
+    logoAsset: "/teams/logos/williams.svg",
+    typography: "WILLIAMS",
+    championships: 9,
+    wins: 114,
+    podiums: 313,
+    drivers: [
+      { name: "Alexander Albon", number: 23, flag: "🇹🇭" },
+      { name: "Carlos Sainz", number: 55, flag: "🇪🇸" },
+    ],
+    engine: "Mercedes",
+    shortStory: "A classic heritage team undergoing a modern renaissance. Driven by new leadership and structural investment, Williams combines their historic grit with future-facing race technology.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(0, 90, 255, 0.15) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "haas",
+    teamName: "MoneyGram Haas F1 Team",
+    carName: "VF-26",
+    season: "2026",
+    primaryColor: "#B6BABD",
+    secondaryColor: "#E10600",
+    backgroundAsset: "/garage/backgrounds/haas.webp",
+    carAsset: "/teams/cars/haas.png",
+    logoAsset: "/teams/logos/haas.svg",
+    typography: "HAAS",
+    championships: 0,
+    wins: 0,
+    podiums: 0,
+    drivers: [
+      { name: "Esteban Ocon", number: 31, flag: "🇫🇷" },
+      { name: "Oliver Bearman", number: 87, flag: "🇬🇧" },
+    ],
+    engine: "Ferrari",
+    shortStory: "Lean, efficient, and gritty. The American-owned Haas team punches above its weight through key strategic partnerships, proving that speed does not always require bloated budgets.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(182, 186, 189, 0.12) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "kick-sauber",
+    teamName: "Stake F1 Team Kick Sauber",
+    carName: "C46",
+    season: "2026",
+    primaryColor: "#52E252",
+    secondaryColor: "#000000",
+    backgroundAsset: "/garage/backgrounds/kick-sauber.webp",
+    carAsset: "/teams/cars/audi.png", // uses audi.png
+    logoAsset: "/teams/logos/kick-sauber.svg",
+    typography: "SAUBER",
+    championships: 0,
+    wins: 1,
+    podiums: 27,
+    drivers: [
+      { name: "Nico Hülkenberg", number: 27, flag: "🇩🇪" },
+      { name: "Gabriel Bortoleto", number: 5, flag: "🇧🇷" },
+    ],
+    engine: "Ferrari",
+    shortStory: "Swiss engineering precision preparing for the ultimate transition. Backed by state-of-the-art wind tunnels in Hinwil, the squad builds momentum ahead of their official Audi transition.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(82, 226, 82, 0.12) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+  {
+    id: "racing-bulls",
+    teamName: "Visa Cash App RB",
+    carName: "VCARB 02",
+    season: "2026",
+    primaryColor: "#2B4562",
+    secondaryColor: "#FFFFFF",
+    backgroundAsset: "/garage/backgrounds/racing-bulls.webp",
+    carAsset: "/teams/cars/racing-bulls.png",
+    logoAsset: "/teams/logos/racing-bulls.svg",
+    typography: "VCARB",
+    championships: 0,
+    wins: 0,
+    podiums: 2,
+    drivers: [
+      { name: "Yuki Tsunoda", number: 22, flag: "🇯🇵" },
+      { name: "Isaac Hadjar", number: 6, flag: "🇫🇷" },
+    ],
+    engine: "Honda RBPT",
+    shortStory: "Based in Faenza, Italy, Racing Bulls serves as a dynamic sister platform to Red Bull Racing, channeling young adrenaline and technical agility into front-running midfield contenders.",
+    gradient: "radial-gradient(circle at 60% 40%, rgba(43, 69, 98, 0.15) 0%, rgba(5, 5, 5, 1) 70%)",
+  },
+];
