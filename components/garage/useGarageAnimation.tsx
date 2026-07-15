@@ -4,6 +4,9 @@ import React, { createContext, useContext, useState, useCallback, useRef } from 
 import { GARAGE_TEAMS } from "./GarageState";
 import { GARAGE_TIMELINE } from "./GarageTimeline";
 
+import { useTheme } from "@/lib/theme/theme-utils";
+import { useAudio } from "@/lib/audio/useAudio";
+
 export type TransitionPhase = "idle" | "exiting" | "entering";
 
 interface GarageContextProps {
@@ -22,6 +25,8 @@ export function GarageProvider({ children }: { children: React.ReactNode }) {
   const [displayTeamIndex, setDisplayTeamIndex] = useState(0);
   const [transitionPhase, setTransitionPhase] = useState<TransitionPhase>("idle");
   const [isLocked, setIsLocked] = useState(false);
+  const { setTheme } = useTheme();
+  const { play } = useAudio();
   
   // Keep refs for timers to cleanup on unmount
   const swapTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -34,6 +39,9 @@ export function GarageProvider({ children }: { children: React.ReactNode }) {
     setTransitionPhase("exiting");
     setCurrentTeamIndex(nextIndex);
 
+    // Play mechanical hydraulics swap sound
+    play("hydraulics");
+
     // Clear any existing timers
     if (swapTimerRef.current) clearTimeout(swapTimerRef.current);
     if (lockTimerRef.current) clearTimeout(lockTimerRef.current);
@@ -41,6 +49,7 @@ export function GarageProvider({ children }: { children: React.ReactNode }) {
     // Swap assets mid-transition
     swapTimerRef.current = setTimeout(() => {
       setDisplayTeamIndex(nextIndex);
+      setTheme(GARAGE_TEAMS[nextIndex].id);
       setTransitionPhase("entering");
     }, GARAGE_TIMELINE.SWAP_DELAY_MS);
 
@@ -48,8 +57,11 @@ export function GarageProvider({ children }: { children: React.ReactNode }) {
     lockTimerRef.current = setTimeout(() => {
       setTransitionPhase("idle");
       setIsLocked(false);
+      
+      // Play engine rev sound when the car settles
+      play("rev");
     }, GARAGE_TIMELINE.TOTAL_LOCK_MS);
-  }, [isLocked]);
+  }, [isLocked, setTheme, play]);
 
   const nextTeam = useCallback(() => {
     const nextIndex = (currentTeamIndex + 1) % GARAGE_TEAMS.length;

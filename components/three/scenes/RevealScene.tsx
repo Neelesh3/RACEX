@@ -9,11 +9,12 @@ import { RevealEffects } from "../effects/RevealEffects";
 import { CameraRig } from "../camera/CameraRig";
 
 import { ContactShadows } from "@react-three/drei";
+import { useAudio } from "@/lib/audio/useAudio";
 
 export function RevealScene() {
   const [scrollY, setScrollY] = useState(0);
-  const [introTime, setIntroTime] = useState(0);
-  const [timelinePhase, setTimelinePhase] = useState<"darkness" | "ignition" | "discovery" | "reveal">("darkness");
+  const { loaderTime, isLoaderActive } = useAudio();
+  const introTime = isLoaderActive ? loaderTime : 6.2;
 
   // Track window scroll offset
   useEffect(() => {
@@ -24,27 +25,17 @@ export function RevealScene() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animate the reveal timeline phase durations in react space (6.0s total cinematic orbit choreography)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIntroTime((prev) => {
-        const next = prev + 0.1;
-        if (next < 1.0) {
-          setTimelinePhase("darkness");
-        } else if (next < 2.5) {
-          setTimelinePhase("ignition"); // Overhead reveal light sweep
-        } else if (next < 6.0) {
-          setTimelinePhase("discovery"); // Side orbit -> Front Three-Quarter transition
-        } else {
-          setTimelinePhase("reveal"); // Hero Lock state
-          clearInterval(timer);
-        }
-        return next;
-      });
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, []);
+  // Compute timeline phase
+  let timelinePhase: "darkness" | "ignition" | "discovery" | "reveal" = "darkness";
+  if (introTime < 1.0) {
+    timelinePhase = "darkness";
+  } else if (introTime < 2.5) {
+    timelinePhase = "ignition";
+  } else if (introTime < 6.0) {
+    timelinePhase = "discovery";
+  } else {
+    timelinePhase = "reveal";
+  }
 
   // Compute animated lighting intensities based on current timeline phase
   let resolvedKeyIntensity = 0.05;

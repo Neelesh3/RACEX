@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
 import type { Race } from "@/types/race";
+import { useTheme } from "@/lib/theme/theme-utils";
 
 interface RaceCountdownProps {
   race: Race;
 }
 
 export default function RaceCountdown({ race }: RaceCountdownProps) {
+  const { currentTheme } = useTheme();
   const [timeLeft, setTimeLeft] = useState(() => {
     const isCompleted = race.status === "completed";
     return {
@@ -61,8 +63,11 @@ export default function RaceCountdown({ race }: RaceCountdownProps) {
   }
 
   return (
-    <div className="relative z-20 mt-[-45px] max-w-xl mx-auto px-8 py-5 rounded-2xl border border-[#E10600]/20 bg-[#0A0A0A]/90 backdrop-blur-md shadow-2xl flex flex-col items-center gap-4">
-      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E10600] flex items-center gap-2">
+    <div 
+      className="relative z-20 mt-[-45px] max-w-xl mx-auto px-8 py-5 rounded-2xl border bg-[#0A0A0A]/90 backdrop-blur-md shadow-2xl flex flex-col items-center gap-4 transition-all duration-1000"
+      style={{ borderColor: currentTheme.border }}
+    >
+      <span className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2" style={{ color: currentTheme.accent }}>
         <Clock className="w-4 h-4 animate-spin" style={{ animationDuration: "10s" }} />
         <span>T-MINUS TO LIGHTS OUT</span>
       </span>
@@ -86,8 +91,8 @@ export default function RaceCountdown({ race }: RaceCountdownProps) {
           </span>
           <span className="text-[9px] font-bold text-[#808080] uppercase tracking-widest mt-1 block">Mins</span>
         </div>
-        <div className="border-l border-[#E10600]/25 pl-6">
-          <span className="block text-3xl sm:text-4xl font-black text-[#E10600] tracking-tight tabular-nums">
+        <div className="border-l pl-6" style={{ borderLeftColor: currentTheme.border }}>
+          <span className="block text-3xl sm:text-4xl font-black tracking-tight tabular-nums" style={{ color: currentTheme.accent }}>
             {timeLeft.seconds.toString().padStart(2, "0")}
           </span>
           <span className="text-[9px] font-bold text-[#808080] uppercase tracking-widest mt-1 block">Secs</span>

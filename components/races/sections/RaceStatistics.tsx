@@ -3,12 +3,14 @@
 import React from "react";
 import { Wind } from "lucide-react";
 import type { RaceDetails } from "@/types/race-details";
+import { useTheme } from "@/lib/theme/theme-utils";
 
 interface RaceStatisticsProps {
   details: RaceDetails;
 }
 
 export default function RaceStatistics({ details }: RaceStatisticsProps) {
+  const { currentTheme } = useTheme();
   const stats = details.statistics;
   if (!stats) return null;
 
@@ -36,7 +38,7 @@ export default function RaceStatistics({ details }: RaceStatisticsProps) {
         </div>
 
         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-5 flex flex-col justify-center items-center">
-          <div className="flex items-center gap-1 text-[#E10600]">
+          <div className="flex items-center gap-1" style={{ color: currentTheme.accent }}>
             <Wind className="w-4 h-4" />
             <span className="text-sm font-black text-white font-mono">{stats.drsZones} Zones</span>
           </div>
@@ -46,7 +48,7 @@ export default function RaceStatistics({ details }: RaceStatisticsProps) {
         {/* Lap Record Highlight */}
         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-5 col-span-2 text-center">
           <span className="text-[8px] font-bold text-neutral-500 uppercase tracking-widest block mb-2">Track Lap Record Time</span>
-          <span className="text-3xl font-black text-[#E10600] font-mono tracking-tight">{stats.lapRecord}</span>
+          <span className="text-3xl font-black font-mono tracking-tight" style={{ color: currentTheme.accent }}>{stats.lapRecord}</span>
         </div>
       </div>
     </div>

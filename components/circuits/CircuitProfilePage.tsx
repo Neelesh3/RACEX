@@ -21,6 +21,8 @@ const CIRCUIT_META: Record<string, { coords: string; elevation: string; keyCorne
   monza: { coords: "45.6189° N, 9.2812° E", elevation: "12m", keyCorner: "Variante Ascari", accentColor: "#00E17A" },
 };
 
+import { useTheme } from "@/lib/theme/theme-utils";
+
 interface CircuitProfilePageProps {
   circuit: Circuit;
   details: CircuitDetails;
@@ -30,6 +32,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
   const [imageError, setImageError] = useState(false);
   const mapUrl = `/circuits/layouts/${circuit.id}.svg`;
   const heroImageSrc = circuit.image || (details.gallery && details.gallery[0]) || "";
+  const { currentTheme, setTheme } = useTheme();
 
   // Resolve custom metadata parameters
   const meta = useMemo(() => {
@@ -41,6 +44,16 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
     };
   }, [circuit.id]);
 
+  // Set circuit event theme on mount
+  React.useEffect(() => {
+    const circuitId = circuit.id.toLowerCase();
+    if (["monaco", "silverstone", "suzuka", "spa"].includes(circuitId)) {
+      setTheme(`event-${circuitId}`);
+    } else {
+      setTheme("neutral");
+    }
+  }, [circuit.id, setTheme]);
+
   return (
     <main className="min-h-screen bg-[#050505] text-white overflow-hidden relative">
       {/* ── Background Atmospheric Layers ── */}
@@ -48,7 +61,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
         {/* Country-colored Ambient Glow */}
         <div
           className="absolute top-[20%] left-[10%] w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-15 pointer-events-none mix-blend-screen"
-          style={{ backgroundColor: meta.accentColor }}
+          style={{ backgroundColor: currentTheme.primary }}
         />
         {/* Soft Animated Fog overlay */}
         <motion.div
@@ -119,10 +132,10 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]"
           >
-            <span style={{ color: meta.accentColor }}>EST. {circuit.firstGrandPrix}</span>
+            <span style={{ color: currentTheme.accent }}>EST. {circuit.firstGrandPrix}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
             <span className="flex items-center gap-1.5 text-white/50">
-              <CountryFlag country={circuit.country} fallback={circuit.flag} className="w-4.5 h-3 rounded-sm" />
+              <CountryFlag country={circuit.country} fallback={circuit.flag} className="w-4.5 h-3 rounded-sm" type="circuit" />
               {circuit.country}
             </span>
           </motion.div>
@@ -146,7 +159,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
             className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-mono tracking-widest text-[#808080]"
           >
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#E10600]" />
+              <MapPin className="w-4 h-4" style={{ color: currentTheme.accent }} />
               <span>{circuit.location}</span>
             </div>
             <span>{meta.coords}</span>
@@ -199,7 +212,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
               </div>
               <div className="border-l border-white/[0.05] pl-4">
                 <span className="text-[8px] font-bold text-neutral-600 uppercase tracking-widest block">Key Apex Corner</span>
-                <span className="text-sm font-black text-white mt-1 block truncate" style={{ color: meta.accentColor }}>{meta.keyCorner}</span>
+                <span className="text-sm font-black text-white mt-1 block truncate" style={{ color: currentTheme.accent }}>{meta.keyCorner}</span>
               </div>
             </div>
           </div>
@@ -287,7 +300,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
       {/* ── Section 4: Fastest Lap Record ── */}
       <section className="relative z-10 mx-auto max-w-4xl px-6 py-32 border-b border-white/[0.05]">
         <div className="text-center space-y-6">
-          <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#E10600]">LAP RECORD TELEMETRY</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.25em]" style={{ color: currentTheme.accent }}>LAP RECORD TELEMETRY</span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

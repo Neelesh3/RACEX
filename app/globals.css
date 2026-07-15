@@ -128,3 +128,15 @@
     @apply font-sans;
   }
 }
+
+/* Hide native cursor on desktop screens supporting fine pointers */
+@media (min-width: 1024px) and (pointer: fine) {
+  body, 
+  a, 
+  button, 
+  [role="button"], 
+  input[type="button"], 
+  input[type="submit"] {
+    cursor: none;
+  }
+}

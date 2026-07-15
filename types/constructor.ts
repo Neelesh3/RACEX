@@ -11,6 +11,7 @@ export interface Constructor {
   season: string;
   primaryColor: string;
   secondaryColor: string;
+  accentColor: string;
   backgroundAsset: string;
   carAsset: string;
   logoAsset: string;

@@ -3,12 +3,13 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { NAVBAR_ENTRANCE, GRADIENT_LINE_ENTRANCE } from "@/constants/animation-variants";
+import { GRADIENT_LINE_ENTRANCE } from "@/constants/animation-variants";
 import { useScrolledState } from "@/hooks/useScrolledState";
 import { NavbarLogo } from "./navbar-logo";
 import { NavbarLinks } from "./navbar-links";
 import { NavbarActions } from "./navbar-actions";
 import { MobileNav } from "./mobile-nav";
+import { useAudio } from "@/lib/audio/useAudio";
 
 /**
  * Navbar Component
@@ -25,6 +26,8 @@ import { MobileNav } from "./mobile-nav";
  */
 function NavbarContent() {
   const isScrolled = useScrolledState();
+  const { isLoaderActive } = useAudio();
+  const showNavbar = !isLoaderActive;
 
   return (
     <motion.header
@@ -33,7 +36,11 @@ function NavbarContent() {
         isScrolled
           ? "border-b border-[#242424]/60 bg-[#050505]/80 backdrop-blur-md"
           : "bg-transparent"
-      )}      suppressHydrationWarning      {...NAVBAR_ENTRANCE}
+      )}
+      suppressHydrationWarning
+      initial={{ opacity: 0, y: -20 }}
+      animate={showNavbar ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+      transition={{ duration: 0.5, delay: showNavbar ? 0.2 : 0, ease: "easeOut" }}
       role="banner"
     >
       <nav

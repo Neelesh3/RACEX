@@ -57,17 +57,19 @@ interface CountryFlagProps {
   country: string;
   fallback?: string;
   className?: string;
+  type?: "driver" | "circuit";
 }
 
-export function CountryFlag({ country, fallback, className }: CountryFlagProps) {
+export function CountryFlag({ country, fallback, className, type = "driver" }: CountryFlagProps) {
   const normalizedCountry = country.trim().toLowerCase();
   const flagFile = FLAG_MAPPING[normalizedCountry];
 
   if (flagFile) {
+    const basePath = type === "circuit" ? "/circuits/flags" : "/drivers/flags";
     return (
       <span className={cn("relative inline-flex items-center shrink-0 w-5 h-3.5 overflow-hidden rounded-[2px] border border-white/10 shadow-sm", className)}>
         <Image
-          src={`/flags/${flagFile}`}
+          src={`${basePath}/${flagFile}`}
           alt={`${country} flag`}
           fill
           className="object-cover"

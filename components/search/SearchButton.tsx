@@ -3,9 +3,11 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSearch } from "@/components/search/SearchContext";
+import { useAudio } from "@/lib/audio/useAudio";
 
 export function SearchButton() {
   const { toggle } = useSearch();
+  const { play } = useAudio();
 
   return (
     <>
@@ -14,7 +16,11 @@ export function SearchButton() {
         type="button"
         variant="ghost"
         size="icon"
-        onClick={toggle}
+        onMouseEnter={() => play("hover")}
+        onClick={() => {
+          play("click");
+          toggle();
+        }}
         aria-label="Open search"
         className="md:hidden text-neutral-400 hover:text-white"
       >
@@ -24,7 +30,11 @@ export function SearchButton() {
       {/* Desktop: Rounded Premium Shortcut Button */}
       <button
         type="button"
-        onClick={toggle}
+        onMouseEnter={() => play("hover")}
+        onClick={() => {
+          play("click");
+          toggle();
+        }}
         aria-label="Open search"
         className="hidden md:flex items-center gap-2 w-full md:max-w-[180px] lg:max-w-[220px] h-9 px-3 rounded-full bg-[#111111] hover:bg-[#181818] border border-[#242424] hover:border-neutral-700 text-left text-xs text-neutral-400 transition-all focus:outline-none focus:ring-1 focus:ring-[#E10600]/50"
       >

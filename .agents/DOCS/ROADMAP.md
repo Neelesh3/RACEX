@@ -330,3 +330,274 @@ No unrelated features should be developed during this phase.
 Finish before expanding.
 
 A complete, polished experience is more valuable than ten unfinished ideas.
+
+# Phase 2 — Experience Layer
+
+The core experiences are complete.
+
+From this point forward, RACEX shifts from feature development to experience engineering.
+
+No additional feature pages should be introduced unless they significantly improve the overall product.
+
+The remaining work focuses on immersion, polish, and production quality.
+
+---
+
+## Experience Roadmap
+
+### Milestone 8 — About
+
+Create a minimal, premium closing chapter introducing the creator, project philosophy, engineering approach, and technology stack.
+
+---
+
+### Milestone 9 — Loader Experience
+
+Replace traditional loading with a cinematic startup sequence.
+
+Timeline:
+
+Black Screen
+
+↓
+
+Single LED
+
+↓
+
+Garage Power On
+
+↓
+
+Engine Ignition
+
+↓
+
+RACEX Logo Reveal
+
+↓
+
+Engine Idle
+
+↓
+
+3...2...1 Countdown
+
+↓
+
+Homepage Reveal
+
+Use synchronized sound design including:
+
+* LED activation
+* Mechanical clicks
+* Ignition
+* Logo whoosh
+* Engine idle
+* Countdown beeps
+
+The loader should transition seamlessly into the Homepage Reveal.
+
+---
+
+### Milestone 10 — Navigation System
+
+Replace the traditional website navigation with a premium mission-control interface.
+
+Structure:
+
+RACEX
+
+━━━━━━━━━━━━━━
+
+REVEAL
+
+GARAGE
+
+DRIVERS
+
+CIRCUITS
+
+RACES
+
+STANDINGS
+
+ABOUT
+
+━━━━━━━━━━━━━━
+
+SOUND
+
+THEME
+
+GITHUB
+
+━━━━━━━━━━━━━━
+
+VERSION
+
+Navigation should feel mechanical rather than web-like.
+
+---
+
+### Milestone 11 — Cursor Engine
+
+Develop a unified cursor interaction system.
+
+Features:
+
+* Magnetic hover
+* Button compression
+* Ambient glow
+* Motion trails
+* Three.js interaction
+* Subtle vehicle response
+* Lighting interaction
+
+Cursor behavior should reinforce the premium engineering aesthetic.
+
+---
+
+### Milestone 12 — Audio Engine
+
+Create a centralized audio system.
+
+Supported events:
+
+* Loader
+* Navigation
+* Buttons
+* Hover
+* Garage ambience
+* Countdown
+* Page transitions
+
+Audio must remain subtle and optional.
+
+No continuous background music.
+
+---
+
+### Milestone 13 — Dynamic Theme Engine
+
+Selecting a constructor changes the entire visual identity of RACEX.
+
+Theme changes include:
+
+* Background colors
+* Ambient lighting
+* UI accents
+* Cursor glow
+* Garage reflections
+* Navigation highlights
+* Loading visuals
+* Scrollbar styling
+
+Each constructor should feel like entering its own world.
+
+---
+
+### Milestone 14 — Choreography Engine
+
+Pages should transition as one continuous cinematic experience.
+
+Examples:
+
+Garage
+
+↓
+
+Driver
+
+↓
+
+Circuit
+
+↓
+
+Race
+
+Each transition should include coordinated motion, lighting, typography, and atmosphere rather than simple route changes.
+
+---
+
+### Milestone 15 — Pit Wall Mode
+
+An alternative operating mode inspired by Formula One engineering stations.
+
+Transforms:
+
+* Typography
+* Interface
+* Widgets
+* Telemetry
+* Track visualization
+* Engineering panels
+* Data presentation
+
+The website becomes a race engineering workspace rather than a portfolio.
+
+---
+
+### Milestone 16 — Asset Integration
+
+Replace all placeholder content with production-quality assets.
+
+Includes:
+
+* Driver portraits
+* Constructor PNG renders
+* Team logos
+* Circuit hero imagery
+* Circuit SVG layouts
+* Garage backgrounds
+* HDR environments
+* Audio assets
+* Custom icons
+
+---
+
+### Milestone 17 — Production Polish
+
+Focus exclusively on refinement.
+
+Includes:
+
+* Micro-interactions
+* Motion consistency
+* Hover states
+* Page transitions
+* Typography
+* Spacing
+* Visual hierarchy
+* Accessibility
+* Performance optimization
+
+---
+
+### Milestone 18 — Launch
+
+Prepare RACEX for public release.
+
+Includes:
+
+* README
+* Documentation
+* Case study
+* GitHub cleanup
+* Demo video
+* Deployment
+* SEO
+* Open Graph assets
+
+---
+
+## Guiding Principle
+
+The project is feature complete.
+
+Every future improvement must answer one question:
+
+> **Does this make RACEX feel more immersive, memorable, and premium?**
+
+If the answer is no, it should not be built.

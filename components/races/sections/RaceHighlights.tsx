@@ -4,6 +4,7 @@ import React from "react";
 import { CloudRain, Sun, Flame } from "lucide-react";
 import type { Race } from "@/types/race";
 import type { RaceDetails } from "@/types/race-details";
+import { useTheme } from "@/lib/theme/theme-utils";
 
 interface RaceHighlightsProps {
   race: Race;
@@ -11,6 +12,7 @@ interface RaceHighlightsProps {
 }
 
 export default function RaceHighlights({ race, details }: RaceHighlightsProps) {
+  const { currentTheme } = useTheme();
   const isConcluded = race.status === "completed";
 
   return (
@@ -26,7 +28,10 @@ export default function RaceHighlights({ race, details }: RaceHighlightsProps) {
           <span className="text-[9px] font-bold text-neutral-600 uppercase tracking-widest block">Weekend Atmosphere</span>
           
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-[#E10600]">
+            <div 
+              className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center transition-all duration-1000"
+              style={{ color: currentTheme.accent }}
+            >
               {isConcluded ? <Sun className="w-5 h-5" /> : <CloudRain className="w-5 h-5 animate-pulse" />}
             </div>
             <div>
@@ -76,8 +81,11 @@ export default function RaceHighlights({ race, details }: RaceHighlightsProps) {
       </div>
 
       {/* Strategy Recommendation Panel */}
-      <div className="rounded-2xl border border-[#E10600]/20 bg-gradient-to-r from-[#E10600]/5 to-transparent p-6 space-y-3">
-        <div className="flex items-center gap-2 text-[#E10600]">
+      <div 
+        className="rounded-2xl border p-6 space-y-3 transition-all duration-1000"
+        style={{ borderColor: currentTheme.border, background: `linear-gradient(90deg, ${currentTheme.glow} 0%, transparent 100%)` }}
+      >
+        <div className="flex items-center gap-2" style={{ color: currentTheme.accent }}>
           <Flame className="w-4 h-4" />
           <h4 className="text-xs font-black uppercase tracking-wider text-white">Recommended Strategy</h4>
         </div>

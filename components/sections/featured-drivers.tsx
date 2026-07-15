@@ -62,7 +62,7 @@ function DriverCard({ driver, index }: { driver: Driver; index: number }) {
         >
           <Card className="relative overflow-hidden rounded-2xl border border-[#242424] bg-[#111111] hover:border-neutral-700/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 group">
             {/* Subtle carbon overlay */}
-            <div className="absolute inset-0 bg-[url('/textures/carbon-fiber.png')] bg-cover opacity-[0.025] pointer-events-none rounded-2xl" />
+            <div className="absolute inset-0 bg-[url('/textures/carbon/carbon-fiber.png')] bg-cover opacity-[0.025] pointer-events-none rounded-2xl" />
             {/* Team color strip */}
             <div
               className="h-1 w-full relative z-10"

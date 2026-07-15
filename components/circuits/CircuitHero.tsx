@@ -40,7 +40,7 @@ export function CircuitHero({ circuit, details }: CircuitHeroProps) {
                   Formula One Circuit
                 </span>
                 <span className="inline-flex rounded-full border border-neutral-800 bg-[#111111]/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-300 backdrop-blur gap-1.5">
-                  {circuit && <CountryFlag country={circuit.country} fallback={circuit.flag} />}
+                  {circuit && <CountryFlag country={circuit.country} fallback={circuit.flag} type="circuit" />}
                   <span>{circuit?.country}</span>
                 </span>
               </div>

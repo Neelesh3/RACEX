@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useGarage } from "./useGarageAnimation";
 import { GARAGE_TEAMS } from "./GarageState";
 import { Trophy, User } from "lucide-react";
+import { useCursor } from "@/components/cursor";
 
 export function GarageCards() {
   const { displayTeamIndex } = useGarage();
   const team = GARAGE_TEAMS[displayTeamIndex];
+  const { setCursorState, setCursorLabel, resetCursor } = useCursor();
 
   return (
     <div className="absolute inset-x-0 bottom-8 md:bottom-12 z-30 px-6 sm:px-12 pointer-events-none select-none">
@@ -23,6 +25,11 @@ export function GarageCards() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.45 }}
+              onMouseEnter={() => {
+                setCursorState("card");
+                setCursorLabel("ABOUT");
+              }}
+              onMouseLeave={resetCursor}
               style={{ borderTop: `2px solid ${team.primaryColor}` }}
               className="flex flex-col flex-1 rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-xl p-5 md:p-6 shadow-2xl transition-all duration-300 hover:border-white/[0.12] hover:bg-black/75"
             >
@@ -73,6 +80,11 @@ export function GarageCards() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.45 }}
+              onMouseEnter={() => {
+                setCursorState("card");
+                setCursorLabel("STATS");
+              }}
+              onMouseLeave={resetCursor}
               style={{ borderTop: `2px solid ${team.primaryColor}` }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-xl p-5 md:p-6 shadow-2xl transition-all duration-300 hover:border-white/[0.12] hover:bg-black/75"
             >

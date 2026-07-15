@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ACTIVE_INDICATOR_TRANSITION } from "@/constants/animation-variants";
 import { cn } from "@/lib/utils";
+import { useAudio } from "@/lib/audio/useAudio";
 
 interface NavItemProps {
   href: string;
@@ -35,6 +36,7 @@ function NavItemContent({
   isMobile = false,
 }: NavItemProps) {
   const pathname = usePathname();
+  const { play } = useAudio();
   const isActive =
     pathname === href || (href !== "/" && pathname.startsWith(href));
 
@@ -42,7 +44,11 @@ function NavItemContent({
     return (
       <Link
         href={href}
-        onClick={onClick}
+        onClick={() => {
+          play("click");
+          if (onClick) onClick();
+        }}
+        onMouseEnter={() => play("hover")}
         className={cn(
           "group relative block rounded-lg px-4 py-3 text-base font-medium transition-all duration-200",
           "hover:bg-white/5",
@@ -74,6 +80,11 @@ function NavItemContent({
     <motion.div className="relative">
       <Link
         href={href}
+        onMouseEnter={() => play("hover")}
+        onClick={() => {
+          play("click");
+          if (onClick) onClick();
+        }}
         className={cn(
           "relative inline-flex items-center text-[15px] font-semibold tracking-wide transition-colors duration-200",
           "text-neutral-400 hover:text-white",

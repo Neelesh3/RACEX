@@ -1,9 +1,16 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Flag, ChevronRight, Calendar, Trophy, Users, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAudio } from "@/lib/audio/useAudio";
+import { LoadingScreen } from "./LoadingScreen";
+import { SceneCanvas } from "../three/canvas/SceneCanvas";
+import { RevealScene } from "../three/scenes/RevealScene";
+import { CanvasLoader } from "../three/loaders/CanvasLoader";
+import { useCursor } from "@/components/cursor";
 
 const stats = [
   { label: "Grand Prix", value: "24", icon: Flag },
@@ -15,19 +22,21 @@ const stats = [
 function StatCard({
   stat,
   index,
+  showUI,
 }: {
   stat: (typeof stats)[number];
   index: number;
+  showUI: boolean;
 }) {
   const Icon = stat.icon;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={showUI ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
       transition={{
         duration: 0.5,
-        delay: 2.1 + index * 0.1,
+        delay: showUI ? 0.7 + index * 0.1 : 0,
         ease: "easeOut",
       }}
       className={cn(
@@ -50,11 +59,6 @@ function StatCard({
   );
 }
 
-import React from "react";
-import { SceneCanvas } from "../three/canvas/SceneCanvas";
-import { RevealScene } from "../three/scenes/RevealScene";
-import { CanvasLoader } from "../three/loaders/CanvasLoader";
-
 function FormulaOneVisual() {
   return (
     <div
@@ -72,11 +76,18 @@ function FormulaOneVisual() {
 }
 
 export default function Hero() {
+  const { isLoaderActive, play } = useAudio();
+  const { setCursorState, setCursorLabel, resetCursor } = useCursor();
+  const showUI = !isLoaderActive;
+
   return (
     <section
       className="relative min-h-screen w-full overflow-hidden bg-[#050505] flex items-center"
       aria-label="Hero"
     >
+      {/* Cinematic Loader screen */}
+      <LoadingScreen />
+
       {/* Full bleed Three.js scene */}
       <FormulaOneVisual />
 
@@ -89,8 +100,8 @@ export default function Hero() {
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.5, ease: "easeOut" }}
+            animate={showUI ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.5, delay: showUI ? 0.1 : 0, ease: "easeOut" }}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-[#E10600]/20 bg-[#E10600]/5 px-4 py-1.5 text-sm font-medium text-[#E10600]">
               <Flag className="h-3.5 w-3.5" />
@@ -103,8 +114,8 @@ export default function Hero() {
           {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.6, ease: "easeOut" }}
+            animate={showUI ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.6, delay: showUI ? 0.2 : 0, ease: "easeOut" }}
             className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Experience{" "}
@@ -117,8 +128,8 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.75, ease: "easeOut" }}
+            animate={showUI ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: showUI ? 0.35 : 0, ease: "easeOut" }}
             className="mt-5 max-w-lg text-base leading-relaxed text-[#B5B5B5] sm:text-lg"
           >
             Follow every Grand Prix, driver, constructor, standings, live race
@@ -128,12 +139,19 @@ export default function Hero() {
           {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.85, ease: "easeOut" }}
+            animate={showUI ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: showUI ? 0.45 : 0, ease: "easeOut" }}
             className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start"
           >
             <Link
               href="/drivers"
+              onMouseEnter={() => {
+                play("hover");
+                setCursorState("hover");
+                setCursorLabel("VIEW");
+              }}
+              onMouseLeave={resetCursor}
+              onClick={() => play("click")}
               className={cn(
                 "inline-flex h-12 items-center justify-center gap-2 rounded-xl",
                 "bg-[#E10600] px-7 text-sm font-semibold text-white",
@@ -148,6 +166,13 @@ export default function Hero() {
 
             <Link
               href="/races"
+              onMouseEnter={() => {
+                play("hover");
+                setCursorState("hover");
+                setCursorLabel("EXPLORE");
+              }}
+              onMouseLeave={resetCursor}
+              onClick={() => play("click")}
               className={cn(
                 "inline-flex h-12 items-center justify-center gap-2 rounded-xl",
                 "border border-[#242424] bg-transparent px-7 text-sm font-semibold text-white",
@@ -164,7 +189,7 @@ export default function Hero() {
           {/* Stats */}
           <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 w-full">
             {stats.map((stat, index) => (
-              <StatCard key={stat.label} stat={stat} index={index} />
+              <StatCard key={stat.label} stat={stat} index={index} showUI={showUI} />
             ))}
           </div>
         </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import type { Race } from "@/types/race";
 import type { RaceDetails } from "@/types/race-details";
+import { useTheme } from "@/lib/theme/theme-utils";
 
 import RaceHero from "./sections/RaceHero";
 import RaceCountdown from "./sections/RaceCountdown";
@@ -19,11 +20,26 @@ interface RaceProfilePageProps {
 }
 
 export function RaceProfilePage({ race, details }: RaceProfilePageProps) {
+  const { currentTheme, setTheme } = useTheme();
+
+  // Load race weekend event theme on mount
+  React.useEffect(() => {
+    const raceId = race.id.toLowerCase();
+    if (["monaco", "silverstone", "suzuka", "spa"].includes(raceId)) {
+      setTheme(`event-${raceId}`);
+    } else {
+      setTheme("neutral");
+    }
+  }, [race.id, setTheme]);
+
   return (
     <main className="min-h-screen bg-[#050505] text-white overflow-hidden relative">
       {/* Background Gradients */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] rounded-full blur-[140px] opacity-10 pointer-events-none mix-blend-screen bg-red-600/[0.12]" />
+        <div 
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] rounded-full blur-[140px] opacity-10 pointer-events-none mix-blend-screen transition-all duration-1000" 
+          style={{ backgroundColor: currentTheme.primary }}
+        />
         <div className="absolute inset-0 opacity-[0.015] bg-[linear-gradient(#ffffff_1px,transparent_1px),linear-gradient(90deg,#ffffff_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#050505_95%)] opacity-90 pointer-events-none" />
       </div>

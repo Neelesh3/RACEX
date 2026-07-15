@@ -23,6 +23,8 @@ const PARTICLE_TEMPLATES = [
   { id: 10, x: 80, y: 40, size: 1.7, duration: 14, delay: 2.2 },
 ];
 
+import { useTheme } from "@/lib/theme/theme-utils";
+
 interface DriverProfilePageProps {
   driver: Driver;
   details: DriverDetails;
@@ -30,11 +32,30 @@ interface DriverProfilePageProps {
 
 export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
   const resolvedPortrait = driver.image && driver.image !== "/icons/helmet.svg" ? driver.image : "/icons/helmet.svg";
+  const { currentTheme, setTheme } = useTheme();
 
   // Procedural cursive path for driver initials signature animation
   const signaturePath = useMemo(() => {
     return "M 10,40 C 30,10 40,70 60,30 C 70,10 80,60 100,40 C 110,30 120,20 140,50 C 160,80 180,20 200,40";
   }, []);
+
+  // Broadcast constructor theme on mount/update
+  React.useEffect(() => {
+    const teamName = driver.team.toLowerCase();
+    let themeId = "neutral";
+    if (teamName.includes("ferrari")) themeId = "ferrari";
+    else if (teamName.includes("mercedes")) themeId = "mercedes";
+    else if (teamName.includes("red bull") || teamName.includes("redbull")) themeId = "red-bull";
+    else if (teamName.includes("mclaren")) themeId = "mclaren";
+    else if (teamName.includes("aston")) themeId = "aston-martin";
+    else if (teamName.includes("alpine")) themeId = "alpine";
+    else if (teamName.includes("williams")) themeId = "williams";
+    else if (teamName.includes("haas")) themeId = "haas";
+    else if (teamName.includes("sauber") || teamName.includes("kick")) themeId = "sauber";
+    else if (teamName.includes("racing bulls") || teamName.includes("rb")) themeId = "racing-bulls";
+
+    setTheme(themeId);
+  }, [driver.team, setTheme]);
 
   return (
     <main className="min-h-screen bg-[#050505] text-white overflow-hidden relative">
@@ -43,7 +64,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
         {/* Ambient Team Glow */}
         <div
           className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[85vw] h-[85vw] rounded-full blur-[160px] opacity-25 mix-blend-screen transition-all duration-1000"
-          style={{ backgroundColor: driver.teamColor }}
+          style={{ backgroundColor: currentTheme.primary }}
         />
         
         {/* Tech Grid Overlay */}
@@ -62,7 +83,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
               top: `${p.y}%`,
               width: p.size,
               height: p.size,
-              boxShadow: `0 0 8px ${driver.teamColor}`,
+              boxShadow: `0 0 8px ${currentTheme.accent}`,
             }}
             animate={{
               y: ["0vh", "-20vh"],
@@ -109,7 +130,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="text-[38vw] font-black font-mono leading-none tracking-tighter"
             style={{
-              WebkitTextStroke: `2px ${driver.teamColor}`,
+              WebkitTextStroke: `2px ${currentTheme.accent}`,
               color: "transparent",
             }}
           >
@@ -133,7 +154,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
                   width={160}
                   height={160}
                   className="opacity-40 filter drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-                  style={{ filter: `drop-shadow(0 0 16px ${driver.teamColor}25)` }}
+                  style={{ filter: `drop-shadow(0 0 16px ${currentTheme.glow})` }}
                 />
               </div>
             ) : (
@@ -158,7 +179,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex items-center justify-center gap-3 text-xs font-black uppercase tracking-[0.25em]"
           >
-            <span style={{ color: driver.teamColor }}>{driver.team}</span>
+            <span style={{ color: currentTheme.accent }}>{driver.team}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
             <span className="flex items-center gap-2 text-white/50">
               <CountryFlag country={driver.country} fallback={driver.flag} className="w-4.5 h-3 rounded-sm" />
@@ -184,7 +205,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
               <motion.path
                 d={signaturePath}
                 fill="none"
-                stroke={driver.teamColor}
+                stroke={currentTheme.accent}
                 strokeWidth="2"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -207,7 +228,7 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
           transition={{ duration: 0.8 }}
           className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight text-white max-w-3xl"
         >
-          {driver.name.split(" ")[0]} made his F1 debut in <span style={{ color: driver.teamColor }}>{details.debutSeason}</span>. Since then, he has established himself as a dominant presence on the grid.
+          {driver.name.split(" ")[0]} made his F1 debut in <span style={{ color: currentTheme.accent }}>{details.debutSeason}</span>. Since then, he has established himself as a dominant presence on the grid.
         </motion.h2>
       </section>
 
@@ -286,11 +307,11 @@ export function DriverProfilePage({ driver, details }: DriverProfilePageProps) {
               {/* Timeline circle node */}
               <div 
                 className="absolute -left-[38px] top-1.5 w-4 h-4 rounded-full border border-white/20 bg-[#050505] flex items-center justify-center"
-                style={{ borderColor: idx === 0 ? driver.teamColor : "" }}
+                style={{ borderColor: idx === 0 ? currentTheme.accent : "" }}
               >
                 <div 
                   className="w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: idx === 0 ? driver.teamColor : "rgba(255,255,255,0.3)" }}
+                  style={{ backgroundColor: idx === 0 ? currentTheme.accent : "rgba(255,255,255,0.3)" }}
                 />
               </div>
 

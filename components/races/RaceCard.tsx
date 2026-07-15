@@ -8,16 +8,28 @@ import {
 import { Button } from "@/components/ui/button";
 import type { Race } from "@/types/race";
 import { CountryFlag } from "@/components/ui/CountryFlag";
+import { useAudio } from "@/lib/audio/useAudio";
+import { useCursor } from "@/components/cursor";
 
 interface RaceCardProps {
   race: Race;
 }
 
 export function RaceCard({ race }: RaceCardProps) {
+  const { play } = useAudio();
+  const { setCursorState, setCursorLabel, resetCursor } = useCursor();
   const isFinished = race.status.toLowerCase() === "finished";
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-950/80 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl hover:shadow-black/40">
+    <article 
+      onMouseEnter={() => {
+        play("hover");
+        setCursorState("card");
+        setCursorLabel("DETAILS");
+      }}
+      onMouseLeave={resetCursor}
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-950/80 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl hover:shadow-black/40"
+    >
       <div className="h-1 bg-red-600" />
 
       <div className="flex flex-1 flex-col p-6">
@@ -44,7 +56,7 @@ export function RaceCard({ race }: RaceCardProps) {
 
         <div className="space-y-3 text-sm">
           <InfoRow
-            icon={<CountryFlag country={race.country} fallback={race.flag} className="w-5 h-3.5" />}
+            icon={<CountryFlag country={race.country} fallback={race.flag} className="w-5 h-3.5" type="circuit" />}
             label="Country"
             value={race.country}
           />
@@ -70,7 +82,7 @@ export function RaceCard({ race }: RaceCardProps) {
           ) : null}
         </div>
 
-        <Link href={`/races/${race.slug}`} className="mt-6">
+        <Link href={`/races/${race.slug}`} className="mt-6" onClick={() => play("click")}>
           <Button className="w-full">
             View Details
           </Button>

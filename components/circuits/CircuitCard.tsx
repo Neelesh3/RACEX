@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import type { Circuit } from "../../types/circuit"; // changeed now after you tell me 
 import { ArrowRight } from "lucide-react";
 import { CountryFlag } from "@/components/ui/CountryFlag";
+import { useAudio } from "@/lib/audio/useAudio";
+import { useCursor } from "@/components/cursor";
 
 interface CircuitCardProps {
   circuit: Circuit;
@@ -14,6 +16,8 @@ interface CircuitCardProps {
 }
 
 export function CircuitCard({ circuit, index }: CircuitCardProps) {
+  const { play } = useAudio();
+  const { setCursorState, setCursorLabel, resetCursor } = useCursor();
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -23,6 +27,12 @@ export function CircuitCard({ circuit, index }: CircuitCardProps) {
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
+      onMouseEnter={() => {
+        play("hover");
+        setCursorState("card");
+        setCursorLabel("EXPLORE");
+      }}
+      onMouseLeave={resetCursor}
       className="group flex flex-col overflow-hidden rounded-[20px] border border-[#242424] bg-[#111111] transition-colors hover:border-[#E10600]/30"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -35,7 +45,7 @@ export function CircuitCard({ circuit, index }: CircuitCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 flex items-center gap-2">
-          <CountryFlag country={circuit.country} fallback={circuit.flag} />
+          <CountryFlag country={circuit.country} fallback={circuit.flag} type="circuit" />
           <span className="text-sm font-medium text-white">{circuit.country}</span>
         </div>
       </div>
@@ -57,7 +67,7 @@ export function CircuitCard({ circuit, index }: CircuitCardProps) {
           </div>
         </div>
         <div className="mt-auto">
-          <Link href={`/circuits/${circuit.slug}`}>
+          <Link href={`/circuits/${circuit.slug}`} onClick={() => play("click")}>
             <Button
               variant="outline"
               className="w-full rounded-[14px] border-[#242424] bg-transparent text-sm font-semibold text-white hover:bg-[#1a1a1a] hover:text-white"

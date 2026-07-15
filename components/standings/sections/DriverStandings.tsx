@@ -12,7 +12,7 @@ export default function DriverStandings() {
     <div className="space-y-6">
       <div className="flex justify-between items-end border-b border-white/[0.05] pb-3">
         <div>
-          <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[#E10600] pl-3">
+          <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[var(--theme-accent)] pl-3 transition-colors duration-1000">
             Drivers Championship
           </h2>
         </div>
@@ -64,7 +64,7 @@ export default function DriverStandings() {
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-white text-sm truncate group-hover:text-[#E10600] transition-colors">
+                    <span className="font-bold text-white text-sm truncate group-hover:text-[var(--theme-accent)] transition-colors">
                       {driver.driverName}
                     </span>
                     <CountryFlag country={driver.country} fallback={driver.flag} className="w-3.5 h-2.5 rounded-sm shrink-0" />
@@ -92,7 +92,7 @@ export default function DriverStandings() {
                 </div>
 
                 <div className="w-16">
-                  <span className="text-[9px] font-bold text-[#E10600] uppercase tracking-widest block">points</span>
+                  <span className="text-[9px] font-bold text-[var(--theme-accent)] uppercase tracking-widest block transition-colors duration-1000">points</span>
                   <span className="text-base font-black text-white font-mono mt-0.5 block">
                     {driver.points}
                   </span>

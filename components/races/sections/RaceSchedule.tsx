@@ -4,12 +4,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import type { Race } from "@/types/race";
+import { useTheme } from "@/lib/theme/theme-utils";
 
 interface RaceScheduleProps {
   race: Race;
 }
 
 export default function RaceSchedule({ race }: RaceScheduleProps) {
+  const { currentTheme } = useTheme();
   const scheduleItems = [
     { name: "Free Practice 1", time: race.sessions.fp1, type: "practice" },
     { name: "Free Practice 2", time: race.sessions.fp2, type: "practice" },
@@ -38,16 +40,22 @@ export default function RaceSchedule({ race }: RaceScheduleProps) {
               transition={{ duration: 0.5, delay: idx * 0.05 }}
               className={`rounded-2xl border p-5 flex items-center justify-between transition-all duration-300 ${
                 isRaceSession 
-                  ? "border-[#E10600]/30 bg-gradient-to-r from-[#E10600]/5 to-transparent hover:border-[#E10600]/50" 
+                  ? "" 
                   : "border-white/[0.06] bg-white/[0.01] hover:border-white/[0.1]"
               }`}
+              style={{
+                borderColor: isRaceSession ? currentTheme.border : undefined,
+                background: isRaceSession ? `linear-gradient(90deg, ${currentTheme.glow} 0%, transparent 100%)` : undefined,
+              }}
             >
               <div className="flex items-center gap-4">
-                <div className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-black ${
-                  isRaceSession 
-                    ? "bg-[#E10600] text-white" 
-                    : "bg-white/[0.05] text-[#808080]"
-                }`}>
+                <div 
+                  className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-black"
+                  style={{
+                    backgroundColor: isRaceSession ? currentTheme.accent : "rgba(255,255,255,0.05)",
+                    color: isRaceSession ? "#ffffff" : "#808080",
+                  }}
+                >
                   0{idx + 1}
                 </div>
                 <div>

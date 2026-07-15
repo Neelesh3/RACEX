@@ -7,9 +7,14 @@ import { GARAGE_TEAMS } from "./GarageState";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { useAudio } from "@/lib/audio/useAudio";
+import { useCursor } from "@/components/cursor";
+
 export function GarageNavigation() {
   const { nextTeam, prevTeam, isLocked, displayTeamIndex } = useGarage();
   const team = GARAGE_TEAMS[displayTeamIndex];
+  const { play } = useAudio();
+  const { setCursorState, setCursorLabel, resetCursor } = useCursor();
 
   return (
     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center px-4 md:px-8 z-30 pointer-events-none">
@@ -17,6 +22,14 @@ export function GarageNavigation() {
       {/* Prev Button */}
       <motion.button
         onClick={prevTeam}
+        onMouseEnter={() => {
+          if (!isLocked) {
+            play("hover");
+            setCursorState("garage");
+            setCursorLabel("PREV");
+          }
+        }}
+        onMouseLeave={resetCursor}
         disabled={isLocked}
         className={cn(
           "pointer-events-auto flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full",
@@ -40,6 +53,14 @@ export function GarageNavigation() {
       {/* Next Button */}
       <motion.button
         onClick={nextTeam}
+        onMouseEnter={() => {
+          if (!isLocked) {
+            play("hover");
+            setCursorState("garage");
+            setCursorLabel("NEXT");
+          }
+        }}
+        onMouseLeave={resetCursor}
         disabled={isLocked}
         className={cn(
           "pointer-events-auto flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full",

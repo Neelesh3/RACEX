@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import type { Race } from "@/types/race";
 import { CountryFlag } from "@/components/ui/CountryFlag";
+import { useTheme } from "@/lib/theme/theme-utils";
 
 // Static particle templates to maintain rendering purity in React 19
 const PARTICLE_TEMPLATES = [
@@ -26,6 +27,7 @@ interface RaceHeroProps {
 export default function RaceHero({ race }: RaceHeroProps) {
   const heroImageSrc = race.heroImage || "";
   const mapUrl = `/circuits/layouts/${race.id}.svg`;
+  const { currentTheme } = useTheme();
 
   return (
     <section className="relative h-[85vh] w-full flex flex-col justify-end pb-20 z-10 border-b border-white/[0.05]">
@@ -63,7 +65,7 @@ export default function RaceHero({ race }: RaceHeroProps) {
               top: `${p.y}%`,
               width: p.size,
               height: p.size,
-              boxShadow: "0 0 8px rgba(225,6,0,0.4)",
+              boxShadow: `0 0 8px ${currentTheme.glow}`,
             }}
             animate={{
               y: ["0vh", "-15vh"],
@@ -103,10 +105,10 @@ export default function RaceHero({ race }: RaceHeroProps) {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-2.5 text-xs font-black uppercase tracking-[0.25em]"
         >
-          <span className="text-[#E10600]">ROUND {race.round}</span>
+          <span style={{ color: currentTheme.accent }}>ROUND {race.round}</span>
           <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
           <span className="flex items-center gap-1.5 text-white/50">
-            <CountryFlag country={race.country} fallback={race.flag} className="w-4.5 h-3 rounded-sm" />
+            <CountryFlag country={race.country} fallback={race.flag} className="w-4.5 h-3 rounded-sm" type="circuit" />
             {race.country}
           </span>
         </motion.div>
@@ -129,7 +131,7 @@ export default function RaceHero({ race }: RaceHeroProps) {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-neutral-400 flex items-center gap-2"
         >
-          <MapPin className="w-4.5 h-4.5 text-[#E10600]" />
+          <MapPin className="w-4.5 h-4.5" style={{ color: currentTheme.accent }} />
           <span>{race.circuit} • {race.location}</span>
         </motion.p>
       </div>

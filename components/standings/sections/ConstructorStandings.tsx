@@ -11,7 +11,7 @@ export default function ConstructorStandings() {
     <div className="space-y-6">
       <div className="flex justify-between items-end border-b border-white/[0.05] pb-3">
         <div>
-          <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[#E10600] pl-3">
+          <h2 className="text-sm font-bold tracking-wider uppercase text-[#808080] border-l border-[var(--theme-accent)] pl-3 transition-colors duration-1000">
             Constructors Championship
           </h2>
         </div>
@@ -47,7 +47,7 @@ export default function ConstructorStandings() {
                 />
 
                 <div className="min-w-0">
-                  <span className="font-bold text-white text-sm truncate group-hover:text-[#E10600] transition-colors block">
+                  <span className="font-bold text-white text-sm truncate group-hover:text-[var(--theme-accent)] transition-colors block">
                     {team.teamName}
                   </span>
                   <span className="text-[9px] text-neutral-500 uppercase tracking-wider block mt-0.5">
@@ -73,7 +73,7 @@ export default function ConstructorStandings() {
                 </div>
 
                 <div className="w-16">
-                  <span className="text-[9px] font-bold text-[#E10600] uppercase tracking-widest block">points</span>
+                  <span className="text-[9px] font-bold text-[var(--theme-accent)] uppercase tracking-widest block transition-colors duration-1000">points</span>
                   <span className="text-base font-black text-white font-mono mt-0.5 block">
                     {team.points}
                   </span>
