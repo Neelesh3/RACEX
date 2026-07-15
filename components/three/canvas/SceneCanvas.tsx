@@ -22,6 +22,22 @@ export function SceneCanvas({ children, className }: SceneCanvasProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Explicit WebGL context cleanup on unmount to release GPU/VRAM resources immediately
+  useEffect(() => {
+    return () => {
+      const canvases = document.querySelectorAll("canvas");
+      canvases.forEach((canvas) => {
+        const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
+        if (gl) {
+          const extension = gl.getExtension("WEBGL_lose_context");
+          if (extension) {
+            extension.loseContext();
+          }
+        }
+      });
+    };
+  }, []);
+
   return (
     <div className={cn("relative h-full w-full bg-[#050505]", className)}>
       <Canvas

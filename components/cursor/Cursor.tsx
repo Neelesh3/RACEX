@@ -101,11 +101,38 @@ export function Cursor() {
     const handleMouseDown = () => setIsClicked(true);
     const handleMouseUp = () => setIsClicked(false);
 
+    const handleFocusIn = (e: FocusEvent) => {
+      setIsVisible(true);
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      const isInteractive =
+        target.nodeName.toLowerCase() === "a" ||
+        target.nodeName.toLowerCase() === "button" ||
+        target.role === "button" ||
+        target.tabIndex >= 0;
+
+      if (isInteractive) {
+        const rect = target.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        mouseX.set(centerX);
+        mouseY.set(centerY);
+        setCursorState("hover");
+      }
+    };
+
+    const handleFocusOut = () => {
+      resetCursor();
+    };
+
     document.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mousedown", handleMouseDown, { passive: true });
     document.addEventListener("mouseup", handleMouseUp, { passive: true });
     document.addEventListener("mouseenter", handleMouseEnter, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    document.addEventListener("focusin", handleFocusIn, { passive: true });
+    document.addEventListener("focusout", handleFocusOut, { passive: true });
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
@@ -113,6 +140,8 @@ export function Cursor() {
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("focusin", handleFocusIn);
+      document.removeEventListener("focusout", handleFocusOut);
     };
   }, [mouseX, mouseY, isVisible, cursorState, setCursorState, resetCursor]);
 
