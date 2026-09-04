@@ -67,8 +67,9 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
   "f1-intro": {
     id: "f1-intro",
     path: "/audio/f1-intro.mp3",
-    channel: "Loader",
-    defaultVolume: 0.25,
+    channel: "Ambience",
+    defaultVolume: 0.18,
+    loop: true,
   },
   "f1-notification": {
     id: "f1-notification",

@@ -158,7 +158,7 @@ class AudioEngine {
     return audio ? !audio.paused : false;
   }
 
-  public fadeIn(id: SoundId, duration = 1.0, targetVolume?: number) {
+  public fadeIn(id: SoundId, duration = 1.5, targetVolume?: number) {
     if (typeof window === "undefined") return;
 
     const audio = this.getAudioElement(id);
@@ -196,8 +196,11 @@ class AudioEngine {
       return;
     }
 
+    // Preserve playback position if already paused mid-track (e.g. persistent background music)
+    if (!audio.paused && audio.currentTime === 0) {
+      audio.currentTime = 0;
+    }
     audio.volume = 0;
-    audio.currentTime = 0;
 
     if (!this.isUnlocked) {
       this.pendingPlays.add(id);
@@ -224,7 +227,7 @@ class AudioEngine {
     this.fadeIntervals.set(id, interval);
   }
 
-  public fadeOut(id: SoundId, duration = 1.0) {
+  public fadeOut(id: SoundId, duration = 0.8, pauseOnly = true) {
     const audio = this.cache.get(id);
     if (!audio) return;
 
@@ -233,7 +236,9 @@ class AudioEngine {
     const startVolume = audio.volume;
     if (startVolume === 0) {
       audio.pause();
-      audio.currentTime = 0;
+      if (!pauseOnly) {
+        audio.currentTime = 0;
+      }
       return;
     }
 
@@ -249,7 +254,9 @@ class AudioEngine {
       if (currentStep >= steps) {
         this.clearFadeInterval(id);
         audio.pause();
-        audio.currentTime = 0;
+        if (!pauseOnly) {
+          audio.currentTime = 0;
+        }
         this.updateElementVolume(id, audio); // Restore config volume setting
       }
     }, stepTime);

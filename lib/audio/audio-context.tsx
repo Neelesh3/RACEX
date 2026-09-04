@@ -145,20 +145,23 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     if (isLoaderActive) return;
 
     if (pathname === "/") {
-      audioEngine.fadeOut("ambient", 1.2);
-      audioEngine.fadeOut("idle", 1.2);
-      audioEngine.fadeOut("ventilation", 1.2);
+      audioEngine.fadeOut("f1-intro", 0.8, true);
+      audioEngine.fadeOut("idle", 0.8, true);
+      audioEngine.fadeOut("ventilation", 0.8, true);
+      audioEngine.fadeOut("ambient", 0.8, true);
       audioEngine.fadeIn("electric-hum", 1.5);
-    } else if (pathname === "/garage") {
-      audioEngine.fadeOut("electric-hum", 1.2);
-      audioEngine.fadeOut("ambient", 1.2);
+    } else if (pathname === "/garage" || pathname.startsWith("/constructors")) {
+      audioEngine.fadeOut("electric-hum", 0.8, true);
+      audioEngine.fadeOut("f1-intro", 0.8, true);
+      audioEngine.fadeOut("ambient", 0.8, true);
       audioEngine.fadeIn("idle", 1.5);
       audioEngine.fadeIn("ventilation", 1.5);
     } else {
-      audioEngine.fadeOut("electric-hum", 1.2);
-      audioEngine.fadeOut("idle", 1.2);
-      audioEngine.fadeOut("ventilation", 1.2);
-      audioEngine.fadeIn("ambient", 2.0);
+      audioEngine.fadeOut("electric-hum", 0.8, true);
+      audioEngine.fadeOut("idle", 0.8, true);
+      audioEngine.fadeOut("ventilation", 0.8, true);
+      audioEngine.fadeOut("ambient", 0.8, true);
+      audioEngine.fadeIn("f1-intro", 1.5);
     }
   }, [pathname, isLoaderActive]);
 
@@ -184,11 +187,18 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     } else if (t === 5.2) {
       audioEngine.play("engine-start");
     } else if (t === 6.2) {
-      audioEngine.fadeOut("electric-hum", 1.0);
-      audioEngine.fadeIn("ambient", 1.5);
+      audioEngine.fadeOut("electric-hum", 1.0, true);
+      if (pathname === "/garage" || pathname.startsWith("/constructors")) {
+        audioEngine.fadeIn("idle", 1.5);
+        audioEngine.fadeIn("ventilation", 1.5);
+      } else if (pathname === "/") {
+        audioEngine.fadeIn("electric-hum", 1.5);
+      } else {
+        audioEngine.fadeIn("f1-intro", 1.5);
+      }
       completeLoader();
     }
-  }, [loaderTime, isLoaderActive, completeLoader]);
+  }, [loaderTime, isLoaderActive, completeLoader, pathname]);
 
   return (
     <AudioContext.Provider
