@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -36,6 +36,40 @@ export function CameraRig({
   // Static reusable vectors to avoid per-frame GC allocations
   const basePosVec = useRef(new THREE.Vector3(0, 5, 0.1));
   const baseTargVec = useRef(new THREE.Vector3(0, 0, 0));
+
+  // Touch interaction tracking for mobile devices
+  const touchOffset = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let startX = 0;
+    let startY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const deltaX = (e.touches[0].clientX - startX) / (window.innerWidth || 1);
+        const deltaY = (e.touches[0].clientY - startY) / (window.innerHeight || 1);
+        touchOffset.current.x = Math.max(-1, Math.min(1, deltaX * 2));
+        touchOffset.current.y = Math.max(-1, Math.min(1, -deltaY * 2));
+      }
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
 
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
@@ -85,10 +119,12 @@ export function CameraRig({
     const breathY = Math.sin(time * 0.8) * activeBreathing;
     const breathX = Math.cos(time * 0.5) * (activeBreathing * 0.6);
 
-    // 3. Mouse Parallax Easing (Reads pointer coordinate grid [-1, 1] directly)
+    // 3. Mouse & Touch Parallax Easing (Reads pointer coordinate grid [-1, 1] directly)
     const activeParallax = t >= 6.0 ? parallaxStrength : parallaxStrength * 0.1;
-    const mx = state.pointer.x * activeParallax;
-    const my = state.pointer.y * (activeParallax * 0.18);
+    const inputX = Math.abs(state.pointer.x) > 0.001 ? state.pointer.x : touchOffset.current.x;
+    const inputY = Math.abs(state.pointer.y) > 0.001 ? state.pointer.y : touchOffset.current.y;
+    const mx = inputX * activeParallax;
+    const my = inputY * (activeParallax * 0.18);
 
     // Mobile framing adjustment (<768px)
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;

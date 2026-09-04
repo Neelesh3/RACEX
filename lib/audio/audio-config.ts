@@ -5,7 +5,7 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
     id: "ambient",
     path: "/audio/ambient.mp3",
     channel: "Ambience",
-    defaultVolume: 0.2,
+    defaultVolume: 0.32,
     loop: true,
   },
   "button-click": {
@@ -49,7 +49,7 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
     id: "electric-hum",
     path: "/audio/electric-hum.mp3",
     channel: "Loader",
-    defaultVolume: 0.12,
+    defaultVolume: 0.24,
     loop: true,
   },
   "engine-start": {
@@ -68,7 +68,7 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
     id: "f1-intro",
     path: "/audio/f1-intro.mp3",
     channel: "Ambience",
-    defaultVolume: 0.18,
+    defaultVolume: 0.30,
     loop: true,
   },
   "f1-notification": {
@@ -93,7 +93,7 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
     id: "idle",
     path: "/audio/idle.wav",
     channel: "Garage",
-    defaultVolume: 0.12,
+    defaultVolume: 0.34,
     loop: true,
   },
   "lap-complete": {
@@ -137,7 +137,7 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
     id: "rev",
     path: "/audio/rev.wav",
     channel: "Garage",
-    defaultVolume: 0.2,
+    defaultVolume: 0.08,
   },
   sting: {
     id: "sting",
@@ -155,7 +155,7 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
     id: "ventilation",
     path: "/audio/ventilation.mp3",
     channel: "Ambience",
-    defaultVolume: 0.08,
+    defaultVolume: 0.16,
     loop: true,
   },
   wind: {
@@ -168,14 +168,14 @@ export const SOUNDS: Record<SoundId, SoundConfig> = {
 };
 
 export const CHANNEL_VOLUMES: Record<AudioChannel, number> = {
-  Master: 0.8,
-  UI: 0.45,
-  Loader: 0.5,
-  Garage: 0.45,
-  Cursor: 0.3,
-  Ambience: 0.35,
-  Future: 0.8,
-  PitWall: 0.8,
-  Telemetry: 0.8,
-  Radio: 0.8,
+  Master: 1.0,
+  UI: 0.8,
+  Loader: 1.0,
+  Garage: 1.0,
+  Cursor: 0.5,
+  Ambience: 1.0,
+  Future: 1.0,
+  PitWall: 1.0,
+  Telemetry: 1.0,
+  Radio: 1.0,
 };

@@ -57,9 +57,6 @@ export function GarageProvider({ children }: { children: React.ReactNode }) {
     lockTimerRef.current = setTimeout(() => {
       setTransitionPhase("idle");
       setIsLocked(false);
-      
-      // Play engine rev sound when the car settles
-      play("rev");
     }, GARAGE_TIMELINE.TOTAL_LOCK_MS);
   }, [isLocked, setTheme, play]);
 

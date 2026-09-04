@@ -39,10 +39,13 @@ class AudioEngine {
     });
   }
 
-  private unlockEngine() {
+  public unlockEngine() {
     this.isUnlocked = true;
     this.pendingPlays.forEach((id) => {
-      this.play(id);
+      const audio = this.cache.get(id);
+      if (audio) {
+        audio.play().catch(() => {});
+      }
     });
     this.pendingPlays.clear();
   }

@@ -81,12 +81,17 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const startLoader = useCallback(() => {
+    audioEngine.unlockEngine();
+
     if (typeof window !== "undefined" && sessionStorage.getItem("race-loader-played") === "true") {
       setLoaderTime(6.2);
       setLoaderPhase("lights-out");
       setIsLoaderActive(false);
       return;
     }
+
+    // Immediately fade in paddock ambience upon START (Requirement 2 & 4: 0.18 over 1.2s)
+    audioEngine.fadeIn("ambient", 1.2, 0.18);
 
     setIsLoaderActive(true);
     setLoaderTime(0);
@@ -148,20 +153,20 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       audioEngine.fadeOut("f1-intro", 0.8, true);
       audioEngine.fadeOut("idle", 0.8, true);
       audioEngine.fadeOut("ventilation", 0.8, true);
-      audioEngine.fadeOut("ambient", 0.8, true);
-      audioEngine.fadeIn("electric-hum", 1.5);
+      audioEngine.fadeIn("ambient", 1.5, 0.32);
+      audioEngine.fadeIn("electric-hum", 1.5, 0.24);
     } else if (pathname === "/garage" || pathname.startsWith("/constructors")) {
       audioEngine.fadeOut("electric-hum", 0.8, true);
       audioEngine.fadeOut("f1-intro", 0.8, true);
       audioEngine.fadeOut("ambient", 0.8, true);
-      audioEngine.fadeIn("idle", 1.5);
-      audioEngine.fadeIn("ventilation", 1.5);
+      audioEngine.fadeIn("idle", 1.5, 0.34);
+      audioEngine.fadeIn("ventilation", 1.5, 0.16);
     } else {
       audioEngine.fadeOut("electric-hum", 0.8, true);
       audioEngine.fadeOut("idle", 0.8, true);
       audioEngine.fadeOut("ventilation", 0.8, true);
       audioEngine.fadeOut("ambient", 0.8, true);
-      audioEngine.fadeIn("f1-intro", 1.5);
+      audioEngine.fadeIn("f1-intro", 1.5, 0.30);
     }
   }, [pathname, isLoaderActive]);
 
@@ -171,7 +176,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     const t = Math.round(loaderTime * 10) / 10;
 
     if (t === 0.0) {
-      audioEngine.fadeIn("electric-hum", 0.5);
+      audioEngine.fadeIn("electric-hum", 0.5, 0.24);
     } else if (t === 0.8) {
       audioEngine.play("led-click");
     } else if (t === 1.5) {
@@ -189,12 +194,13 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     } else if (t === 6.2) {
       audioEngine.fadeOut("electric-hum", 1.0, true);
       if (pathname === "/garage" || pathname.startsWith("/constructors")) {
-        audioEngine.fadeIn("idle", 1.5);
-        audioEngine.fadeIn("ventilation", 1.5);
+        audioEngine.fadeIn("idle", 1.5, 0.34);
+        audioEngine.fadeIn("ventilation", 1.5, 0.16);
       } else if (pathname === "/") {
-        audioEngine.fadeIn("electric-hum", 1.5);
+        audioEngine.fadeIn("ambient", 1.5, 0.32);
+        audioEngine.fadeIn("electric-hum", 1.5, 0.24);
       } else {
-        audioEngine.fadeIn("f1-intro", 1.5);
+        audioEngine.fadeIn("f1-intro", 1.5, 0.30);
       }
       completeLoader();
     }

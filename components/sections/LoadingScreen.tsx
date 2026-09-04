@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAudio } from "@/lib/audio/useAudio";
+import audioEngine from "@/lib/audio/AudioEngine";
 
 export function LoadingScreen() {
   const { loaderTime, loaderPhase, isLoaderActive, startLoader } = useAudio();
@@ -18,6 +19,7 @@ export function LoadingScreen() {
   }, [startLoader]);
 
   const handleStart = () => {
+    audioEngine.unlockEngine();
     setHasInteracted(true);
     startLoader();
   };
