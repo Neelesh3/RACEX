@@ -10,9 +10,6 @@ export const ROUTES = {
   RACES: "/races",
   STANDINGS: "/standings",
   ABOUT: "/about",
-  DASHBOARD: "/dashboard",
-  PROFILE: "/profile",
-  SETTINGS: "/settings",
 } as const;
 
 export const NAVIGATION_ITEMS = [
@@ -50,23 +47,5 @@ export const NAVIGATION_ITEMS = [
     label: "About",
     href: ROUTES.ABOUT,
     description: "About the RACEX Project",
-  },
-] as const;
-
-export const PROFILE_MENU_ITEMS = [
-  {
-    label: "Profile",
-    href: ROUTES.PROFILE,
-    icon: "User",
-  },
-  {
-    label: "Settings",
-    href: ROUTES.SETTINGS,
-    icon: "Settings",
-  },
-  {
-    label: "Logout",
-    href: "#",
-    icon: "LogOut",
   },
 ] as const;

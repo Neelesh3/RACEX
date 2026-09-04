@@ -42,8 +42,8 @@ export function GarageBackground() {
             priority
             className="object-cover object-center"
             style={{
-              opacity: 0.3,
-              filter: "brightness(0.7) saturate(0.85)",
+              opacity: 0.5,
+              filter: "brightness(0.85) saturate(0.9)",
             }}
           />
         </motion.div>
@@ -51,19 +51,19 @@ export function GarageBackground() {
 
       {/* ─── Layer 2: Dark Cinematic Overlay ─── */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-80"
         style={{
           background:
-            "linear-gradient(180deg, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.5) 40%, rgba(5,5,5,0.65) 70%, rgba(5,5,5,0.9) 100%)",
+            "linear-gradient(180deg, rgba(5,5,5,0.7) 0%, rgba(5,5,5,0.4) 40%, rgba(5,5,5,0.55) 70%, rgba(5,5,5,0.85) 100%)",
         }}
       />
 
       {/* ─── Layer 3: Subtle Vignette ─── */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,#050505_90%)] opacity-90 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#050505_95%)] opacity-85 pointer-events-none" />
 
       {/* ─── Layer 4: Noise Texture ─── */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none bg-repeat mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none bg-repeat mix-blend-overlay"
         style={{
           backgroundImage: "url('/textures/noise/noise.png')",
           backgroundSize: "256px 256px",
@@ -76,7 +76,7 @@ export function GarageBackground() {
         <motion.div
           key={`glow-large-${team.id}`}
           initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 0.2, scale: 1 }}
+          animate={{ opacity: 0.16, scale: 1 }}
           exit={{ opacity: 0, scale: 0.7 }}
           transition={{ duration: 1.1, ease: "easeOut" }}
           style={{ backgroundColor: team.primaryColor }}
@@ -86,7 +86,7 @@ export function GarageBackground() {
         <motion.div
           key={`glow-core-${team.id}`}
           initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: 0.14, scale: 0.95 }}
+          animate={{ opacity: 0.11, scale: 0.95 }}
           exit={{ opacity: 0, scale: 0.6 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
           style={{ backgroundColor: team.primaryColor }}
@@ -99,7 +99,7 @@ export function GarageBackground() {
         <motion.div
           key={`gradient-${team.id}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 0.45 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.9, ease: "easeInOut" }}
           style={{ background: team.gradient }}

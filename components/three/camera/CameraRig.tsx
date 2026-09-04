@@ -15,59 +15,104 @@ export const CAMERA_PRESETS: Record<CameraPreset, { position: [number, number, n
 
 interface CameraRigProps {
   preset?: CameraPreset;
-  basePosition?: [number, number, number];
-  baseTarget?: [number, number, number];
+  introTime?: number;
   parallaxStrength?: number;
   breathingStrength?: number;
   dampingSpeed?: number;
 }
 
 export function CameraRig({
-  preset = "reveal",
-  basePosition,
-  baseTarget,
+  introTime = 6.2,
   parallaxStrength = 0.8,
   breathingStrength = 0.05,
   dampingSpeed = 4,
 }: CameraRigProps) {
-  // Resolve base values from preset, with manual overrides supported
-  const resolvedPosition = basePosition || CAMERA_PRESETS[preset].position;
-  const resolvedTarget = baseTarget || CAMERA_PRESETS[preset].target;
-
-  // Store target and current states using refs to avoid React re-renders on useFrame loops
-  const targetPos = useRef(new THREE.Vector3(...resolvedPosition));
+  // Store target and current states using refs to avoid React re-renders or vector re-allocations on useFrame loops
+  const targetPos = useRef(new THREE.Vector3(0, 0, 10));
   const currentPos = useRef(new THREE.Vector3(0, 0, 10));
-  const targetLookAt = useRef(new THREE.Vector3(...resolvedTarget));
+  const targetLookAt = useRef(new THREE.Vector3(0, 0, 0));
   const currentLookAt = useRef(new THREE.Vector3(0, 0, 0));
+
+  // Static reusable vectors to avoid per-frame GC allocations
+  const basePosVec = useRef(new THREE.Vector3(0, 5, 0.1));
+  const baseTargVec = useRef(new THREE.Vector3(0, 0, 0));
 
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
 
-    // 1. Idle Breathing Effect (Sinusoidal cinematography simulation)
-    const breathY = Math.sin(time * 0.8) * breathingStrength;
-    const breathX = Math.cos(time * 0.5) * (breathingStrength * 0.6);
+    // 1. Resolve base values from timeline and scroll (directly from window)
+    // Read scroll offset directly from window to avoid React re-renders on scroll
+    let scrollY = 0;
+    if (typeof window !== "undefined") {
+      scrollY = window.scrollY || window.pageYOffset;
+    }
+    const maxScroll = 600;
+    const rawRatio = Math.min(scrollY / maxScroll, 1);
+    const easedScroll = Math.pow(rawRatio, 1.8);
 
-    // 2. Mouse Parallax Easing (Reads pointer coordinate grid [-1, 1])
-    const mx = state.pointer.x * parallaxStrength;
-    const my = state.pointer.y * (parallaxStrength * 0.18);
+    const t = introTime;
+    if (t <= 1.0) {
+      // Darkness: camera directly above
+      basePosVec.current.set(0, 8.5, 0.1);
+      baseTargVec.current.set(0, 0, 0);
+    } else if (t <= 2.5) {
+      // Overhead Reveal: camera pulls up and backward
+      const f = (t - 1.0) / 1.5;
+      basePosVec.current.set(0, 8.5 + f * 2.5, 0.1 + f * 2.7);
+      baseTargVec.current.set(0, 0, 0);
+    } else if (t <= 4.2) {
+      // Side Hero: camera orbits down to a full side profile
+      const f = (t - 2.5) / 1.7;
+      basePosVec.current.set(f * 9.5, 11.0 - f * 9.8, 2.8 - f * 1.6);
+      baseTargVec.current.set(-1.0 * f, f * 0.2, 0);
+    } else if (t <= 6.0) {
+      // Front Three-Quarter Hero: camera orbits to a 45° angle
+      const f = (t - 4.2) / 1.8;
+      basePosVec.current.set(9.5 - f * 2.7, 1.2 + f * 0.1, 1.2 + f * 5.6);
+      baseTargVec.current.set(-1.0 - 0.2 * f, 0.2 + f * 0.1, 0);
+    } else {
+      // Hero Lock & Scroll: locked 45° angle, pulls back on exit scroll
+      basePosVec.current.set(
+        6.8 + easedScroll * 2.0,
+        1.3 + easedScroll * 1.0,
+        6.8 + easedScroll * 2.0
+      );
+      baseTargVec.current.set(-1.2, 0.3, 0);
+    }
+
+    // 2. Idle Breathing Effect (Sinusoidal cinematography simulation)
+    const activeBreathing = t >= 6.0 ? breathingStrength : breathingStrength * 0.1;
+    const breathY = Math.sin(time * 0.8) * activeBreathing;
+    const breathX = Math.cos(time * 0.5) * (activeBreathing * 0.6);
+
+    // 3. Mouse Parallax Easing (Reads pointer coordinate grid [-1, 1] directly)
+    const activeParallax = t >= 6.0 ? parallaxStrength : parallaxStrength * 0.1;
+    const mx = state.pointer.x * activeParallax;
+    const my = state.pointer.y * (activeParallax * 0.18);
+
+    // Mobile framing adjustment (<768px)
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const mobileZOffset = isMobile ? 2.4 : 0;
+    const mobileYOffset = isMobile ? 0.5 : 0;
 
     // Calculate next target positions combining base, parallax, and breathing offsets
     targetPos.current.set(
-      resolvedPosition[0] + breathX + mx,
-      resolvedPosition[1] + breathY + my,
-      resolvedPosition[2] - Math.abs(mx) * 0.3
+      basePosVec.current.x + breathX + mx + (isMobile ? -0.6 : 0),
+      basePosVec.current.y + breathY + my + mobileYOffset,
+      basePosVec.current.z - Math.abs(mx) * 0.3 + mobileZOffset
     );
 
     targetLookAt.current.set(
-      resolvedTarget[0] + mx * 0.4,
-      resolvedTarget[1] + my * 0.2,
-      resolvedTarget[2]
+      baseTargVec.current.x + mx * 0.4,
+      baseTargVec.current.y + my * 0.2,
+      baseTargVec.current.z
     );
 
-    // 3. Frame-Rate Independent Easing (Exponential damping)
-    const t = 1 - Math.exp(-dampingSpeed * delta);
-    currentPos.current.lerp(targetPos.current, t);
-    currentLookAt.current.lerp(targetLookAt.current, t);
+    // 4. Frame-Rate Independent Easing (Exponential damping)
+    const damp = t >= 6.0 ? dampingSpeed : dampingSpeed * 0.5; // smoother movement during reveal
+    const easeFactor = 1 - Math.exp(-damp * delta);
+    currentPos.current.lerp(targetPos.current, easeFactor);
+    currentLookAt.current.lerp(targetLookAt.current, easeFactor);
 
     // Apply values to camera matrices
     state.camera.position.copy(currentPos.current);

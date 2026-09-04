@@ -3,6 +3,7 @@
 import React, { createContext, useState, useEffect, useCallback, useRef } from "react";
 import { SoundId, LoaderPhase } from "./audio-types";
 import audioEngine from "./AudioEngine";
+import { usePathname } from "next/navigation";
 
 interface AudioContextType {
   muted: boolean;
@@ -12,6 +13,7 @@ interface AudioContextType {
   fadeIn: (id: SoundId, duration?: number, targetVolume?: number) => void;
   fadeOut: (id: SoundId, duration?: number) => void;
   crossFade: (fromId: SoundId, toId: SoundId, duration?: number) => void;
+  isPlaying: (id: SoundId) => boolean;
   
   // Centralized Loader Timeline
   loaderTime: number;
@@ -64,6 +66,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const completeLoader = useCallback(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("race-loader-played", "true");
+    }
     // Wrap state updates in requestAnimationFrame to defer them and satisfy React 19 rendering purity lints
     requestAnimationFrame(() => {
       setIsLoaderActive(false);
@@ -76,6 +81,13 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const startLoader = useCallback(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("race-loader-played") === "true") {
+      setLoaderTime(6.2);
+      setLoaderPhase("lights-out");
+      setIsLoaderActive(false);
+      return;
+    }
+
     setIsLoaderActive(true);
     setLoaderTime(0);
     setLoaderPhase("darkness");
@@ -122,6 +134,34 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Centralized Audio Cue Triggering based on Timeline
+  const isPlaying = useCallback((id: SoundId) => {
+    return audioEngine.isPlaying(id);
+  }, []);
+
+  // Centralized, route-aware audio transitions
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (isLoaderActive) return;
+
+    if (pathname === "/") {
+      audioEngine.fadeOut("ambient", 1.2);
+      audioEngine.fadeOut("idle", 1.2);
+      audioEngine.fadeOut("ventilation", 1.2);
+      audioEngine.fadeIn("electric-hum", 1.5);
+    } else if (pathname === "/garage") {
+      audioEngine.fadeOut("electric-hum", 1.2);
+      audioEngine.fadeOut("ambient", 1.2);
+      audioEngine.fadeIn("idle", 1.5);
+      audioEngine.fadeIn("ventilation", 1.5);
+    } else {
+      audioEngine.fadeOut("electric-hum", 1.2);
+      audioEngine.fadeOut("idle", 1.2);
+      audioEngine.fadeOut("ventilation", 1.2);
+      audioEngine.fadeIn("ambient", 2.0);
+    }
+  }, [pathname, isLoaderActive]);
+
   useEffect(() => {
     if (!isLoaderActive) return;
 
@@ -160,6 +200,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         fadeIn,
         fadeOut,
         crossFade,
+        isPlaying,
         loaderTime,
         loaderPhase,
         isLoaderActive,

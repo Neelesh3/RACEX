@@ -56,6 +56,23 @@ export default function AboutPage() {
             </span>
           </div>
         </div>
+
+        {/* Credits Section */}
+        <div className="mt-12 pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4 text-xs text-neutral-500">
+          <div>
+            <span className="font-bold text-white/40 uppercase tracking-widest block text-[9px]">Built By</span>
+            <span className="font-bold text-white text-sm mt-0.5 block">Neelesh Kumar Agashe</span>
+            <span className="text-[10px] text-neutral-400 block mt-0.5">Frontend Engineer</span>
+          </div>
+          <a
+            href="https://github.com/Neelesh3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.08] text-white font-bold tracking-widest uppercase text-xs transition-colors active:scale-95"
+          >
+            GitHub @Neelesh3
+          </a>
+        </div>
       </div>
     </section>
   );

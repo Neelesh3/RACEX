@@ -52,4 +52,32 @@ export const searchIndex: SearchItem[] = [
       meta: circuit.length,
     })
   ),
+
+  // Standings
+  {
+    id: "standings-drivers",
+    title: "Driver Standings",
+    subtitle: "2026 World Drivers' Championship Standings",
+    href: "/standings",
+    category: "standings",
+    meta: "Standings",
+  },
+  {
+    id: "standings-constructors",
+    title: "Constructor Standings",
+    subtitle: "2026 World Constructors' Championship Standings",
+    href: "/standings",
+    category: "standings",
+    meta: "Standings",
+  },
+
+  // About
+  {
+    id: "about",
+    title: "About RACEX",
+    subtitle: "Premium F1 Interactive Dashboard Credits & Vision",
+    href: "/about",
+    category: "about",
+    meta: "Credits",
+  },
 ];

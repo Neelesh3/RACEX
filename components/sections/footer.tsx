@@ -184,7 +184,7 @@ export function Footer() {
         {/* Partner Logos */}
         <div className="mt-16 border-t border-border/40 pt-10">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#5f5f5f] mb-6">
-            Official Platform Partners
+            Inspired by Motorsport Brands & Technology
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-35 grayscale contrast-200 transition-opacity duration-300 hover:opacity-60">
             <Image src="/logos/f1-logo.svg" alt="F1 Logo" width={48} height={20} className="h-5 w-auto object-contain" />
@@ -224,7 +224,13 @@ export function Footer() {
           <p className="flex items-center gap-1 text-xs text-[#5F5F5F]">
             Made with
             <Heart className="h-3 w-3 text-primary" />
-            for Formula 1 fans.
+            for motorsport enthusiasts.
+          </p>
+        </div>
+
+        <div className="mt-4 border-t border-white/[0.03] pt-6 pb-8">
+          <p className="text-center text-[10px] leading-relaxed text-[#404040]">
+            Disclaimer: RaceX is an unofficial fan-built motorsport engineering project built for portfolio purposes only. It has no affiliation with, endorsement by, or connection to the Formula One Group, the FIA, or any motorsport team, sponsor, or brand. All logos and trademarks are property of their respective owners.
           </p>
         </div>
       </div>

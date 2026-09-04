@@ -1,12 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAudio } from "@/lib/audio/useAudio";
 
 export function LoadingScreen() {
   const { loaderTime, loaderPhase, isLoaderActive, startLoader } = useAudio();
   const [hasInteracted, setHasInteracted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("race-loader-played") === "true") {
+      requestAnimationFrame(() => {
+        setHasInteracted(true);
+        startLoader();
+      });
+    }
+  }, [startLoader]);
 
   const handleStart = () => {
     setHasInteracted(true);

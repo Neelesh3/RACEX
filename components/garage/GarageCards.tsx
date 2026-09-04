@@ -13,11 +13,11 @@ export function GarageCards() {
   const { setCursorState, setCursorLabel, resetCursor } = useCursor();
 
   return (
-    <div className="absolute inset-x-0 bottom-8 md:bottom-12 z-30 px-6 sm:px-12 pointer-events-none select-none">
-      <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-stretch gap-6 pointer-events-auto">
+    <div className="absolute inset-x-0 bottom-4 sm:bottom-8 md:bottom-12 z-30 px-4 sm:px-8 md:px-12 pointer-events-none select-none max-h-[50vh] md:max-h-none overflow-y-auto">
+      <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-stretch gap-4 sm:gap-6 pointer-events-auto">
         
         {/* Left Card: Profile & Story */}
-        <div className="w-full md:w-[40%] flex">
+        <div className="w-full md:w-[33%] flex">
           <AnimatePresence mode="wait">
             <motion.div
               key={`card-left-${team.id}`}
@@ -31,25 +31,25 @@ export function GarageCards() {
               }}
               onMouseLeave={resetCursor}
               style={{ borderTop: `2px solid ${team.primaryColor}` }}
-              className="flex flex-col flex-1 rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-xl p-5 md:p-6 shadow-2xl transition-all duration-300 hover:border-white/[0.12] hover:bg-black/75"
+              className="flex flex-col flex-1 rounded-xl border border-white/[0.06] bg-black/60 backdrop-blur-xl p-5 shadow-2xl transition-all duration-300 hover:border-white/[0.12] hover:bg-black/75"
             >
               {/* Header: Logo & Identity */}
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 {team.logoAsset ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img 
-                    src={team.logoAsset} 
-                    alt={`${team.teamName} Logo`} 
-                    className="w-10 h-10 object-contain invert brightness-0"
-                    onError={(e) => {
-                      // Fallback if logo fails
-                      (e.target as HTMLElement).style.display = "none";
-                    }}
+                     src={team.logoAsset} 
+                     alt={`${team.teamName} Logo`} 
+                     className="w-8 h-8 object-contain invert brightness-0"
+                     onError={(e) => {
+                       // Fallback if logo fails
+                       (e.target as HTMLElement).style.display = "none";
+                     }}
                   />
                 ) : null}
                 <div>
-                  <h3 className="text-xl font-bold tracking-tight text-white">{team.teamName}</h3>
-                  <div className="flex items-center gap-2 mt-0.5 text-xs font-semibold text-white/50 uppercase tracking-widest">
+                  <h3 className="text-base font-black tracking-wider text-white uppercase">{team.teamName}</h3>
+                  <div className="flex items-center gap-2 mt-0.5 text-[10px] font-bold text-white/40 uppercase tracking-widest">
                     <span>{team.carName}</span>
                     <span className="w-1 h-1 rounded-full bg-white/20" />
                     <span>{team.season}</span>
@@ -58,21 +58,21 @@ export function GarageCards() {
               </div>
 
               {/* Story Narrative */}
-              <p className="text-sm leading-relaxed text-[#B5B5B5] font-normal flex-1">
+              <p className="text-xs leading-relaxed text-white/70 tracking-wide font-normal flex-1">
                 {team.shortStory}
               </p>
 
               {/* Engine Specs */}
-              <div className="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-between text-xs">
-                <span className="font-semibold text-white/40 uppercase tracking-wider">Engine Partner</span>
-                <span className="font-bold text-white uppercase tracking-wider">{team.engine}</span>
+              <div className="mt-3 pt-2 border-t border-white/[0.05] flex items-center justify-between text-[10px]">
+                <span className="font-bold text-white/40 uppercase tracking-widest">Engine Partner</span>
+                <span className="font-extrabold text-white uppercase tracking-widest">{team.engine}</span>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Right Card: Stats & Lineup */}
-        <div className="w-full md:w-[45%] flex">
+        <div className="w-full md:w-[38%] flex">
           <AnimatePresence mode="wait">
             <motion.div
               key={`card-right-${team.id}`}
@@ -86,49 +86,49 @@ export function GarageCards() {
               }}
               onMouseLeave={resetCursor}
               style={{ borderTop: `2px solid ${team.primaryColor}` }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-xl p-5 md:p-6 shadow-2xl transition-all duration-300 hover:border-white/[0.12] hover:bg-black/75"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 rounded-xl border border-white/[0.06] bg-black/60 backdrop-blur-xl p-5 shadow-2xl transition-all duration-300 hover:border-white/[0.12] hover:bg-black/75"
             >
               {/* Grid Col 1: Statistics */}
-              <div className="flex flex-col justify-between gap-4">
-                <div className="flex items-center gap-2 mb-1 text-[#808080] uppercase tracking-wider font-semibold text-xs">
-                  <Trophy className="w-3.5 h-3.5 text-[#E10600]" />
-                  <span>Team Legacy</span>
+              <div className="flex flex-col justify-between gap-3">
+                <div className="flex items-center gap-2 mb-1 text-white/40 uppercase tracking-widest font-bold text-[10px]">
+                  <Trophy className="w-3 h-3 text-[#E10600]" />
+                  <span>Legacy</span>
                 </div>
                 
                 <div className="grid grid-cols-3 gap-2 flex-1">
-                  <div className="flex flex-col justify-center rounded-xl bg-white/[0.03] border border-white/[0.04] p-3 text-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/10">
-                    <span className="text-xl font-black text-white">{team.championships}</span>
-                    <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider mt-0.5">Titles</span>
+                  <div className="flex flex-col justify-center rounded-lg bg-white/[0.03] border border-white/[0.04] p-2 text-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/10">
+                    <span className="text-base font-black text-white tracking-wider">{team.championships}</span>
+                    <span className="text-[8px] font-bold text-white/40 uppercase tracking-widest mt-0.5">Titles</span>
                   </div>
-                  <div className="flex flex-col justify-center rounded-xl bg-white/[0.03] border border-white/[0.04] p-3 text-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/10">
-                    <span className="text-xl font-black text-white">{team.wins}</span>
-                    <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider mt-0.5">Wins</span>
+                  <div className="flex flex-col justify-center rounded-lg bg-white/[0.03] border border-white/[0.04] p-2 text-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/10">
+                    <span className="text-base font-black text-white tracking-wider">{team.wins}</span>
+                    <span className="text-[8px] font-bold text-white/40 uppercase tracking-widest mt-0.5">Wins</span>
                   </div>
-                  <div className="flex flex-col justify-center rounded-xl bg-white/[0.03] border border-white/[0.04] p-3 text-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/10">
-                    <span className="text-xl font-black text-white">{team.podiums}</span>
-                    <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider mt-0.5">Podiums</span>
+                  <div className="flex flex-col justify-center rounded-lg bg-white/[0.03] border border-white/[0.04] p-2 text-center transition-all duration-300 hover:bg-white/[0.05] hover:border-white/10">
+                    <span className="text-base font-black text-white tracking-wider">{team.podiums}</span>
+                    <span className="text-[8px] font-bold text-white/40 uppercase tracking-widest mt-0.5">Podium</span>
                   </div>
                 </div>
               </div>
 
               {/* Grid Col 2: Drivers */}
-              <div className="flex flex-col justify-between gap-3 border-t sm:border-t-0 sm:border-l border-white/[0.06] pt-4 sm:pt-0 sm:pl-4">
-                <div className="flex items-center gap-2 mb-1 text-[#808080] uppercase tracking-wider font-semibold text-xs">
-                  <User className="w-3.5 h-3.5 text-[#E10600]" />
-                  <span>Driver Lineup</span>
+              <div className="flex flex-col justify-between gap-2 border-t sm:border-t-0 sm:border-l border-white/[0.06] pt-3 sm:pt-0 sm:pl-4">
+                <div className="flex items-center gap-2 mb-1 text-white/40 uppercase tracking-widest font-bold text-[10px]">
+                  <User className="w-3 h-3 text-[#E10600]" />
+                  <span>Lineup</span>
                 </div>
 
                 <div className="flex flex-col gap-2 flex-1 justify-center">
                   {team.drivers.map((driver) => (
                     <div 
                       key={driver.name}
-                      className="flex items-center justify-between rounded-xl bg-white/[0.02] border border-white/[0.04] px-3 py-2 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/10"
+                      className="flex items-center justify-between rounded-lg bg-white/[0.02] border border-white/[0.04] px-3 py-1.5 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/10"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-sm">{driver.flag}</span>
-                        <span className="text-xs font-bold text-white">{driver.name}</span>
+                        <span className="text-xs">{driver.flag}</span>
+                        <span className="text-[11px] font-semibold text-white tracking-wide">{driver.name}</span>
                       </div>
-                      <span className="text-xs font-black text-[#E10600] tabular-nums">#{driver.number}</span>
+                      <span className="text-[11px] font-black text-[#E10600] tabular-nums">#{driver.number}</span>
                     </div>
                   ))}
                 </div>

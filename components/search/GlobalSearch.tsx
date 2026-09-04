@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { User, Shield, Calendar, Compass, Newspaper, Clock } from "lucide-react";
+import { User, Shield, Calendar, Compass, Newspaper, Clock, Trophy, Info } from "lucide-react";
 import {
   Command,
   CommandDialog,
@@ -33,6 +33,14 @@ const CATEGORY_CONFIG = {
   circuit: {
     icon: Compass,
     badgeClass: "border-emerald-500/20 bg-emerald-500/10 text-emerald-400",
+  },
+  standings: {
+    icon: Trophy,
+    badgeClass: "border-purple-500/20 bg-purple-500/10 text-purple-400",
+  },
+  about: {
+    icon: Info,
+    badgeClass: "border-cyan-500/20 bg-cyan-500/10 text-cyan-400",
   },
 } as const;
 
@@ -94,6 +102,8 @@ export function GlobalSearch() {
     constructor: searchIndex.filter((item) => item.category === "constructor"),
     race: searchIndex.filter((item) => item.category === "race"),
     circuit: searchIndex.filter((item) => item.category === "circuit"),
+    standings: searchIndex.filter((item) => item.category === "standings"),
+    about: searchIndex.filter((item) => item.category === "about"),
   };
 
   return (
@@ -101,12 +111,12 @@ export function GlobalSearch() {
       open={isOpen}
       onOpenChange={handleOpenChange}
       title="Global Navigation Search"
-      description="Quickly jump to drivers, teams, races, circuits, and news."
+      description="Quickly jump to drivers, teams, races, circuits, standings, and info."
       className="border border-[#242424] bg-[#0A0A0A]/95 backdrop-blur-md rounded-xl overflow-hidden"
     >
       <Command className="bg-transparent border-none">
         <CommandInput
-          placeholder="Search drivers, constructors, races, circuits..."
+          placeholder="Search drivers, teams, races, circuits, standings..."
           value={searchQuery}
           onValueChange={setSearchQuery}
           className="border-[#242424] focus:border-[#E10600]/30"

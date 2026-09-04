@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useMotionValue, useSpring } from "framer-motion";
 import { useCursor } from "./useCursor";
 import { useTheme } from "@/lib/theme/theme-utils";
@@ -26,6 +26,17 @@ export function Cursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
+  // Refs to prevent state thrashing & layout reflows during mousemove
+  const isVisibleRef = useRef(false);
+  const cursorStateRef = useRef(cursorState);
+  const nextPosRef = useRef({ x: -100, y: -100 });
+  const rafIdRef = useRef<number | null>(null);
+
+  // Keep cursorStateRef in sync with context
+  useEffect(() => {
+    cursorStateRef.current = cursorState;
+  }, [cursorState]);
+
   // Check prefers-reduced-motion on mount
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -42,11 +53,11 @@ export function Cursor() {
   // Configure high-performance springs
   const dotSpringConfig = reducedMotion
     ? { stiffness: 10000, damping: 100 }
-    : { stiffness: 1200, damping: 48, mass: 0.1 };
+    : { stiffness: 1200, damping: 52, mass: 0.1 };
 
   const ringSpringConfig = reducedMotion
     ? { stiffness: 10000, damping: 100 }
-    : { stiffness: 280, damping: 22, mass: 0.5 };
+    : { stiffness: 300, damping: 26, mass: 0.4 };
 
   const dotX = useSpring(mouseX, dotSpringConfig);
   const dotY = useSpring(mouseY, dotSpringConfig);
@@ -54,7 +65,7 @@ export function Cursor() {
   const ringX = useSpring(mouseX, ringSpringConfig);
   const ringY = useSpring(mouseY, ringSpringConfig);
 
-  // Pointer event listeners
+  // Pointer event listeners - completely decoupled from state updates during mousemove
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -66,33 +77,52 @@ export function Cursor() {
 
     if (!checkDevice()) return;
 
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => {
+      isVisibleRef.current = true;
+      setIsVisible(true);
+    };
+
+    const handleMouseLeave = () => {
+      isVisibleRef.current = false;
+      setIsVisible(false);
+    };
+
+    const updateMousePos = () => {
+      mouseX.set(nextPosRef.current.x);
+      mouseY.set(nextPosRef.current.y);
+      rafIdRef.current = null;
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Ensure cursor is shown
-      if (!isVisible) setIsVisible(true);
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        setIsVisible(true);
+      }
 
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      nextPosRef.current.x = e.clientX;
+      nextPosRef.current.y = e.clientY;
 
-      // Auto-detect text fields to hide custom cursor
+      if (rafIdRef.current === null) {
+        rafIdRef.current = requestAnimationFrame(updateMousePos);
+      }
+
+      // Fast DOM element node check - ZERO getComputedStyle layout reflows
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      const nodeName = target.nodeName.toLowerCase();
+      const nodeName = target.nodeName;
       const isTextInput =
-        nodeName === "input" ||
-        nodeName === "textarea" ||
+        nodeName === "INPUT" ||
+        nodeName === "TEXTAREA" ||
         target.isContentEditable ||
-        window.getComputedStyle(target).cursor === "text";
+        Boolean(target.closest?.('input, textarea, [contenteditable="true"]'));
 
       if (isTextInput) {
-        if (cursorState !== "text") {
+        if (cursorStateRef.current !== "text") {
           setCursorState("text");
         }
       } else {
-        if (cursorState === "text") {
+        if (cursorStateRef.current === "text") {
           resetCursor();
         }
       }
@@ -102,13 +132,14 @@ export function Cursor() {
     const handleMouseUp = () => setIsClicked(false);
 
     const handleFocusIn = (e: FocusEvent) => {
+      isVisibleRef.current = true;
       setIsVisible(true);
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
       const isInteractive =
-        target.nodeName.toLowerCase() === "a" ||
-        target.nodeName.toLowerCase() === "button" ||
+        target.nodeName === "A" ||
+        target.nodeName === "BUTTON" ||
         target.role === "button" ||
         target.tabIndex >= 0;
 
@@ -135,6 +166,9 @@ export function Cursor() {
     document.addEventListener("focusout", handleFocusOut, { passive: true });
 
     return () => {
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
@@ -143,7 +177,7 @@ export function Cursor() {
       document.removeEventListener("focusin", handleFocusIn);
       document.removeEventListener("focusout", handleFocusOut);
     };
-  }, [mouseX, mouseY, isVisible, cursorState, setCursorState, resetCursor]);
+  }, [mouseX, mouseY, setCursorState, resetCursor]);
 
   // Hide custom cursor under specific states
   const shouldHide =

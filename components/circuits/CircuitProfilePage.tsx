@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronLeft, MapPin, Compass, GitCommit } from "lucide-react";
+import { ChevronLeft, MapPin, GitCommit } from "lucide-react";
 import type { Circuit } from "@/types/circuit";
 import type { CircuitDetails } from "@/types/circuit-details";
 import { CountryFlag } from "@/components/ui/CountryFlag";
+import CircuitVisualizer from "./CircuitVisualizer";
 
 // Static metadata dictionary to provide coordinates, elevations, and key corners for F1 circuits
 const CIRCUIT_META: Record<string, { coords: string; elevation: string; keyCorner: string; accentColor: string }> = {
@@ -29,8 +30,6 @@ interface CircuitProfilePageProps {
 }
 
 export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps) {
-  const [imageError, setImageError] = useState(false);
-  const mapUrl = `/circuits/layouts/${circuit.id}.svg`;
   const heroImageSrc = circuit.image || (details.gallery && details.gallery[0]) || "";
   const { currentTheme, setTheme } = useTheme();
 
@@ -167,42 +166,17 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
         </div>
       </section>
 
-      {/* ── Section 2: Track Blueprint (Telemetry Draw) ── */}
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-32 border-t border-white/[0.05]">
+      {/* ── Section 2: Track Schematic (Interactive Visualizer) ── */}
+      <section className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-12 md:py-32 border-t border-white/[0.05]">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 items-start">
           
-          {/* Left Column: Drawing SVG (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Left Column: Interactive Schematic (7 cols) */}
+          <div className="lg:col-span-7 space-y-6">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block">
-              {"// BLUEPRINT"}
+              {"// INTERACTIVE SCHEMATIC"}
             </span>
 
-            <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.01] backdrop-blur-sm flex items-center justify-center p-6">
-              {imageError || !mapUrl ? (
-                <div className="text-center p-8">
-                  <Compass className="mx-auto mb-4 h-12 w-12 text-neutral-600 animate-pulse" />
-                  <span className="text-xs font-bold text-white uppercase tracking-widest">Telemetry geometry loading</span>
-                </div>
-              ) : (
-                <motion.div
-                  initial={{ clipPath: "inset(0 100% 0 0)" }}
-                  whileInView={{ clipPath: "inset(0 0% 0 0)" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
-                  className="relative w-full h-full flex items-center justify-center"
-                >
-                  <Image
-                    src={mapUrl}
-                    alt={`${circuit.name} Blueprint`}
-                    fill
-                    className="object-contain p-6 filter invert brightness-100"
-                    onError={() => setImageError(true)}
-                    sizes="40vw"
-                    priority
-                  />
-                </motion.div>
-              )}
-            </div>
+            <CircuitVisualizer circuitId={circuit.id} />
 
             {/* Premium Details: Elevation and key corner */}
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-5 grid grid-cols-2 gap-4">
@@ -217,13 +191,13 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
             </div>
           </div>
 
-          {/* Right Column: Technical DRS Zones & Sectors (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Right Column: Technical DRS Zones & Sectors (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 block">
               {"// SECTOR telemetry"}
             </span>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 font-mono">
               {details.sectors.map((sector) => (
                 <motion.div
                   key={sector.sector}
@@ -233,7 +207,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
                   transition={{ duration: 0.6 }}
                   className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-6 hover:border-white/[0.1] hover:bg-white/[0.02] transition-all duration-300"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between font-sans">
                     <div className="flex items-center gap-3">
                       <div className="flex h-7 w-7 items-center justify-center rounded-full border border-red-500/20 bg-red-500/10 text-[10px] font-black text-red-400">
                         S{sector.sector}
@@ -243,7 +217,7 @@ export function CircuitProfilePage({ circuit, details }: CircuitProfilePageProps
                     <GitCommit className="h-4 w-4 text-neutral-600" />
                   </div>
 
-                  <p className="mt-3 text-xs leading-relaxed text-neutral-400">
+                  <p className="mt-3 text-xs leading-relaxed text-neutral-400 font-sans">
                     {sector.description}
                   </p>
 

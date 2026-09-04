@@ -153,6 +153,11 @@ class AudioEngine {
     }
   }
 
+  public isPlaying(id: SoundId): boolean {
+    const audio = this.cache.get(id);
+    return audio ? !audio.paused : false;
+  }
+
   public fadeIn(id: SoundId, duration = 1.0, targetVolume?: number) {
     if (typeof window === "undefined") return;
 
@@ -168,6 +173,28 @@ class AudioEngine {
     const channelVol = this.channelVolumes.get(config.channel) ?? 1.0;
     const targetRawVolume = maxVolume * channelVol * this.masterVolume;
     const finalTarget = this.muted ? 0 : Math.max(0, Math.min(1, targetRawVolume));
+
+    // If already playing, fade the volume smoothly to target without resetting current time
+    if (this.isPlaying(id)) {
+      const steps = 20;
+      const stepTime = (duration * 1000) / steps;
+      const startVolume = audio.volume;
+      const diff = finalTarget - startVolume;
+      let currentStep = 0;
+
+      const interval = setInterval(() => {
+        currentStep++;
+        audio.volume = Math.max(0, Math.min(finalTarget, startVolume + (diff / steps) * currentStep));
+
+        if (currentStep >= steps) {
+          this.clearFadeInterval(id);
+          audio.volume = finalTarget;
+        }
+      }, stepTime);
+
+      this.fadeIntervals.set(id, interval);
+      return;
+    }
 
     audio.volume = 0;
     audio.currentTime = 0;

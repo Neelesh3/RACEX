@@ -103,7 +103,7 @@ function DriverCard({ driver, index }: { driver: Driver; index: number }) {
                       src={driver.image}
                       alt={driver.name}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       sizes="64px"
                     />
                   )}
@@ -247,7 +247,7 @@ export default function DriversPage() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           {filteredDrivers.length > 0 ? (
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
               {filteredDrivers.map((driver, index) => (
                 <DriverCard key={driver.id} driver={driver} index={index} />
               ))}

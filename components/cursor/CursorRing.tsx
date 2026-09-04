@@ -16,7 +16,6 @@ export function CursorRing({ x, y, color, state, isClicked }: CursorRingProps) {
   // Map cursorState to Framer Motion variables
   let ringScale = 0;
   let ringOpacity = 0;
-  let ringBorderWidth = 1.5;
   let scaleX = 1;
   let scaleY = 1;
   let glowIntensity = "0px 0px 0px rgba(0,0,0,0)";
@@ -28,7 +27,6 @@ export function CursorRing({ x, y, color, state, isClicked }: CursorRingProps) {
   } else if (state === "card") {
     ringScale = 1.6;
     ringOpacity = 0.55;
-    ringBorderWidth = 1.0;
     glowIntensity = `0 0 10px ${color}22`;
   } else if (state === "garage") {
     ringScale = 1.1;
@@ -40,7 +38,6 @@ export function CursorRing({ x, y, color, state, isClicked }: CursorRingProps) {
     // A micro outer ring to give that precision instrument feeling
     ringScale = 0.6;
     ringOpacity = 0.15;
-    ringBorderWidth = 1.0;
   }
 
   // Click compression behavior
@@ -61,15 +58,14 @@ export function CursorRing({ x, y, color, state, isClicked }: CursorRingProps) {
       animate={{
         scale: ringScale,
         opacity: ringOpacity,
-        borderWidth: `${ringBorderWidth}px`,
         scaleX,
         scaleY,
       }}
       transition={{
         type: "spring",
         stiffness: 350,
-        damping: 24,
-        mass: 0.6,
+        damping: 26,
+        mass: 0.5,
       }}
       className="fixed top-0 left-0 w-8 h-8 rounded-full border border-solid pointer-events-none z-[99998]"
     />

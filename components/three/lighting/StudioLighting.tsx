@@ -18,7 +18,7 @@ export function StudioLighting({
   rimIntensity = 1.5,
   ambientIntensity = 0.15,
   castShadow = true,
-  shadowResolution = 2048,
+  shadowResolution = 1024,
 }: StudioLightingProps) {
   const keyLightRef = useRef<THREE.DirectionalLight>(null);
 
@@ -63,7 +63,7 @@ export function StudioLighting({
         intensity={2.0}
         angle={0.55}
         penumbra={0.95}
-        castShadow={castShadow}
+        castShadow={false}
         shadow-bias={-0.0001}
         color="#ffffff"
       />

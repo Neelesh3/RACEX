@@ -10,16 +10,28 @@ import {
 } from "@/constants/animation-variants";
 import { ROUTES } from "@/constants/routes";
 
+import { usePathname } from "next/navigation";
+
 /**
  * NavbarLogo Component
  * Premium animated RaceX logo with entrance animation
  * Memoized to prevent unnecessary re-renders
  */
 function NavbarLogoContent() {
+  const pathname = usePathname();
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.div className="shrink-0" {...LOGO_ENTRANCE}>
       <Link
         href={ROUTES.HOME}
+        onClick={handleClick}
         className="group flex items-center gap-2 rounded px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/50"
         aria-label="RaceX home"
       >

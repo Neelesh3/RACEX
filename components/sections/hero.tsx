@@ -141,7 +141,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={showUI ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: showUI ? 0.45 : 0, ease: "easeOut" }}
-            className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start"
+            className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 w-full sm:w-auto"
           >
             <Link
               href="/drivers"
@@ -153,7 +153,7 @@ export default function Hero() {
               onMouseLeave={resetCursor}
               onClick={() => play("click")}
               className={cn(
-                "inline-flex h-12 items-center justify-center gap-2 rounded-xl",
+                "inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-xl",
                 "bg-[#E10600] px-7 text-sm font-semibold text-white",
                 "transition-all duration-200",
                 "hover:bg-[#FF1A1A] hover:shadow-[0_0_30px_rgba(225,6,0,0.25)]",
@@ -174,7 +174,7 @@ export default function Hero() {
               onMouseLeave={resetCursor}
               onClick={() => play("click")}
               className={cn(
-                "inline-flex h-12 items-center justify-center gap-2 rounded-xl",
+                "inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-xl",
                 "border border-[#242424] bg-transparent px-7 text-sm font-semibold text-white",
                 "transition-all duration-200",
                 "hover:border-[#343434] hover:bg-[#111111]",
